@@ -1,1 +1,9 @@
 /*some styles*/
+
+.navbar-inverse{
+    background-color: #004184;
+}
+.logo_header img{
+    max-height: 100px;
+    margin-bottom:12px;
+}
