@@ -3,7 +3,30 @@
 .navbar-inverse{
     background-color: #004184;
 }
+
 .logo_header img{
     max-height: 100px;
     margin-bottom:12px;
+}
+
+.mainbtn{
+
+}
+
+.mainbtn div{
+    border-radius:4px;
+    background-color: #004184;
+    min-height:80px;
+    display:table-cell;
+    text-align:center;
+
+}
+.mainbtn div a{
+    font-size:1.2em;
+    text-align:center;
+    text-transform: uppercase;
+    vertical-align:middle;
+    line-height: 80px;
+    color:white;
+    font-weight:bold;
 }

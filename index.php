@@ -6,13 +6,17 @@
 ?>
 </head>
 <body>
-<?php include_once('common/navbar_top.php'); ?>
-<div class="text-center logo_header">
-    <img src="img/TIM_logo_2016.png" alt="TIM_logo">
+
+    <?php include_once('common/navbar_top.php'); ?>
+<div class="container-fluid">
+    <div class="text-center logo_header">
+        <img src="img/TIM_logo_2016.png" alt="TIM_logo">
+    </div>
+
+    <?php include_once('common/navbar.php'); ?>
+
 </div>
-<?php include_once('common/navbar.php'); ?>
-
-
 <?php include("common/footer.php"); ?>
+
 </body>
 </html>
