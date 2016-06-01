@@ -1,10 +1,6 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>TIM</title>    
-    <link rel="stylesheet" href="css/style.css" />
-    
-</head>
-<body>
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     
