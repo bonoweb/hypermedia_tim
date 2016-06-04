@@ -1,11 +1,16 @@
 /*some styles*/
 
+body{
+    background-color: #fefefe;
+}
+
 .navbar-inverse{
     background-color: #004184;
 }
 
 .logo_header img{
     max-height: 100px;
+    max-width: 100%;
     margin-bottom:12px;
 }
 
@@ -34,4 +39,11 @@
 
 .mainbar.navbar-nav>li {
     float: none;
+}
+
+@media screen and (max-device-width: 480px) {
+    .logo_header img{
+        max-height:100%;
+        max-width: 100%;
+    }
 }

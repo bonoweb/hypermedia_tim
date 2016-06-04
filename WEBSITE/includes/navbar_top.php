@@ -1,4 +1,4 @@
-<div class="container-fluid">
+
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <ul class="nav navbar-nav">
@@ -23,4 +23,3 @@
             </ul>
         </div><!-- /.container-fluid -->
     </nav>
-</div>
