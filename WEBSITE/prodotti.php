@@ -10,7 +10,13 @@
 <?php include_once('includes/header.php'); ?>
 
 <?php
-get_products_categories();
+if(!isset($_GET['idcategoria'])) {
+    get_products_categories();
+}
+else{
+    $idcategory=$_GET['idcategoria'];
+    get_products_by_category($idcategory);
+}
 ?>
 
 

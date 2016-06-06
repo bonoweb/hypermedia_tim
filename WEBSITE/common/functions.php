@@ -39,6 +39,7 @@ function get_products_categories()
         {
             $offset = "col-md-offset-2";
         }
+        echo "<a href=\"prodotti.php?idcategoria=".$cat['id']."\">";
         echo "<div class=\"col-md-4 $offset \">\n";
         echo "<div class='col-md-10 col-md-offset-1 well text-center'>";
         $icon = $cat['icona'];
@@ -47,7 +48,45 @@ function get_products_categories()
         echo "<strong>".$cat['titolo']."</strong>\n";
         echo '</div>';
         echo '</div>';
+        echo '</a>';
     }
     echo "</div>\n</div>";
     
 }
+
+function get_products_by_category($idcategory)
+{
+    global $DBH;
+    $query = "SELECT * FROM prodotti WHERE id_categoria= :idcategory";
+    $STH = $DBH->prepare($query);
+    $STH->bindParam(":idcategory", $idcategory);
+    $STH->execute();
+    $rowcount = $STH->rowCount();
+    if ($rowcount == 0) {
+        echo "<div class=\"alert alert-danger\">Nessun prodotto disponibile nella categoria scelta.</div>";
+    } else {
+        $res = $STH->fetchAll();
+        echo "<div class='container'>\n<div class=\"row\">";
+        foreach ($res as $prod) {
+            ?>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail text-center">
+                    <img src="<?php echo $prod['immagine']; ?>" alt="Immagine<?php echo $prod['nome']; ?>">
+                    <div class="caption">
+                        <h3><?php echo $prod['nome']; ?></h3>
+                        <!--<p><?php echo $prod['presentazione']; ?></p>-->
+                        <p><a href="#" class="btn btn-primary" role="button">Dettagli</a> <a href="#"
+                                                                                           class="btn btn-success"
+                                                                                           role="button">Acquista</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <?php
+        }
+    }
+
+    echo "</div>\n</div>";
+}
+
+?>
