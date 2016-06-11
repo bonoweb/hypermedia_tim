@@ -17,6 +17,8 @@
 <body>
 <div class="container">
     <p class="alert alert-info">CIAOCIAOCIAO</p>
+    <div id="load"></div>
+    <button class="btn btn-default">click me!</button>
 </div>
     
 
@@ -31,5 +33,23 @@
 <script language="JavaScript"
         type="text/javascript"
         src="scripts/main_scripts.js"></script>
+
+
+<script>
+
+    $("button").click(function(){
+        $.ajax({
+            url: "http://hypermedia.francescobuonocore.it/test.php",
+            crossDomain: true,
+            headers: {"X-My-Custom-Header": "some value"},
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function(result){
+            $("#load").html(result);
+        }});
+    });
+
+</script>
 </body>
 </html>
