@@ -18,7 +18,7 @@
 <div class="container">
     <p class="alert alert-info">CIAOCIAOCIAO</p>
     <div id="load"></div>
-    <button class="btn btn-default">click me!</button>
+    <button id="button" class="btn btn-default">click me!</button>
 </div>
     
 
@@ -36,20 +36,18 @@
 
 
 <script>
-
-    $("button").click(function(){
-        $.ajax({
-            url: "http://hypermedia.francescobuonocore.it/test.php",
-            crossDomain: true,
-            headers: {"X-My-Custom-Header": "some value"},
-            xhrFields: {
-                withCredentials: true
-            },
-            success: function(result){
-            $("#load").html(result);
-        }});
+    $( document ).ready(function() {
+        $("#button").click(function () {
+            alert("CIAO");
+            $.ajax({
+                type:'GET',
+                url: "http://hypermedia.francescobuonocore.it/test.php"
+            }).success(function(result){
+                $("#load").html(result);
+            });
+            alert("CIAO2");
+        });
     });
-
 </script>
 </body>
 </html>
