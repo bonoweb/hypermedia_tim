@@ -37,9 +37,17 @@
 
 <script>
     //$( document ).ready(function() {
+
+
         $("#button").click(function () {
             var tmp=$("#load").html();
             $("#load").html(tmp + "<br>" + "inizio");
+
+            $.get( "http://hypermedia.francescobuonocore.it/test.php", function( data ) {
+                var tmp=$("#load").html();
+                $("#load").html(tmp + "<br>" + data);
+            });
+            /*
             $.ajax({
                 type:'GET',
                 url: "http://hypermedia.francescobuonocore.it/test.php"
@@ -48,6 +56,8 @@
                 $("#load").html(tmp + "<br>" + result);
 
             });
+            */
+
             var tmp=$("#load").html();
             $("#load").html(tmp + "<br>" + "fine");
         });
