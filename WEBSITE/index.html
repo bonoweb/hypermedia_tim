@@ -36,18 +36,22 @@
 
 
 <script>
-    $( document ).ready(function() {
+    //$( document ).ready(function() {
         $("#button").click(function () {
-            alert("CIAO");
+            var tmp=$("#load").html();
+            $("#load").html(tmp + "<br>" + "inizio");
             $.ajax({
                 type:'GET',
                 url: "http://hypermedia.francescobuonocore.it/test.php"
             }).success(function(result){
-                $("#load").html(result);
+                var tmp=$("#load").html();
+                $("#load").html(tmp + "<br>" + result);
+
             });
-            alert("CIAO2");
+            var tmp=$("#load").html();
+            $("#load").html(tmp + "<br>" + "fine");
         });
-    });
+   // });
 </script>
 </body>
 </html>
