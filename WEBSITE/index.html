@@ -51,10 +51,20 @@
             var tmp=$("#load").html();
             $("#load").html(tmp + "<br>" + "inizio");
 
-            $.get( "http://hypermedia.francescobuonocore.it/test.php", function( data ) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    var tmp=$("#load").html();
+                    document.getElementById("load").innerHTML = tmp + "<br>" + xhttp.responseText;
+                }
+            };
+            xhttp.open("POST", "http://hypermedia.francescobuonocore.it/test.php", true);
+            xhttp.send();
+
+           /* $.get( "http://hypermedia.francescobuonocore.it/test.php", function( data ) {
                 var tmp=$("#load").html();
                 $("#load").html(tmp + "<br>" + data);
-            });
+            });*/
             /*
             $.ajax({
                 type:'GET',
