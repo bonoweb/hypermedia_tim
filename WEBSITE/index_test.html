@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Hypermedia Project - TIM :: Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--font-awesome CDN-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!--Custom Style-->
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+    <p class="alert alert-info">CIAOCIAOCIAO</p>
+    <div id="load"></div>
+    <button id="button" class="btn btn-default">click me!</button>
+</div>
+    
+
+
+<!--JQuery-->
+<script src="jquery/jquery-2.2.4.min.js"></script>
+<!-- Jquery Mobile CDN -->
+<script src="jquery/jquery.mobile-1.4.5.min.js"></script>
+
+<!-- Our JS-->
+<script language="JavaScript"
+        type="text/javascript"
+        src="scripts/main_scripts.js"></script>
+
+
+<script>
+    $( document ).bind( "mobileinit", function() {
+        // Make your jQuery Mobile framework configuration changes here!
+
+        $.support.cors = true;
+        $.mobile.allowCrossDomainPages = true;
+    });
+
+    //$( document ).ready(function() {
+
+
+        $("#button").click(function () {
+            var tmp=$("#load").html();
+            $("#load").html(tmp + "<br>" + "inizio");
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    var tmp=$("#load").html();
+                    document.getElementById("load").innerHTML = tmp + "<br>" + xhttp.responseText;
+                }
+            };
+            xhttp.open("POST", "http://hypermedia.francescobuonocore.it/test.php", true);
+            xhttp.send();
+
+           /* $.get( "http://hypermedia.francescobuonocore.it/test.php", function( data ) {
+                var tmp=$("#load").html();
+                $("#load").html(tmp + "<br>" + data);
+            });*/
+            /*
+            $.ajax({
+                type:'GET',
+                url: "http://hypermedia.francescobuonocore.it/test.php"
+            }).success(function(result){
+                var tmp=$("#load").html();
+                $("#load").html(tmp + "<br>" + result);
+
+            });
+            */
+
+            var tmp=$("#load").html();
+            $("#load").html(tmp + "<br>" + "fine");
+        });
+   // });
+</script>
+</body>
+</html>

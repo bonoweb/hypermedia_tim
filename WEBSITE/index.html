@@ -8,19 +8,21 @@
 
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <!--font-awesome CDN-->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!--font-awesome 4.6.3-->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!--Custom Style-->
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
-
 <body>
-<div class="container">
-    <p class="alert alert-info">CIAOCIAOCIAO</p>
-    <div id="load"></div>
-    <button id="button" class="btn btn-default">click me!</button>
-</div>
+<div id="header"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></div>
     
+<div>
+
+    dfsfdfdsfsd
+</div>
+
+
+<div id="footer"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></div>
 
 
 <!--JQuery-->
@@ -33,8 +35,8 @@
         type="text/javascript"
         src="scripts/main_scripts.js"></script>
 
-
 <script>
+
     $( document ).bind( "mobileinit", function() {
         // Make your jQuery Mobile framework configuration changes here!
 
@@ -42,42 +44,17 @@
         $.mobile.allowCrossDomainPages = true;
     });
 
-    //$( document ).ready(function() {
 
 
-        $("#button").click(function () {
-            var tmp=$("#load").html();
-            $("#load").html(tmp + "<br>" + "inizio");
-
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    var tmp=$("#load").html();
-                    document.getElementById("load").innerHTML = tmp + "<br>" + xhttp.responseText;
-                }
-            };
-            xhttp.open("POST", "http://hypermedia.francescobuonocore.it/test.php", true);
-            xhttp.send();
-
-           /* $.get( "http://hypermedia.francescobuonocore.it/test.php", function( data ) {
-                var tmp=$("#load").html();
-                $("#load").html(tmp + "<br>" + data);
-            });*/
-            /*
-            $.ajax({
-                type:'GET',
-                url: "http://hypermedia.francescobuonocore.it/test.php"
-            }).success(function(result){
-                var tmp=$("#load").html();
-                $("#load").html(tmp + "<br>" + result);
-
-            });
-            */
-
-            var tmp=$("#load").html();
-            $("#load").html(tmp + "<br>" + "fine");
-        });
-   // });
+    $( document ).ready(function() {
+         $.ajax({
+         type:'GET',
+         url: "http://hypermedia.francescobuonocore.it/includes/header.php",
+         crossDomain: true,
+         }).success(function(result){
+            $("#header").html(result);
+         });
+    });
 </script>
 </body>
 </html>
