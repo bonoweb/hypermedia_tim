@@ -18,11 +18,8 @@
     </author>
 
 
-    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
-
-    <access origin="http://francescobuonocore.it" subdomains="true" />
-
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
+    <plugin name="cordova-plugin-whitelist" />
+    <access origin="*" />
+    <allow-intent href="*" />
 
 </widget>
