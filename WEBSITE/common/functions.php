@@ -8,7 +8,7 @@ try {
     global $DBH;
     /** DBH=DATABASE HANDLE **/
     /** STH=STATEMENT HANDLE **/
-    $DBH = new PDO("mysql:host=$DB_servername;dbname=$DB_name", $DB_username, $DB_password,
+    $DBH = new PDO("mysql:host=$DB_servername;dbname=$DB_name;charset=utf8", $DB_username, $DB_password,
         array(
             PDO::ATTR_TIMEOUT => "30",
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
@@ -57,9 +57,20 @@ function get_products_categories()
 function get_products_by_category($idcategory)
 {
     global $DBH;
-    $query = "SELECT * FROM prodotti WHERE id_categoria= :idcategory";
-    $STH = $DBH->prepare($query);
-    $STH->bindParam(":idcategory", $idcategory);
+
+    if($idcategory==5)
+    {
+        //prodotti in outlet
+        $query = "SELECT * FROM prodotti WHERE in_promozione = 1";
+        $STH = $DBH->prepare($query);
+    }
+    else
+    {
+        $query = "SELECT * FROM prodotti WHERE id_categoria= :idcategory";
+        $STH = $DBH->prepare($query);
+        $STH->bindParam(":idcategory", $idcategory);
+    }
+
     $STH->execute();
     $rowcount = $STH->rowCount();
     if ($rowcount == 0) {
@@ -70,14 +81,15 @@ function get_products_by_category($idcategory)
         foreach ($res as $prod) {
             ?>
             <div class="col-sm-6 col-md-4">
-                <div class="thumbnail text-center">
-                    <img src="<?php echo $prod['immagine']; ?>" alt="Immagine<?php echo $prod['nome']; ?>">
+                <div class="thumbnail text-center" style="min-height:400px;">
+
                     <div class="caption">
                         <h3><?php echo $prod['nome']; ?></h3>
-                        <!--<p><?php echo $prod['presentazione']; ?></p>-->
-                        <p><a href="#" class="btn btn-primary" role="button">Dettagli</a> <a href="#"
-                                                                                           class="btn btn-success"
-                                                                                           role="button">Acquista</a></p>
+                        <img style="max-height:200px;" src="img/<?php echo $prod['immagine']; ?>" alt="Immagine<?php echo $prod['nome']; ?>">
+                        <h4 style="color:red;"><?php echo $prod['prezzo']; ?></h4>
+                        <div style="/*position: absolute; bottom: 0;*/"><a href="#" class="btn btn-primary" role="button">Dettagli</a> <a href="#"
+                                                                                           class="btn btn-danger"
+                                                                                           role="button">Acquista</a></div>
                     </div>
                 </div>
             </div>

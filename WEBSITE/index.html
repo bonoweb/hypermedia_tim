@@ -16,11 +16,7 @@
 <body>
 <div id="header"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></div>
     
-<div>
-
-    dfsfdfdsfsd
-</div>
-
+<div id="main"> </div>
 
 <div id="footer"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></div>
 
@@ -28,7 +24,9 @@
 <!--JQuery-->
 <script src="jquery/jquery-2.2.4.min.js"></script>
 <!-- Jquery Mobile CDN -->
-<script src="jquery/jquery.mobile-1.4.5.min.js"></script>
+<!--<script src="jquery/jquery.mobile-1.4.5.min.js"></script>-->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Our JS-->
 <script language="JavaScript"
@@ -47,13 +45,34 @@
 
 
     $( document ).ready(function() {
+        //header
          $.ajax({
          type:'GET',
          url: "http://hypermedia.francescobuonocore.it/includes/header.php",
          crossDomain: true,
          }).success(function(result){
             $("#header").html(result);
+            //$('.dropdown-toggle').dropdown();
          });
+
+        //home main
+        $.ajax({
+         type:'GET',
+         url: "http://hypermedia.francescobuonocore.it/includes/home.php",
+         crossDomain: true,
+         }).success(function(result){
+            $("#main").html(result);
+         });
+
+        //footer
+        $.ajax({
+         type:'GET',
+         url: "http://hypermedia.francescobuonocore.it/includes/footer.php",
+         crossDomain: true,
+         }).success(function(result){
+            $("#footer").html(result);
+         });
+
     });
 </script>
 </body>

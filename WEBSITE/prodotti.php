@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    <meta charset="ISO-8859-1">
     <?php
     include_once('includes/head.php');
     include_once('common/functions.php');
