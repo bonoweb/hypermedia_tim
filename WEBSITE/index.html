@@ -112,7 +112,7 @@
             //loads home main
             $.ajax({
              type:'GET',
-             url: "http://www.localhost/uni/hypermedia_tim/WEBSITE/includes/home.php",
+             url: "http://hypermedia.francescobuonocore.it/includes/home.php",
              crossDomain: true,
              }).success(function(result){
                 $("#main").html(result);
@@ -145,7 +145,7 @@
             $.ajax({
                 type:'GET',
                 dataType: 'json',
-                url: "http://www.localhost/uni/hypermedia_tim/WEBSITE/includes/smartlife.php",
+                url: "http://hypermedia.francescobuonocore.it/includes/smartlife.php",
                 crossDomain: true,
             }).success(function(result){
                 var prod = fproducts_category(result);
@@ -159,7 +159,7 @@
             $.ajax({
                 type:'GET',
                 dataType: 'json',
-                url: "http://www.localhost/uni/hypermedia_tim/WEBSITE/includes/ass_serv.php",
+                url: "http://hypermedia.francescobuonocore.it/includes/ass_serv.php",
                 crossDomain: true,
             }).success(function(result){
                 var prod = fproducts_category(result);
@@ -172,18 +172,20 @@
         $("#btnLogo").click(function(){
             $.ajax({
                 type:'GET',
-                url: "http://www.localhost/uni/hypermedia_tim/WEBSITE/includes/home.php",
+                url: "http://hypermedia.francescobuonocore.it/includes/home.php",
                 crossDomain: true,
             }).success(function(result){
                 $("#main").html(result);
             });
         });
 
-        $( "body" ).on( "click", ".prod",function(){
+        $( "body" ).on( "click", ".prod",function(p){
+            idcategoria = $(this).attr("id").replace('prod','');
+            //alert(idcategoria);
             $.ajax({
                 type:'GET',
                 dataType:'json',
-                url: "http://www.localhost/uni/hypermedia_tim/WEBSITE/includes/prodotti.php?idcategoria=1",
+                url: "http://hypermedia.francescobuonocore.it/includes/prodotti.php?idcategoria="+idcategoria,
                 crossDomain: true,
             }).success(function(result){
                 var prod = vprod(result);
@@ -193,6 +195,11 @@
 
 
     });
+
+    /*
+       http://hypermedia.francescobuonocore.it/includes
+       http://www.localhost/uni/hypermedia_tim/WEBSITE/includes
+    */
 </script>
 </body>
 </html>

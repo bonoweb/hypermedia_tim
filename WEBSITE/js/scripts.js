@@ -1,5 +1,5 @@
 
-
+/*products categories with 5 elements */
 function products_category(data)
 {
     var r="";
@@ -10,7 +10,7 @@ function products_category(data)
         {
             offset = "col-md-offset-2";
         }
-        r+= '<a href="#" class="prod">' ;
+        r+= '<a href="#" class="prod" id="prod'+d['id']+'">' ;
         r+= '<div class="col-md-4 ' + offset +'">';
         r+= '<div class="col-md-10 col-md-offset-1 well text-center">';
         var icon = d['icona'];
@@ -25,6 +25,8 @@ function products_category(data)
     return r;
 }
 
+
+/*products categories with 4 elements */
 function fproducts_category(data)
 {
     var r="";
@@ -49,7 +51,7 @@ function fproducts_category(data)
     return r;
 }
 
-
+/*products*/
 function vprod(data)
 {
     r='';
