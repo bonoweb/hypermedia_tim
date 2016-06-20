@@ -31,8 +31,52 @@ function get_products_categories()
     $STH->execute();
     $res = $STH->fetchAll();
     return $res;
+}
+
+function get_smartlife_categories()
+{
+    global $DBH;
+    $query="SELECT * FROM sl_categorie";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
+function get_ass_serv_categories()
+{
+    global $DBH;
+    $query="SELECT * FROM assistenza_categorie";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
 
 
+function get_products_by_category($idcategory){
+    global $DBH;
+
+    if($idcategory==5)
+    {
+        //prodotti in outlet
+        $query = "SELECT * FROM prodotti WHERE in_promozione = 1";
+        $STH = $DBH->prepare($query);
+    }
+    else
+    {
+        $query = "SELECT * FROM prodotti WHERE id_categoria= :idcategory";
+        $STH = $DBH->prepare($query);
+        $STH->bindParam(":idcategory", $idcategory);
+    }
+
+    $STH->execute();
+    $rowcount = $STH->rowCount();
+    if ($rowcount == 0) {
+        return null;
+    } else {
+        return $STH->fetchAll();
+    }
 }
 function OOOOOOOOOO_get_products_categories()
 {
@@ -64,7 +108,7 @@ function OOOOOOOOOO_get_products_categories()
     
 }
 
-function get_products_by_category($idcategory)
+function OOOOOOOOOO_get_products_by_category($idcategory)
 {
     global $DBH;
 
