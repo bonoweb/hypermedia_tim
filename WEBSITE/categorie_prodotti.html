@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Hypermedia Project - TIM :: Home</title>
+    <title>Hypermedia Project - TIM :: Prodotti</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -33,17 +33,17 @@
         type="text/javascript"
         src="js/scripts.js"></script>
 
-<script type="text/javascript">
-/*
+<script>
 
+    /*
     $( document ).bind( "mobileinit", function() {
         // Make your jQuery Mobile framework configuration changes here!
 
         $.support.cors = true;
         $.mobile.allowCrossDomainPages = true;
     });
-
 */
+
 
     $( document ).ready(function() {
         //loads header.html from includes
@@ -57,10 +57,15 @@
         //home main
         $.ajax({
          type:'GET',
-         url: "http://hypermedia.francescobuonocore.it/includes/home.php",
+         dataType: 'json',
+         url: "http://hypermedia.francescobuonocore.it/includes/prodotti.php",
+
          crossDomain: true,
          }).success(function(result){
-            $("#main").html(result);
+            console.log(result[0]);
+            var prod = products(result);
+
+            $("#main").html(prod);
          });
 
         //footer

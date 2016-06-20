@@ -23,8 +23,18 @@ catch(PDOException $e) {
 }
 
 
-
 function get_products_categories()
+{
+    global $DBH;
+    $query="SELECT * FROM prodotti_categorie";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+
+
+}
+function OOOOOOOOOO_get_products_categories()
 {
     global $DBH;
     $query="SELECT * FROM prodotti_categorie";
