@@ -60,7 +60,7 @@ function get_products_by_category($idcategory){
     if($idcategory==5)
     {
         //prodotti in outlet
-        $query = "SELECT * FROM prodotti WHERE in_promozione = 1";
+        $query = "SELECT * FROM prodotti WHERE outlet = 1";
         $STH = $DBH->prepare($query);
     }
     else
@@ -115,7 +115,7 @@ function OOOOOOOOOO_get_products_by_category($idcategory)
     if($idcategory==5)
     {
         //prodotti in outlet
-        $query = "SELECT * FROM prodotti WHERE in_promozione = 1";
+        $query = "SELECT * FROM prodotti WHERE outlet = 1";
         $STH = $DBH->prepare($query);
     }
     else
