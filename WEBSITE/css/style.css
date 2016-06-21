@@ -1,7 +1,20 @@
 /*some styles*/
+html {
+    position: relative;
+    min-height: 100%;
+}
 
 body{
     background-color: #fefefe;
+    margin-bottom: 60px;
+}
+
+.footer {
+    background-color: #004184;
+    bottom: 0;
+    height: 60px;
+    position: absolute;
+    width: 100%;
 }
 
 .navbar-inverse{
