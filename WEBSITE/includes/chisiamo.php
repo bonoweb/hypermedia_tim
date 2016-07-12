@@ -7,11 +7,11 @@ header('Access-Control-Allow-Origin: *');
 if(isset($_GET['chi'])) {
     $chi=$_GET['chi'];
     switch ($chi){
-        case "testimonials": echo json_encode(get_testimonials());
+        case "testimonials": echo json_encode(get_chisiamo(2));
             break;
-        case "innovazione": echo json_encode(get_innovazione());
+        case "innovazione": echo json_encode(get_chisiamo(1));
             break;
-        case "progetti": echo json_encode(get_progetti());
+        case "progetti": echo json_encode(get_chisiamo(3));
             break;
         default: break;
     }

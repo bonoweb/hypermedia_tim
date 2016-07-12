@@ -264,6 +264,20 @@
             });
         });
 
+        $("body").on( "click", ".prod_det", function(p){
+            idprod = $(this).attr("id").replace('prod','');
+            alert(idprod);
+            $.ajax({
+                type:'GET',
+                dataType:'json',
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/prodotto.php?id="+idprod,
+                crossDomain: true,
+            }).success(function(result){
+                var prod = prodotto(result);
+                $("#main").html(prod);
+            });
+        });
+
         $("#descr_gruppo").click(function(){
             $.ajax({
                 type:'GET',

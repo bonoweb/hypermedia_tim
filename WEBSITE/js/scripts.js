@@ -109,7 +109,8 @@ function vprod(data)
         r+='<h3>'+d['nome']+'</h3>\n';
         r+='<img style="max-height:200px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
         r+='<h4 style="color:red;">'+d['prezzo']+'</h4>';
-        r+='<div><a href="#" class="btn btn-primary" role="button">Dettagli</a> <a href="#" class="btn btn-danger" role="button">Acquista</a></div>';
+        r+='<div><a href="#" class="btn btn-primary prod_det" role="button" id="prod'+d['id']+'">Dettagli</a>' +
+            ' <a href="#" class="btn btn-danger" role="button">Acquista</a></div>';
         r+='</div>';
         r+='</div>';
         r+='</div>';
@@ -122,13 +123,13 @@ function vprod(data)
 function innovazione(data)
 {
      var r="";
-    r+="<div class='container'>\n<div class=\"col\">";
+    r+="<div class='container'>\n<div class=\"row\">";
     data.forEach(function(d){
         r+='<div class="thumbnail">\n';
         r+='<div class="caption">\n';
         r+='<div class="row">';
         r+='<div class="col-md-6">';
-        r+='<img style="max-width:100%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">' ;
+        r+='<img style="max-width:100%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive text-center">' ;
         r+='</div>';
         r+='<div class="col-md-6">';
         r+='<h2>'+d['titolo']+'</h2>\n';
@@ -149,8 +150,8 @@ function testimonials(data)
     r+="<div class='container'>\n<div class=\"row\">";
     data.forEach(function(d){
         r+='<div class="col-sm-6 col-md-4">\n';
-        r+='<img src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
         r+='<div class="thumbnail">\n';
+        r+='<img src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
         r+='<div class="caption">\n';
         r+='<h2>'+d['testo']+'</h2>\n';
         r+='<h5>'+d['titolo']+'</h5>\n';
@@ -276,6 +277,18 @@ function investitori(data)
     data.forEach(function(d){
               
     });
+    r+="</div></div>";
+    return r;
+}
+
+function prodotto(data)
+{
+    var r="";
+    r+="<div class='container'>\n<div class=\"row\">";
+    r+="<pre>"+data[0]+"</pre>";
+    /*data.forEach(function(d){
+
+    });*/
     r+="</div></div>";
     return r;
 }

@@ -93,8 +93,12 @@ function get_products_by_category($idcategory){
 
 function get_promotions(){
     global $DBH;
-    //prodotti in promozione
-    $query = "SELECT * FROM prodotti WHERE promozione = 1";
+    //prodotti in promozione + sl services in promozione
+    //nome, immagine, e prezzo
+
+    $query = "SELECT nome, immagine, prezzo FROM prodotti WHERE promozione = 1
+              UNION 
+              SELECT titolo as nome, immagine, '' as prezzo FROM sl_servizi WHERE promozione =1";
     $STH = $DBH->prepare($query);
     $STH->execute();
     $res = $STH->fetchAll();
@@ -178,6 +182,19 @@ function OOOOOOOOOO_get_products_by_category($idcategory)
     echo "</div>\n</div>";
 }
 
+function get_chisiamo($id)
+{
+    global $DBH;
+    $query="SELECT * FROM chi_siamo WHERE id_categoria= :id";
+    $STH=$DBH->prepare($query);
+    $STH->bindParam(':id',$id);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+/*
+ * 
+ * unito tutto nella funzione su :) - da eliminare 
 function get_innovazione(){
     global $DBH;
     $query="SELECT * FROM chi_siamo WHERE id_categoria=1";
@@ -205,17 +222,7 @@ function get_progetti(){
     $res = $STH->fetchAll();
     return $res;
 }
-
-
-function get_descr_gruppo(){
-    global $DBH;
-    $query="SELECT * FROM gruppo WHERE id=1";
-    $STH=$DBH->prepare($query);
-    $STH->execute();
-    $res = $STH->fetchAll();
-    return $res;
-}
-
+*/
 
 function get_gestione_linea(){
     global $DBH;
@@ -226,6 +233,29 @@ function get_gestione_linea(){
     return $res;
 }
 
+
+function get_gruppo($id)
+{
+    global $DBH;
+    $query="SELECT * FROM gruppo WHERE id= :id";
+    $STH=$DBH->prepare($query);
+    $STH->bindParam(':id',$id);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
+/*
+ *
+ * da eliminare - ho unito tutto in quella sopra :)
+function get_descr_gruppo(){
+    global $DBH;
+    $query="SELECT * FROM gruppo WHERE id=1";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
 
 function get_novita(){
     global $DBH;
@@ -253,11 +283,26 @@ function get_business_market(){
     $res = $STH->fetchAll();
     return $res;
 }
+*/
 
 function get_investitori(){
     global $DBH;
     $query="SELECT * FROM gruppo_sottocategoria_perinvestitori";
     $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
+/**
+ * returns the single product with $id
+ * @param $id
+ */
+function get_product($id){
+    global $DBH;
+    $query="SELECT * FROM prodotti WHERE id= :id";
+    $STH=$DBH->prepare($query);
+    $STH->bindParam(':id',$id);
     $STH->execute();
     $res = $STH->fetchAll();
     return $res;
