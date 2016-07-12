@@ -57,13 +57,7 @@ function get_ass_serv_categories()
 function get_products_by_category($idcategory){
     global $DBH;
 
-    if($idcategory==6)
-    {
-        //prodotti in promozione
-        $query = "SELECT * FROM prodotti WHERE promozione = 1";
-        $STH = $DBH->prepare($query);
-    }
-    else if($idcategory==5)
+    if($idcategory==5)
     {
         //prodotti in outlet
         $query = "SELECT * FROM prodotti WHERE outlet = 1";
@@ -84,6 +78,17 @@ function get_products_by_category($idcategory){
         return $STH->fetchAll();
     }
 }
+
+function get_promotions(){
+    global $DBH;
+    //prodotti in promozione
+    $query = "SELECT * FROM prodotti WHERE promozione = 1";
+    $STH = $DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
 function OOOOOOOOOO_get_products_categories()
 {
     global $DBH;
@@ -177,6 +182,51 @@ function get_innovazione(){
 function get_progetti(){
     global $DBH;
     $query="SELECT * FROM chi_siamo WHERE id_categoria=3";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
+function get_descr_gruppo(){
+    global $DBH;
+    $query="SELECT * FROM gruppo WHERE id=1";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
+function get_novita(){
+    global $DBH;
+    $query="SELECT * FROM gruppo WHERE id=2";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
+function get_amministrazione(){
+    global $DBH;
+    $query="SELECT * FROM gruppo WHERE id=3";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
+function get_business_market(){
+    global $DBH;
+    $query="SELECT * FROM gruppo WHERE id=4";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
+function get_investitori(){
+    global $DBH;
+    $query="SELECT * FROM gruppo_sottocategoria_perinvestitori";
     $STH=$DBH->prepare($query);
     $STH->execute();
     $res = $STH->fetchAll();

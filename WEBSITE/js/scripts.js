@@ -140,3 +140,96 @@ function progetti(data)
     
     return r;
 }
+
+function descr_gruppo(data)
+{
+    var r="";
+    r+="<div class='container'>\n<div class=\"row\">";
+    data.forEach(function(d){
+        r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3em;">' + d['titolo'] + '</h1><br>\n';
+        r += '<div class="col-md-6">';
+        r += '<h4 style = "font-size:1.4em;">' + d['text'] + '</h4>';
+        r += '</div>';
+        r += '<div class="col-md-1"></div>';
+        r += '<div class="col-md-5">';
+        r += '<img style="max-height:250px;" ; src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        r += '<div class="row-md-1"><br></div>';
+        r += '<img style="max-height:250px;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'">';
+        r += '<div class="row-md-1"><br></div>';
+        r += '</div>';       
+    });
+    r+="</div></div>";
+    return r;
+}
+
+function novita(data)
+{
+    var r="";
+    r+="<div class='container'>\n<div class=\"row\">";
+    data.forEach(function(d){
+        r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3em;">' + d['titolo'] + '</h1><br>\n';
+        r += '<div class="col-md-6">';
+        r += '<h4 style = "font-size:1.4em;">' + d['text'] + '</h4>';
+        r += '<div class="row-md-1"><br></div>';
+        r += '</div>';
+        r += '<div class="col-md-6">';
+        r += '<div class="row-md-1"><br></div>';
+        r += '<img style="max-height:260px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        r += '<div class="row-md-1"><br></div>';
+        r += '<img style="max-height:270px;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'">';
+        r += '<div class="row-md-1"><br></div>';
+        r += '<img style="max-height:250px;" src="img/'+d['immagine3']+'" alt="Immagine'+d['immagine3']+'">';
+        r += '<div class="row-md-1"><br></div>';
+        r += '</div>';       
+    });
+    r+="</div></div>";
+    return r;
+}
+
+function amministrazione(data)
+{
+    var r="";
+    r+="<div class='container'>\n<div class=\"row\">";
+    data.forEach(function(d){
+        r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3em;">' + d['titolo'] + '</h1><br>\n';
+        r += '<h4 style = "font-size:1.4em;">' + d['text'] + '</h4>';
+        r += '<div class="col-md-1"></div>';
+        r += '<div class="col-md-10">';
+        r += '<img  src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        r += '</div>';
+        r += '<div class="col-md-1"></div>';
+    });
+    r+="</div></div>";
+    return r;
+}
+
+function business_market(data)
+{
+    var r="";
+    r+="<div class='container'>\n<div class=\"row\">";
+    data.forEach(function(d){
+        r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3em;">' + d['titolo'] + '</h1><br>\n';
+        r += '<div class="col-md-6">';
+        r += '<h4 style = "font-size:1.4em;">' + d['text'] + '</h4>';
+        r += '</div>';
+        r += '<div class="col-md-1"></div>';
+        r += '<div class="col-md-5">';
+        r += '<img style="max-height:280px;" ; src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        r += '<div class="row-md-1"><br><br></div>';
+        r += '<img style="max-height:330px;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'">';
+        r += '<div class="row-md-1"><br></div>';
+        r += '</div>';       
+    });
+    r+="</div></div>";
+    return r;
+}
+function investitori(data)
+{
+    var r="";
+    r+="<div class='container'>\n<div class=\"row\">";
+    data.forEach(function(d){
+              
+    });
+    r+="</div></div>";
+    return r;
+}

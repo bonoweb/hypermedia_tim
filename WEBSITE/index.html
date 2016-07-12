@@ -30,11 +30,11 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">IL GRUPPO <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Descrizione del gruppo</a></li>
-                        <li><a href="#">Novità</a></li>
-                        <li><a href="#">Amministrazione</a></li>
-                        <li><a href="#">Business e Market</a></li>
-                        <li><a href="#">Per gli Investitori</a></li>
+                        <li><a href="#" id="descr_gruppo">Descrizione del gruppo</a></li>
+                        <li><a href="#" id="novita">Novità</a></li>
+                        <li><a href="#" id="amministrazione">Amministrazione</a></li>
+                        <li><a href="#" id="business_market">Business e Market</a></li>
+                        <li><a href="#" id="investitori">Per gli Investitori</a></li>
                     </ul>
                 </li>
             </ul>
@@ -168,7 +168,7 @@
                 var prod = vprod(result);
                 $("#main").html(prod);
             });
-            window.location.hash = "promozioni";
+            window.location.hash = "prodotti";
             e.preventDefault();
         });
 
@@ -247,7 +247,65 @@
             });
         });
 
-
+        $("#descr_gruppo").click(function(){
+            $.ajax({
+                type:'GET',
+                dataType: 'json',
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/ilgruppo.php?cosa=descr_gruppo",
+                crossDomain: true,
+            }).success(function(result){
+                var ret = descr_gruppo(result);
+                $("#main").html(ret);
+            });
+        });
+        
+        $("#novita").click(function(){
+            $.ajax({
+                type:'GET',
+                dataType: 'json',
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/ilgruppo.php?cosa=novita",
+                crossDomain: true,
+            }).success(function(result){
+                var ret = novita(result);
+                $("#main").html(ret);
+            });
+        });
+        
+        $("#amministrazione").click(function(){
+            $.ajax({
+                type:'GET',
+                dataType: 'json',
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/ilgruppo.php?cosa=amministrazione",
+                crossDomain: true,
+            }).success(function(result){
+                var ret = amministrazione(result);
+                $("#main").html(ret);
+            });
+        });
+        
+        $("#business_market").click(function(){
+            $.ajax({
+                type:'GET',
+                dataType: 'json',
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/ilgruppo.php?cosa=business_market",
+                crossDomain: true,
+            }).success(function(result){
+                var ret = business_market(result);
+                $("#main").html(ret);
+            });
+        });
+        
+        $("#investitori").click(function(){
+            $.ajax({
+                type:'GET',
+                dataType: 'json',
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/ilgruppo.php?cosa=investitori",
+                crossDomain: true,
+            }).success(function(result){
+                var ret = investitori(result);
+                $("#main").html(ret);
+            });
+        });
     });
 
     /*

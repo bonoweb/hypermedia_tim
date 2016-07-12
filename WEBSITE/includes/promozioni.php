@@ -4,7 +4,4 @@ ini_set('display_errors', 1);
 
 include_once('../common/functions.php');
 header('Access-Control-Allow-Origin: *');
-if(isset($_GET['idcategoria'])){
-    $idcategory=$_GET['idcategoria'];
-    echo json_encode(get_products_by_category($idcategory));
-}
+echo json_encode(get_promotions()));
