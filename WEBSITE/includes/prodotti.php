@@ -10,8 +10,4 @@ if(!isset($_GET['idcategoria'])) {
 else{
     $idcategory=$_GET['idcategoria'];
     echo json_encode(get_products_by_category($idcategory));
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes

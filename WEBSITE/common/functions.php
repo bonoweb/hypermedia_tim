@@ -206,22 +206,27 @@ function get_progetti(){
     return $res;
 }
 
-<<<<<<< Updated upstream
+
 function get_descr_gruppo(){
     global $DBH;
     $query="SELECT * FROM gruppo WHERE id=1";
-=======
-function get_gestione_linea(){
-    global $DBH;
-    $query="SELECT * FROM assistenza_servizi WHERE id_categoria=1";
->>>>>>> Stashed changes
     $STH=$DBH->prepare($query);
     $STH->execute();
     $res = $STH->fetchAll();
     return $res;
 }
 
-<<<<<<< Updated upstream
+
+function get_gestione_linea(){
+    global $DBH;
+    $query="SELECT * FROM assistenza_servizi WHERE id_categoria=1";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
+
 function get_novita(){
     global $DBH;
     $query="SELECT * FROM gruppo WHERE id=2";
@@ -257,8 +262,3 @@ function get_investitori(){
     $res = $STH->fetchAll();
     return $res;
 }
-=======
-
->>>>>>> Stashed changes
-
-?>
