@@ -215,7 +215,7 @@
                 url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/chisiamo.php?chi=innovazione",
                 crossDomain: true,
             }).success(function(result){
-                var ret = testimonials(result);
+                var ret = innovazione(result);
                 $("#main").html(ret);
             });
         });
@@ -231,7 +231,9 @@
                 $("#main").html(ret);
             });
         });
-
+        
+       
+        
 
         $( "body" ).on( "click", ".prod",function(p){
             idcategoria = $(this).attr("id").replace('prod','');
@@ -243,6 +245,21 @@
                 crossDomain: true,
             }).success(function(result){
                 var prod = vprod(result);
+                $("#main").html(prod);
+            });
+        });
+        
+        
+         $( "body" ).on( "click", ".prod",function(p){
+            idcategoria = $(this).attr("id").replace('prod','');
+            //alert(idcategoria);
+            $.ajax({
+                type:'GET',
+                dataType:'json',
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/assistenza_servizi_esempio.php?idcategoria="+idcategoria,
+                crossDomain: true,
+            }).success(function(result){
+                var prod = ass_serv_by_category(result);
                 $("#main").html(prod);
             });
         });

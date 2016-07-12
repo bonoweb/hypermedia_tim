@@ -53,6 +53,18 @@ function get_ass_serv_categories()
     return $res;
 }
 
+function get_ass_serv_by_category($idcategory)
+{
+    global $DBH;
+    $query = "SELECT * FROM assistenza_servizi_esempio WHERE id_sottocategoria= : idcategory";
+    $STH = $DBH->prepare($query);
+    $STH->bindParam(":idcategory", $idcategory);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+    
+}
+
 
 function get_products_by_category($idcategory){
     global $DBH;
@@ -166,6 +178,16 @@ function OOOOOOOOOO_get_products_by_category($idcategory)
     echo "</div>\n</div>";
 }
 
+function get_innovazione(){
+    global $DBH;
+    $query="SELECT * FROM chi_siamo WHERE id_categoria=1";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
+
 function get_testimonials(){
     global $DBH;
     $query="SELECT * FROM chi_siamo WHERE id_categoria=2";
@@ -173,10 +195,6 @@ function get_testimonials(){
     $STH->execute();
     $res = $STH->fetchAll();
     return $res;
-}
-
-function get_innovazione(){
-    
 }
 
 function get_progetti(){
@@ -188,15 +206,22 @@ function get_progetti(){
     return $res;
 }
 
+<<<<<<< Updated upstream
 function get_descr_gruppo(){
     global $DBH;
     $query="SELECT * FROM gruppo WHERE id=1";
+=======
+function get_gestione_linea(){
+    global $DBH;
+    $query="SELECT * FROM assistenza_servizi WHERE id_categoria=1";
+>>>>>>> Stashed changes
     $STH=$DBH->prepare($query);
     $STH->execute();
     $res = $STH->fetchAll();
     return $res;
 }
 
+<<<<<<< Updated upstream
 function get_novita(){
     global $DBH;
     $query="SELECT * FROM gruppo WHERE id=2";
@@ -232,5 +257,8 @@ function get_investitori(){
     $res = $STH->fetchAll();
     return $res;
 }
+=======
+
+>>>>>>> Stashed changes
 
 ?>

@@ -78,6 +78,25 @@ function ass_services_category(data)
     return r;
 }
 
+function ass_serv_by_category(data)
+{
+    var r="";
+    r += "<div class='container'>\n<div class=\"row\">";
+    data.forEach(function(d){
+        r+='<div class="col-sm-6 col-md-3">\n';
+        r+='<div class="thumbnail">\n';
+        r+='<div class="caption">\n';
+        r+='<h3>'+d['titolo']+'</h3>\n';
+        r+='</div>';
+        r+='</div>';
+        r+='</div>';
+    });
+    
+    r+="</div></div>";
+    
+    return r;
+}
+
 /*products*/
 function vprod(data)
 {
@@ -97,6 +116,30 @@ function vprod(data)
     });
     r+="</div></div>";
 
+    return r;
+}
+
+function innovazione(data)
+{
+     var r="";
+    r+="<div class='container'>\n<div class=\"col\">";
+    data.forEach(function(d){
+        r+='<div class="thumbnail">\n';
+        r+='<div class="caption">\n';
+        r+='<div class="row">';
+        r+='<div class="col-md-6">';
+        r+='<img style="max-width:100%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">' ;
+        r+='</div>';
+        r+='<div class="col-md-6">';
+        r+='<h2>'+d['titolo']+'</h2>\n';
+        r+='<h4>'+d['testo']+'</h4>\n';
+        r+='</div>';
+        r+='</div>';
+        r+='</div>';
+        r+='</div>';
+    });
+    r+="</div></div>";
+    
     return r;
 }
 
@@ -123,14 +166,17 @@ function testimonials(data)
 function progetti(data)
 {
      var r="";
-    r+="<div class='container'>\n<div class=\"row\">";
+    r+="<div class='container'>\n<div class=\"col\">";
     data.forEach(function(d){
-        r+='<div class="row-sm-8 row-md-8">\n';
-        r+='<mg src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">' ;
         r+='<div class="thumbnail">\n';
         r+='<div class="caption">\n';
-        r+='<h6>'+d['titolo']+'</h2>\n';
-        r+='<h6>'+d['testo']+'</h5>\n';
+        r+='<div class="row">';
+        r+='<div class="col-md-6">';
+        r+='<img style="max-height:320px; "src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">' ;
+        r+='</div>';
+        r+='<div class="col-md-6">';
+        r+='<h2 style="color:red;">'+d['titolo']+'</h2>\n';
+        r+='<h4>'+d['testo']+'</h4>\n';
         r+='</div>';
         r+='</div>';
         r+='</div>';

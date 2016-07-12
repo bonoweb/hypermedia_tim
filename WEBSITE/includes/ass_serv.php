@@ -8,7 +8,6 @@ if(!isset($_GET['idcategoria'])) {
     echo json_encode(get_ass_serv_categories());
 }
 else{
-    /*
     $idcategory=$_GET['idcategoria'];
-    get_products_by_category($idcategory);*/
+    echo json_encode(get_ass_serv_by_category($idcategory));
 }
