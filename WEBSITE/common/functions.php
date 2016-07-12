@@ -155,4 +155,26 @@ function OOOOOOOOOO_get_products_by_category($idcategory)
     echo "</div>\n</div>";
 }
 
+function get_testimonials(){
+    global $DBH;
+    $query="SELECT * FROM chi_siamo WHERE id_categoria=2";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
+function get_innovazione(){
+    
+}
+
+function get_progetti(){
+    global $DBH;
+    $query="SELECT * FROM chi_siamo WHERE id_categoria=3";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
 ?>

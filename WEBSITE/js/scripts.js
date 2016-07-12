@@ -54,7 +54,7 @@ function fproducts_category(data)
 /*products*/
 function vprod(data)
 {
-    r='';
+    var r="";
     r+="<div class='container'>\n<div class=\"row\">";
     data.forEach(function(d){
         r+='<div class="col-sm-6 col-md-4">\n';
@@ -70,5 +70,46 @@ function vprod(data)
     });
     r+="</div></div>";
 
+    return r;
+}
+
+function testimonials(data)
+{
+     var r="";
+    r+="<div class='container'>\n<div class=\"row\">";
+    data.forEach(function(d){
+        r+='<div class="col-sm-6 col-md-4">\n';
+        r+='<img src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        r+='<div class="thumbnail">\n';
+        r+='<div class="caption">\n';
+        r+='<h2>'+d['testo']+'</h2>\n';
+        r+='<h5>'+d['titolo']+'</h5>\n';
+        r+='</div>';
+        r+='</div>';
+        r+='</div>';
+    });
+    r+="</div></div>";
+    
+    return r;
+}
+
+function progetti(data)
+{
+     var r="";
+    r+="<div class='container'>\n<div class=\"row\">";
+    data.forEach(function(d){
+        r+='<div class="row-sm-8 row-md-8">\n';
+        r+='<mg src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">' ;
+        r+='<div class="thumbnail">\n';
+        r+='<div class="caption">\n';
+        r+='<h6>'+d['titolo']+'</h2>\n';
+        r+='<h6>'+d['testo']+'</h5>\n';
+        r+='</div>';
+        r+='</div>';
+        r+='</div>';
+        r+='</div>';
+    });
+    r+="</div></div>";
+    
     return r;
 }

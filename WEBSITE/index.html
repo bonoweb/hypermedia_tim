@@ -22,9 +22,9 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CHI SIAMO <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Innovazione</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">Progetti</a></li>
+                        <li><a href="#"id="innovazione">Innovazione</a></li>
+                        <li><a href="#" id="testimonials">Testimonials</a></li>
+                        <li><a href="#" id="progetti">Progetti</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -181,6 +181,43 @@
                 $("#main").html(result);
             });
         });
+        
+        $("#testimonials").click(function(){
+            $.ajax({
+                type:'GET',
+                dataType: 'json',
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/chisiamo.php?chi=testimonials",
+                crossDomain: true,
+            }).success(function(result){
+                var ret = testimonials(result);
+                $("#main").html(ret);
+            });
+        });
+        
+        $("#innovazione").click(function(){
+            $.ajax({
+                type:'GET',
+                dataType: 'json',
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/chisiamo.php?chi=innovazione",
+                crossDomain: true,
+            }).success(function(result){
+                var ret = testimonials(result);
+                $("#main").html(ret);
+            });
+        });
+        
+        $("#progetti").click(function(){
+            $.ajax({
+                type:'GET',
+                dataType: 'json',
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/chisiamo.php?chi=progetti",
+                crossDomain: true,
+            }).success(function(result){
+                var ret = progetti(result);
+                $("#main").html(ret);
+            });
+        });
+
 
         $( "body" ).on( "click", ".prod",function(p){
             idcategoria = $(this).attr("id").replace('prod','');
