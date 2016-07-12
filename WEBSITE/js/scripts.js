@@ -68,6 +68,7 @@ function vprod(data)
         r+='</div>';
         r+='</div>';
     });
+    r+="</div></div>";
 
     return r;
 }
