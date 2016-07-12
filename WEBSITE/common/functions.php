@@ -57,7 +57,13 @@ function get_ass_serv_categories()
 function get_products_by_category($idcategory){
     global $DBH;
 
-    if($idcategory==5)
+    if($idcategory==6)
+    {
+        //prodotti in promozione
+        $query = "SELECT * FROM prodotti WHERE promozione = 1";
+        $STH = $DBH->prepare($query);
+    }
+    else if($idcategory==5)
     {
         //prodotti in outlet
         $query = "SELECT * FROM prodotti WHERE outlet = 1";

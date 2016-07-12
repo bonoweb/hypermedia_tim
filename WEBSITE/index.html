@@ -32,9 +32,9 @@
                     <ul class="dropdown-menu">
                         <li><a href="#">Descrizione del gruppo</a></li>
                         <li><a href="#">Novità</a></li>
-                        <li><a href="#">ecccc</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">Amministrazione</a></li>
+                        <li><a href="#">Business e Market</a></li>
+                        <li><a href="#">Per gli Investitori</a></li>
                     </ul>
                 </li>
             </ul>
@@ -62,9 +62,9 @@
             <ul class="nav nav-justified navbar-nav mainbar">
                 <li><a id="btnProdotti" href="#">PRODOTTI</a></li>
                 <li><a id="btnSmartLife" href="#">SERVIZI SMART LIFE</a></li>
-                <li><a href="#">PROMOZIONI</a></li>
+                <li><a id="btnPromozioni" href="#">PROMOZIONI</a></li>
                 <li><a id="btnAssServ" href="#">SERVIZI DI ASSISTENZA</a></li>
-                <li><a href="#">HIGHLIGHTS</a></li>
+                <li><a id="btnHighlights" href="#">HIGHLIGHTS</a></li>
             </ul>
         </div>
     </nav>
@@ -115,7 +115,7 @@
             //loads home main
             $.ajax({
              type:'GET',
-             url: "http://hypermedia.francescobuonocore.it/includes/home.php",
+             url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/home.php",
              crossDomain: true,
              }).success(function(result){
                 $("#main").html(result);
@@ -124,7 +124,7 @@
             //loads footer
             $.ajax({
              type:'GET',
-             url: "http://hypermedia.francescobuonocore.it/includes/footer.php",
+             url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/footer.php",
              crossDomain: true,
              }).success(function(result){
                 $("#footer").html(result);
@@ -134,7 +134,7 @@
             $.ajax({
                 type:'GET',
                 dataType: 'json',
-                url: "http://hypermedia.francescobuonocore.it/includes/prodotti.php",
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/prodotti.php",
                 crossDomain: true,
             }).success(function(result){
                 var prod = products_category(result);
@@ -148,13 +148,27 @@
             $.ajax({
                 type:'GET',
                 dataType: 'json',
-                url: "http://hypermedia.francescobuonocore.it/includes/smartlife.php",
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/smartlife.php",
                 crossDomain: true,
             }).success(function(result){
-                var prod = fproducts_category(result);
+                var prod = sl_services_category(result); 
                 $("#main").html(prod);
             });
             window.location.hash = "smartlife";
+            e.preventDefault();
+        });
+        
+        $("#btnPromozioni").click(function(e){
+            $.ajax({
+                type:'GET',
+                dataType: 'json',
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/promozioni.php",
+                crossDomain: true,
+            }).success(function(result){
+                var prod = vprod(result);
+                $("#main").html(prod);
+            });
+            window.location.hash = "promozioni";
             e.preventDefault();
         });
 
@@ -162,20 +176,20 @@
             $.ajax({
                 type:'GET',
                 dataType: 'json',
-                url: "http://hypermedia.francescobuonocore.it/includes/ass_serv.php",
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/ass_serv.php",
                 crossDomain: true,
             }).success(function(result){
-                var prod = fproducts_category(result);
+                var prod = ass_services_category(result);
                 $("#main").html(prod);
             });
-            window.location.hash = "smartlife";
+            window.location.hash = "ass_serv";
             e.preventDefault();
         });
 
         $("#btnLogo").click(function(){
             $.ajax({
                 type:'GET',
-                url: "http://hypermedia.francescobuonocore.it/includes/home.php",
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/home.php",
                 crossDomain: true,
             }).success(function(result){
                 $("#main").html(result);
@@ -225,7 +239,7 @@
             $.ajax({
                 type:'GET',
                 dataType:'json',
-                url: "http://hypermedia.francescobuonocore.it/includes/prodotti.php?idcategoria="+idcategoria,
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/prodotti.php?idcategoria="+idcategoria,
                 crossDomain: true,
             }).success(function(result){
                 var prod = vprod(result);

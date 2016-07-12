@@ -1,10 +1,10 @@
 
 /*products categories with 5 elements */
-function products_category(data)
-{
-    var r="";
+function products_category(data) {
+    var r = "";
     r += "<div class='container'>\n<div class=\"row\">";
-    data.forEach(function(d){
+    r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + 'PRODOTTI' + '</h1><br>\n';
+    data.forEach(function (d) {
         var offset='';
         if(d['id']==4)
         {
@@ -26,13 +26,40 @@ function products_category(data)
 }
 
 
-/*products categories with 4 elements */
-function fproducts_category(data)
+/*sl services categories with 4 elements */
+function sl_services_category(data)
 {
     var r="";
     r += "<div class='container'>\n<div class=\"row\">";
     r+= '<div class="col-md-10 col-md-offset-1">';
     r+= '<div class="row">';
+    r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + 'SERVIZI SMART LIFE' + '</h1><br>\n';
+    data.forEach(function(d){
+        r+= '<a href="#">' ;
+        r+= '<div class="col-md-6">';
+        r+= '<div class="col-md-10 col-md-offset-1 well text-center">';
+        var icon = d['icona'];
+        r+= '<span class="fa fa-5x ' + icon + '"></span>';
+        r+= '<br>';
+        r+= '<strong>' + d['titolo'] + '</strong>\n';
+        r+= '</div>';
+        r+= '</div>';
+        r+= '</a>';
+    });
+    r+= '</div>';
+    r+= '</div>';
+    r+= "</div>\n</div>";
+    return r;
+}
+
+/*assistant services categories with 4 elements */
+function ass_services_category(data)
+{
+    var r="";
+    r += "<div class='container'>\n<div class=\"row\">";
+    r+= '<div class="col-md-10 col-md-offset-1">';
+    r+= '<div class="row">';
+    r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + 'SERVIZI DI ASSISTENZA' + '</h1><br>\n';
     data.forEach(function(d){
         r+= '<a href="#">' ;
         r+= '<div class="col-md-6">';
