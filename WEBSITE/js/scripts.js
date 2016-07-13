@@ -316,9 +316,9 @@ function novita(data)
         r += '<div class="row-md-1"><br></div>';
         r += '</div>';
         r += '<div class="col-md-6">';
-        r += '<img class="pull-right" style="max-height:260px; padding:3px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'"><br><br>';
-        r += '<img class="pull-right" style="max-height:270px; padding:3px;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'"><br><br>';
-        r += '<img class="pull-right" style="max-height:250px; padding:3px;" src="img/'+d['immagine3']+'" alt="Immagine'+d['immagine3']+'"><br><br>';
+        r += '<img class="pull-right" style="max-height:260px; padding:5px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'"><br><br>';
+        r += '<img class="pull-right" style="min-height:270px; padding:5px;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'"><br><br>';
+        r += '<img class="pull-right" style="max-height:270px; padding:5px;" src="img/'+d['immagine3']+'" alt="Immagine'+d['immagine3']+'"><br><br>';
         r += '</div>';       
     });
     r+="</div></div>";
@@ -409,7 +409,7 @@ function smartlife(data)
     var r="";
     var count=0;
     data['slimg'].forEach(function(d){
-        r+='<img style="max-width:1000px; padding:20px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        r+='<img style="min-width:1250px; padding:20px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
     });
     r+="<div class='container'>\n<div class=\"row\">";
     data['slserv'].forEach(function(d){
