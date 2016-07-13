@@ -56,9 +56,11 @@ function get_ass_serv_categories()
 function get_ass_serv_by_category($idcategory)
 {
     global $DBH;
-    $query = "SELECT titolo, id FROM assistenza_sottocategorie WHERE id_categoria= :idcategory
-             UNION
-             SELECT titolo, id_sottocategoria FROM assistenza_servizi_esempio WHERE id_sottocategoria IN (SELECT id FROM assistenza_sottocategorie WHERE id_categoria= :idcategory)";
+    $query = "SELECT assistenza_sottocategorie.id, assistenza_sottocategorie.titolo as thetitle, assistenza_servizi_esempio.titolo as titolo,
+    assistenza_servizi_esempio.id_sottocategoria
+    FROM assistenza_sottocategorie
+    JOIN assistenza_servizi_esempio ON assistenza_sottocategorie.id_categoria = assistenza_servizi_esempio.id_sottocategoria
+    WHERE id_categoria= :idcategory "; //IN (SELECT id FROM assistenza_sottocategorie WHERE id_categoria= :idcategory)";
     $STH = $DBH->prepare($query);
     $STH->bindParam(":idcategory", $idcategory);
     $STH->execute();

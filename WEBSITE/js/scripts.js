@@ -83,80 +83,28 @@ function ass_servizi_1(data)
     var r="";
     var count=1;
     var primo=1;
+    data.forEach(function(d){
     r+='<div class="col-md-3">\n';
     r+='<div class="thumbnail">\n';
     r+='<div class="caption">\n';
-    data.forEach(function(d){
-       if(d['id']==count){
-           if(primo==1){
-               r+='<h2 style = "color:red;  text-align:center;">'+d['titolo']+ '<br><br>'+ '</h2>\n';
-               primo++;
-           }
-           else{
-               r+='<h4 style = "color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
-           }
-       }
+        data.forEach(function(dt){
+            if(dt['id']==count){
+                if(primo==1){
+                    r+='<h2 style = "color:red;  text-align:center;">'+dt['titolo']+ '<br><br>'+ '</h2>\n';
+                    primo++;
+                }
+            else{
+                r+='<h4 style = "color:blue;">'+dt['titolo']+ ' &raquo;' + '</h4>\n';
+            }
+        }
+        });
+        count++;
+        primo=1;
+        r+='</div>';
+        r+='</div>';
+        r+='</div>';
     });
-    r+='</div>';
-    r+='</div>';
-    r+='</div>';
-    count++;
-    primo=1;
-    r+='<div class="col-md-3">\n';
-    r+='<div class="thumbnail">\n';
-    r+='<div class="caption">\n'
-    data.forEach(function(d){
-       if(d['id']==count){
-           if(primo==1){
-               r+='<h2 style = "color:red;  text-align:center;">'+d['titolo']+ '<br><br>' + '</h2>\n';
-               primo++;
-           }
-           else{
-               r+='<h4 style = "color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
-           }
-       }
-    });
-    r+='</div>';
-    r+='</div>';
-    r+='</div>';
-    count++;
-    primo=1;
-    r+='<div class="col-md-3">\n';
-    r+='<div class="thumbnail">\n';
-    r+='<div class="caption">\n'
-    data.forEach(function(d){
-       if(d['id']==count){
-           if(primo==1){
-               r+='<h2 style = "color:red;  text-align:center;">'+d['titolo']+ '</h2>\n';
-               primo++;
-           }
-           else{
-               r+='<h4 style = "color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
-           }
-       }
-    });
-    r+='</div>';
-    r+='</div>';
-    r+='</div>';
-    count++;
-    primo=1;
-    r+='<div class="col-md-3">\n';
-    r+='<div class="thumbnail">\n';
-    r+='<div class="caption">\n'
-    data.forEach(function(d){
-       if(d['id']==count){
-           if(primo==1){
-               r+='<h2 style = "color:red;  text-align:center;">'+d['titolo'] +'</h2>\n';
-               primo++;
-           }
-           else{
-               r+='<h4 style = "color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
-           }
-       }
-    });
-    r+='</div>';
-    r+='</div>';
-    r+='</div>';
+    
     return r;
 }
 
