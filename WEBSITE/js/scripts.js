@@ -175,19 +175,30 @@ function vprod(data)
 
 function innovazione(data)
 {
-     var r="";
+    var r="";
+    var count=1;
     r+="<div class='container'>\n<div class=\"row\">";
+    r+='<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + 'VIVERE L\'INNOVAZIONE' + '</h1><br>\n';
     data.forEach(function(d){
         r+='<div class="thumbnail">\n';
         r+='<div class="caption">\n';
         r+='<div class="row">';
-        r+='<div class="col-md-6">';
-        r+='<img style="max-width:100%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive text-center">' ;
+        r+='<div class="col-md-1">';
+        r+='<img style="min-width:1140px; max-height:450px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">' ;
         r+='</div>';
-        r+='<div class="col-md-6">';
-        r+='<h2>'+d['titolo']+'</h2>\n';
-        r+='<h4>'+d['testo']+'</h4>\n';
-        r+='</div>';
+        if(count%2!=0){
+            r+='<div class="col-md-6">';
+            r+='<h2 style="color:white; text-align:left;">'+ '<br><br>' +d['titolo']+'</h2>\n';
+            r+='<h4 style="color:white; text-align:left;">'+d['testo']+'</h4>\n';
+            r+='</div>';
+        }
+        else{
+            r+='<div class="col-md-6">';
+            r+='<h2 style="color:white; text-align:right;">'+ '<br><br>' +d['titolo']+'</h2>\n';
+            r+='<h4 style="color:white; text-align:right;">'+d['testo']+'</h4>\n';
+            r+='</div>';
+        }
+        count++;
         r+='</div>';
         r+='</div>';
         r+='</div>';
