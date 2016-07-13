@@ -115,10 +115,12 @@
             //loads home main
             $.ajax({
              type:'GET',
+            dataType: 'json',
              url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/home.php",
              crossDomain: true,
              }).success(function(result){
-                $("#main").html(result);
+                var prod = home(result);
+                $("#main").html(prod);
              });
 
             //loads footer
@@ -217,10 +219,12 @@
         $("#btnLogo").click(function(){
             $.ajax({
                 type:'GET',
+                dataType: 'json',
                 url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/home.php",
                 crossDomain: true,
             }).success(function(result){
-                $("#main").html(result);
+                var ret = home(result);
+                $("#main").html(ret);
             });
         });
         

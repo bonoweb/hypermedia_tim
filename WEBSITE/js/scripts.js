@@ -1,3 +1,27 @@
+/*home*/
+function home(data) {
+    var r = "";
+    r+= '<div class="col-md-1"></div>';
+    r += '<h1 style = "color:red; font-weight:bold; font-size:2em;">' + 'Nuovi prodotti' + '</h1>\n';
+    r += "<div class='container'>\n<div class=\"row\">";
+   r+='<div class="thumbnail text-center">\n';
+    r+='<div class="caption">\n';
+        r+='<div class="row">';
+    data.forEach(function (d) {
+         
+        r+= '<div class="col-md-3">';
+        r += '<img style="max-height:250px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">'
+        r += '<h5>' + d['nome'] + '</h5>\n';
+        r+= '</div>';
+       
+     });
+     r+= '</div>';
+    r+= '</div>';
+        r+= '</div>';
+     r+= "</div>\n</div>";
+     
+    return r;
+}
 
 /*products categories with 5 elements */
 function products_category(data) {

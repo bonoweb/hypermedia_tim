@@ -4,9 +4,5 @@ ini_set('display_errors', 1);
 
 include_once('../common/functions.php');
 header('Access-Control-Allow-Origin: *');
+echo json_encode(get_nuovi_prod());
 ?>
-<div class="row">
-    <div class="col-md-4">CIAO</div>
-    <div class="col-md-4">CIAO</div>
-    <div class="col-md-4">CIAO</div>
-</div>
