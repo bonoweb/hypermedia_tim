@@ -179,13 +179,27 @@
                 url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/ass_serv.php",
                 crossDomain: true,
             }).success(function(result){
-                var prod = ass_services_category(result);
-                $("#main").html(prod);
+                var ass = ass_services_category(result);
+                $("#main").html(ass);
             });
             window.location.hash = "ass_serv";
             e.preventDefault();
         });
 
+        $("#btnHighlights").click(function(e){
+            $.ajax({
+                type:'GET',
+                dataType: 'json',
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/highlights.php",
+                crossDomain: true,
+            }).success(function(result){
+                var ret = highlights(result);
+                $("#main").html(ret);
+            });
+            window.location.hash = "highlights";
+            e.preventDefault();
+        });
+        
         $("#btnLogo").click(function(){
             $.ajax({
                 type:'GET',
@@ -250,20 +264,20 @@
         });
         
         
-         $( "body" ).on( "click", ".prod",function(p){
-            idcategoria = $(this).attr("id").replace('prod','');
-            //alert(idcategoria);
+         $( "body" ).on( "click", ".ass",function(p){
+            idcategoria = $(this).attr("id").replace('ass','');
             $.ajax({
                 type:'GET',
                 dataType:'json',
-                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/assistenza_servizi_esempio.php?idcategoria="+idcategoria,
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/ass_serv.php?idcategoria="+idcategoria,
                 crossDomain: true,
             }).success(function(result){
-                var prod = ass_serv_by_category(result);
-                $("#main").html(prod);
+                var ass = ass_servizi_1(result);
+                $("#main").html(ass);
             });
         });
 
+        
         $("body").on( "click", ".prod_det", function(p){
             idprod = $(this).attr("id").replace('prod','');
             alert(idprod);

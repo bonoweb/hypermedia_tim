@@ -61,7 +61,7 @@ function ass_services_category(data)
     r+= '<div class="row">';
     r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + 'SERVIZI DI ASSISTENZA' + '</h1><br>\n';
     data.forEach(function(d){
-        r+= '<a href="#">' ;
+        r+= '<a href="#"class="ass" id="ass'+d['id']+'">' ;
         r+= '<div class="col-md-6">';
         r+= '<div class="col-md-10 col-md-offset-1 well text-center">';
         var icon = d['icona'];
@@ -78,24 +78,105 @@ function ass_services_category(data)
     return r;
 }
 
-function ass_serv_by_category(data)
+function ass_servizi_1(data)
 {
     var r="";
-    r += "<div class='container'>\n<div class=\"row\">";
+    var count=1;
+    var primo=1;
+    r+='<div class="col-md-3">\n';
+    r+='<div class="thumbnail">\n';
+    r+='<div class="caption">\n';
     data.forEach(function(d){
-        r+='<div class="col-sm-6 col-md-3">\n';
-        r+='<div class="thumbnail">\n';
-        r+='<div class="caption">\n';
-        r+='<h3>'+d['titolo']+'</h3>\n';
-        r+='</div>';
-        r+='</div>';
-        r+='</div>';
+       if(d['id']==count){
+           if(primo==1){
+               r+='<h2 style = "color:red;  text-align:center;">'+d['titolo']+ '<br><br>'+ '</h2>\n';
+               primo++;
+           }
+           else{
+               r+='<h4 style = "color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
+           }
+       }
     });
-    
+    r+='</div>';
+    r+='</div>';
+    r+='</div>';
+    count++;
+    primo=1;
+    r+='<div class="col-md-3">\n';
+    r+='<div class="thumbnail">\n';
+    r+='<div class="caption">\n'
+    data.forEach(function(d){
+       if(d['id']==count){
+           if(primo==1){
+               r+='<h2 style = "color:red;  text-align:center;">'+d['titolo']+ '<br><br>' + '</h2>\n';
+               primo++;
+           }
+           else{
+               r+='<h4 style = "color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
+           }
+       }
+    });
+    r+='</div>';
+    r+='</div>';
+    r+='</div>';
+    count++;
+    primo=1;
+    r+='<div class="col-md-3">\n';
+    r+='<div class="thumbnail">\n';
+    r+='<div class="caption">\n'
+    data.forEach(function(d){
+       if(d['id']==count){
+           if(primo==1){
+               r+='<h2 style = "color:red;  text-align:center;">'+d['titolo']+ '</h2>\n';
+               primo++;
+           }
+           else{
+               r+='<h4 style = "color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
+           }
+       }
+    });
+    r+='</div>';
+    r+='</div>';
+    r+='</div>';
+    count++;
+    primo=1;
+    r+='<div class="col-md-3">\n';
+    r+='<div class="thumbnail">\n';
+    r+='<div class="caption">\n'
+    data.forEach(function(d){
+       if(d['id']==count){
+           if(primo==1){
+               r+='<h2 style = "color:red;  text-align:center;">'+d['titolo'] +'</h2>\n';
+               primo++;
+           }
+           else{
+               r+='<h4 style = "color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
+           }
+       }
+    });
+    r+='</div>';
+    r+='</div>';
+    r+='</div>';
+    return r;
+}
+
+function highlights(data)
+{
+    var r="";
+    r += "<div class='container' style='max-width:800px;'>\n<div class=\"col\">";
+    r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + 'HIGHLIGHTS' + '</h1><br>\n';
+    r += '<div class="thumbnail">\n';
+    r += '<div class="caption">\n';
+    data.forEach(function(d){
+        r+='<h4 style="color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
+    });
+    r+='</div>';
+    r+='</div>';
     r+="</div></div>";
     
     return r;
 }
+
 
 /*products*/
 function vprod(data)
@@ -151,7 +232,7 @@ function testimonials(data)
     data.forEach(function(d){
         r+='<div class="col-sm-6 col-md-4">\n';
         r+='<div class="thumbnail">\n';
-        r+='<img src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        r+='<img style="max-height:280px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
         r+='<div class="caption">\n';
         r+='<h2>'+d['testo']+'</h2>\n';
         r+='<h5>'+d['titolo']+'</h5>\n';
@@ -166,22 +247,37 @@ function testimonials(data)
 
 function progetti(data)
 {
-     var r="";
+    var r="";
+    var count=1;
     r+="<div class='container'>\n<div class=\"col\">";
     data.forEach(function(d){
         r+='<div class="thumbnail">\n';
         r+='<div class="caption">\n';
         r+='<div class="row">';
         r+='<div class="col-md-6">';
-        r+='<img style="max-height:320px; "src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">' ;
-        r+='</div>';
-        r+='<div class="col-md-6">';
-        r+='<h2 style="color:red;">'+d['titolo']+'</h2>\n';
-        r+='<h4>'+d['testo']+'</h4>\n';
-        r+='</div>';
-        r+='</div>';
-        r+='</div>';
-        r+='</div>';
+        if(count%2!=0){
+            r+='<img style="max-height:320px ; "src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">' ;
+            r+='</div>';
+            r+='<div class="col-md-6">';
+            r+='<h2 style="color:red;">'+d['titolo']+ '<br><br>' + '</h2>\n';
+            r+='<h4>'+d['testo']+'</h4>\n';
+            r+='</div>';
+            r+='</div>';
+            r+='</div>';
+            r+='</div>';
+        }
+        else{
+            r+='<h2 style="color:red;">'+d['titolo']+ '<br><br>' + '</h2>\n';
+            r+='<h4>'+d['testo']+'</h4>\n';
+            r+='</div>';
+            r+='<div class="col-md-6">';
+            r+='<img style="max-height:320px; "src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">' ;
+            r+='</div>';
+            r+='</div>';
+            r+='</div>';
+            r+='</div>';
+        }
+        count++;
     });
     r+="</div></div>";
     

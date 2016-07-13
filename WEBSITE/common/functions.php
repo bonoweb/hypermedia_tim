@@ -56,7 +56,9 @@ function get_ass_serv_categories()
 function get_ass_serv_by_category($idcategory)
 {
     global $DBH;
-    $query = "SELECT * FROM assistenza_servizi_esempio WHERE id_sottocategoria= : idcategory";
+    $query = "SELECT titolo, id FROM assistenza_sottocategorie WHERE id_categoria= :idcategory
+             UNION
+             SELECT titolo, id_sottocategoria FROM assistenza_servizi_esempio WHERE id_sottocategoria IN (SELECT id FROM assistenza_sottocategorie WHERE id_categoria= :idcategory)";
     $STH = $DBH->prepare($query);
     $STH->bindParam(":idcategory", $idcategory);
     $STH->execute();
@@ -223,6 +225,15 @@ function get_progetti(){
     return $res;
 }
 */
+
+function get_highlights(){
+    global $DBH;
+    $query="SELECT titolo FROM assistenza_servizi_esempio WHERE id IN (SELECT id_assistenza FROM highlights)";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
 
 function get_gestione_linea(){
     global $DBH;
