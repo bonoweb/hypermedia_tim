@@ -158,6 +158,20 @@
             e.preventDefault();
         });
         
+        $( "body" ).on( "click", ".sl",function(p){
+            idcategoria = $(this).attr("id").replace('sl','');
+            //alert(idcategoria);
+            $.ajax({
+                type:'GET',
+                dataType:'json',
+                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/smartlife.php?idcategoria="+idcategoria,
+                crossDomain: true,
+            }).success(function(result){
+                var prod = smartlife(result);
+                $("#main").html(prod);
+            });
+        });
+        
         $("#btnPromozioni").click(function(e){
             $.ajax({
                 type:'GET',
@@ -246,9 +260,6 @@
             });
         });
         
-       
-        
-
         $( "body" ).on( "click", ".prod",function(p){
             idcategoria = $(this).attr("id").replace('prod','');
             //alert(idcategoria);

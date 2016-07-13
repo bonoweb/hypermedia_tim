@@ -35,7 +35,7 @@ function sl_services_category(data)
     r+= '<div class="row">';
     r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + 'SERVIZI SMART LIFE' + '</h1><br>\n';
     data.forEach(function(d){
-        r+= '<a href="#">' ;
+        r+= '<a href="#" class="sl" id="sl'+d['id']+'">' ;
         r+= '<div class="col-md-6">';
         r+= '<div class="col-md-10 col-md-offset-1 well text-center">';
         var icon = d['icona'];
@@ -316,13 +316,9 @@ function novita(data)
         r += '<div class="row-md-1"><br></div>';
         r += '</div>';
         r += '<div class="col-md-6">';
-        r += '<div class="row-md-1"><br></div>';
-        r += '<img style="max-height:260px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
-        r += '<div class="row-md-1"><br></div>';
-        r += '<img style="max-height:270px;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'">';
-        r += '<div class="row-md-1"><br></div>';
-        r += '<img style="max-height:250px;" src="img/'+d['immagine3']+'" alt="Immagine'+d['immagine3']+'">';
-        r += '<div class="row-md-1"><br></div>';
+        r += '<img class="pull-right" style="max-height:260px; padding:3px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'"><br><br>';
+        r += '<img class="pull-right" style="max-height:270px; padding:3px;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'"><br><br>';
+        r += '<img class="pull-right" style="max-height:250px; padding:3px;" src="img/'+d['immagine3']+'" alt="Immagine'+d['immagine3']+'"><br><br>';
         r += '</div>';       
     });
     r+="</div></div>";
@@ -370,8 +366,26 @@ function investitori(data)
 {
     var r="";
     r+="<div class='container'>\n<div class=\"row\">";
+    var count = 0;
     data.forEach(function(d){
-              
+        count+=1;
+        if(count==1){
+            r+='<div class="col-sm-6 col-md-4">';
+        }
+        r += '<div class="row-md-6">';
+        r+='<div class="thumbnail">';
+        r+='<div class="caption">';
+        r += '<h1 style = "color:red; text-align:center; font-size:1.3em;">' + d['titolo'] + '</h1><br>\n';
+        r += '<img style="max-width:330px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        r += '<h4 style = "font-size:1em;">' + d['text'] + '</h4>';
+        r+='</div>';
+        r+='</div>';
+        r+='</div>';
+        if(count==2){
+            count=0;
+            r+='</div>';
+        }
+         
     });
     r+="</div></div>";
     return r;
@@ -385,6 +399,50 @@ function prodotto(data)
     /*data.forEach(function(d){
 
     });*/
+    r+="</div></div>";
+    return r;
+}
+
+/*smartlife products*/
+function smartlife(data)
+{
+    var r="";
+    var count=0;
+    data['slimg'].forEach(function(d){
+        r+='<img style="max-width:1000px; padding:20px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+    });
+    r+="<div class='container'>\n<div class=\"row\">";
+    data['slserv'].forEach(function(d){
+        r+='<div class="thumbnail">\n';
+        r+='<div class="caption">\n';
+        r+='<div class="row">';
+        r+='<div class="col-md-6">';
+        if(count%2==0){
+            r+='<img style="max-height:300px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        }
+        else{
+            r+='<h1 style="color:red; text-align:center;">'+d['titolo']+'</h1>\n';
+            r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
+            
+            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl'+d['id']+'">Scopri di piu</a></div>';
+        }
+        r+='</div>';
+        r+='<div class="col-md-6">';
+        if(count%2!=0){
+            r+='<img class="pull-right" style="max-height:300px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        }
+        else{
+            r+='<h1 style="color:red; text-align:center;">'+d['titolo']+'</h1>\n';
+            r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
+            
+            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl'+d['id']+'">Scopri di piu</a></div>';
+        }
+        r+='</div>';
+        r+='</div>';
+        r+='</div>';
+        r+='</div>';
+        count++;
+    });
     r+="</div></div>";
     return r;
 }
