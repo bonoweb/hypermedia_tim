@@ -4,23 +4,46 @@ function home(data) {
     r+= '<div class="col-md-1"></div>';
     r += '<h1 style = "color:red; font-weight:bold; font-size:2em;">' + 'Nuovi prodotti' + '</h1>\n';
     r += "<div class='container'>\n<div class=\"row\">";
-   r+='<div class="thumbnail text-center">\n';
+    r+='<div class="thumbnail text-center">\n';
     r+='<div class="caption">\n';
-        r+='<div class="row">';
+    r+='<div class="row">';
     data.forEach(function (d) {
-         
         r+= '<div class="col-md-3">';
-        r += '<img style="max-height:250px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">'
+        r += '<img style="max-height:200px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">'
         r += '<h5>' + d['nome'] + '</h5>\n';
         r+= '</div>';
-       
      });
-     r+= '</div>';
     r+= '</div>';
-        r+= '</div>';
-     r+= "</div>\n</div>";
-     
-    r+='<img src="img/thumb_IMG_1607_1024.jpg">';
+    r+= '</div>';
+    r+= '</div>';
+    r+= "</div>\n</div>";
+    r += "<div class='container'>\n<div class=\"row\">";
+    r+= '<div class="col-md-6">';
+    r+='<div class="thumbnail">\n';
+    r+='<div class="caption">\n';
+    r+='<div class="row">';
+    r+= '<div class="col-md-6">'; 
+    r += '<h1 style = "color:red; font-weight:bold; font-size:2em; text-align:center">' + 'Porta un<br> amico in TIM' + '</h1>\n';
+    r += '<h4 style="text-align:center">' + '<br>Per te e per loro 2 GIGA gratis.<br>Fino a 8 GIGA GRATIS!' + '</h4>\n';
+    r+= '</div>';
+    r+= '<div class="col-md-6">';
+    r+='<img class="pull-right" style="max-height:190px;" src="img/thumb_IMG_1607_1024.jpg">';
+    r+= '</div>';
+    r+= '</div>';
+    r+= '</div>';
+    r+= '</div>';
+    r+= '</div>';
+    r+= '<div class="col-md-6">';
+    r+='<div class="thumbnail">\n';
+    r+='<div class="caption">\n';
+    r += '<h1 style = "color:red; font-weight:bold; font-size:2em; text-align:center;">TIMtag</h1>\n';
+    r += '<h4 class="text-center">Traccia e rintraccia tutto quello che ami!<br>Rilevatore GPS con un anno di servizio incluso.</h4><br>\n';
+    r+='<div class="text-center"><a href="#" class="btn-lg btn-primary timtag_home" role="button">Scopri di più</a></div><br>';
+    r+= '</div>';
+    r+= '</div>';
+    r+= '</div>';
+    r+= '</div>';
+    r+= '</div>';
     return r;
 }
 
