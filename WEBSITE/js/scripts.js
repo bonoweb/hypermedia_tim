@@ -109,7 +109,7 @@ function ass_services_category(data)
     r+= '<div class="row">';
     r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + 'SERVIZI DI ASSISTENZA' + '</h1><br>\n';
     data.forEach(function(d){
-        r+= '<a href="#"class="ass" id="ass'+d['id']+'">' ;
+        r+= '<a href="#" class="ass" id="ass'+d['id']+'">' ;
         r+= '<div class="col-md-6">';
         r+= '<div class="col-md-10 col-md-offset-1 well text-center">';
         var icon = d['icona'];
@@ -123,6 +123,31 @@ function ass_services_category(data)
     r+= '</div>';
     r+= '</div>';
     r+= "</div>\n</div>";
+    return r;
+}
+
+function ass_servizi(data)
+{
+    var r="";
+    r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + data['maintitle'] + '</h1><br>\n';
+    r+='<div class="row">\n';
+    data['serv'].forEach(function(d) {
+        r +='<div class="col-md-3">';
+        r += '<h2 style = "color:red;  text-align:center;">' + d['title'] + '</h2>\n';
+        d['cols'].forEach(function(dd){
+            r += "elements";
+        });
+        //todo completare
+
+        r +='</div>';
+    });
+
+
+    //r+="<h2>"+data['serv'][2]['titolo']+"</h2>";
+
+
+    r+='</div></div>';
+
     return r;
 }
 

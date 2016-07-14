@@ -281,13 +281,14 @@
         
          $( "body" ).on( "click", ".ass",function(p){
             idcategoria = $(this).attr("id").replace('ass','');
+             //alert(idcategoria);
             $.ajax({
                 type:'GET',
                 dataType:'json',
                 url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/ass_serv.php?idcategoria="+idcategoria,
                 crossDomain: true,
             }).success(function(result){
-                var ass = ass_servizi_1(result);
+                var ass = ass_servizi(result);
                 $("#main").html(ass);
             });
         });

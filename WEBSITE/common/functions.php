@@ -61,20 +61,60 @@ function get_ass_serv_categories()
     return $res;
 }
 
-function get_ass_serv_by_category($idcategory)
+/*
+SELECT assistenza_categorie.titolo as titolo_categoria,
+assistenza_sottocategorie.titolo as titolo_sottocategoria,
+assistenza_sottocategorie.id as id_sottocategoria,
+assistenza_servizi_esempio.titolo as tit,
+assistenza_servizi_esempio.id as tid
+FROM assistenza_categorie
+join assistenza_sottocategorie on assistenza_categorie.id=assistenza_sottocategorie.id_categoria
+join assistenza_servizi_esempio on assistenza_sottocategorie.id = assistenza_servizi_esempio.id_sottocategoria
+where assistenza_categorie.id = 2
+
+*/
+
+
+
+/**
+ * @param $idcategory
+ * @return title of the category chosen
+ */
+function get_ass_serv_category_name($idcategory)
 {
     global $DBH;
-    $query = "SELECT assistenza_sottocategorie.id, assistenza_sottocategorie.titolo as thetitle, assistenza_servizi_esempio.titolo as titolo,
-    assistenza_servizi_esempio.id_sottocategoria
-    FROM assistenza_sottocategorie
-    JOIN assistenza_servizi_esempio ON assistenza_sottocategorie.id_categoria = assistenza_servizi_esempio.id_sottocategoria
-    WHERE id_categoria= :idcategory "; //IN (SELECT id FROM assistenza_sottocategorie WHERE id_categoria= :idcategory)";
+    $query="SELECT titolo FROM assistenza_categorie WHERE id = :idcategory";
+    $STH=$DBH->prepare($query);
+    $STH->bindParam(':idcategory',$idcategory);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res[0]['titolo'];
+}
+
+/**
+ * returns title and ids on ass serv of the category chosed
+ * @param $idcategory
+ */
+function get_ass_serv_subcategory_by_category($idcategory)
+{
+    global $DBH;
+    $query =" SELECT * FROM `assistenza_sottocategorie` WHERE id_categoria= :idcategory ";
     $STH = $DBH->prepare($query);
     $STH->bindParam(":idcategory", $idcategory);
     $STH->execute();
     $res = $STH->fetchAll();
     return $res;
-    
+}
+
+function get_ass_serv_by_subcategory_id($idsubcategory)
+{
+    global $DBH;
+    $query = "SELECT * FROM assistenza_servizi_esempio WHERE id_sottocategoria = :ids";
+    $STH = $DBH->prepare($query);
+    $STH->bindParam(":ids", $idsubcategory);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
 }
 
 function get_attivazione(){
