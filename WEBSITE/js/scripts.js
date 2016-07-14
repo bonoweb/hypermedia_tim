@@ -460,10 +460,10 @@ function prodotto(data)
 {
     var r="";
     r+="<div class='container'>\n<div class=\"row\">";
-    r+="<pre>"+data[0]+"</pre>";
-    /*data.forEach(function(d){
+    //r+="<pre>"+data[0]+"</pre>";
+    data.forEach(function(d){
 
-    });*/
+    });
     r+="</div></div>";
     return r;
 }

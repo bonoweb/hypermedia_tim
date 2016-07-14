@@ -295,7 +295,6 @@
         
         $("body").on( "click", ".prod_det", function(p){
             idprod = $(this).attr("id").replace('prod','');
-            alert(idprod);
             $.ajax({
                 type:'GET',
                 dataType:'json',
