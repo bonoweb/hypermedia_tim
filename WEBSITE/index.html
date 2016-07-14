@@ -293,16 +293,15 @@
         });
 
         
-        $("body").on( "click", ".prod_det", function(p){
-            idprod = $(this).attr("id").replace('prod','');
+        $("body").on( "click", ".att", function(p){
             $.ajax({
                 type:'GET',
                 dataType:'json',
-                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/prodotto.php?id="+idprod,
+                url:"http://localhost:8888/hypermedia_tim/WEBSITE/includes/attivazione.php",
                 crossDomain: true,
             }).success(function(result){
-                var prod = prodotto(result);
-                $("#main").html(prod);
+                var ret = attivazione(result);
+                $("#main").html(ret);
             });
         });
 

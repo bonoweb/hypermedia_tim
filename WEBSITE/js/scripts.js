@@ -211,12 +211,37 @@ function ass_servizi_1(data)
 function highlights(data)
 {
     var r="";
+    var primo=1;
     r += "<div class='container' style='max-width:800px;'>\n<div class=\"col\">";
     r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + 'HIGHLIGHTS' + '</h1><br>\n';
     r += '<div class="thumbnail">\n';
     r += '<div class="caption">\n';
     data.forEach(function(d){
-        r+='<h4 style="color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
+        if(primo==1){
+        r+='<h4 style="color:blue;"><a href="#" class="att">'+d['titolo']+ ' &raquo;' + '</a>'+'</h4>\n';
+        primo++;
+        }
+        else{
+            r+='<h4 style="color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
+        }
+    });
+    r+='</div>';
+    r+='</div>';
+    r+="</div></div>";
+    
+    return r;
+}
+
+function attivazione(data)
+{
+    var r="";
+    var primo=1;
+    r += "<div class='container'>\n<div class=\"col\">";
+    r += '<div class="thumbnail">\n';
+    r += '<div class="caption">\n';
+    data.forEach(function(d){
+        r += '<h3 style = "color:red; text-align:left; font-size:3.5em;">' + 'ATTIVAZIONE LINEA DI CASA' + '</h3>\n';
+        r+='<h3>'+d['descrizione']+'</h3>\n';
     });
     r+='</div>';
     r+='</div>';

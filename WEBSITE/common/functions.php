@@ -77,6 +77,15 @@ function get_ass_serv_by_category($idcategory)
     
 }
 
+function get_attivazione(){
+    global $DBH;
+    $query="SELECT descrizione FROM assistenza_servizi_esempio WHERE id=1";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
 
 function get_products_by_category($idcategory){
     global $DBH;
