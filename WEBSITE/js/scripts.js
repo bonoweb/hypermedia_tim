@@ -251,24 +251,41 @@ function vprod(data)
 
 function innovazione(data)
 {
-     var r="";
-    r+="<div class='container'>\n<div class=\"row\">";
+    var r="";
+    var count=1;
+    r+="<div class='container'>\n<div class=\"col\">";
     data.forEach(function(d){
         r+='<div class="thumbnail">\n';
         r+='<div class="caption">\n';
         r+='<div class="row">';
-        r+='<div class="col-md-6">';
-        r+='<img style="max-width:100%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive text-center">' ;
-        r+='</div>';
-        r+='<div class="col-md-6">';
-        r+='<h2>'+d['titolo']+'</h2>\n';
-        r+='<h4>'+d['testo']+'</h4>\n';
-        r+='</div>';
-        r+='</div>';
-        r+='</div>';
-        r+='</div>';
+        if(count%2!=0){
+            r+='<div class="col-md-1">';
+            r+='<img style="min-width:1100px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">' ;
+            r+='</div>';
+            r+='<div class="col-md-7">';
+            r+='<h2 style="color:white;">'+ '<br><br>' +d['titolo']+ '<br><br>' + '</h2>\n';
+            r+='<h4 style="color:white;">'+d['testo']+'</h4>\n';
+            r+='</div>';
+            r+='</div>';
+            r+='</div>';
+            r+='</div>';
+        }
+        else{
+            r+='<div class="col-md-5">';
+            r+='<img style="min-height:200px; min-width:1100px;"src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">' ;
+            r+='</div>';
+            r+='<div class="col-md-6">';
+            r+='<h2 style="color:white;">'+ '<br><br>'+d['titolo']+ '<br><br>' + '</h2>\n';
+            r+='<h4 style="color:white;">'+d['testo']+'</h4>\n';
+            r+='</div>';
+            r+='</div>';
+            r+='</div>';
+            r+='</div>';
+        }
+        count++;
     });
     r+="</div></div>";
+    
     
     return r;
 }
