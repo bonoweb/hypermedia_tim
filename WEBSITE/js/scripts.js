@@ -487,7 +487,41 @@ function prodotto(data)
     r+="<div class='container'>\n<div class=\"row\">";
     //r+="<pre>"+data[0]+"</pre>";
     data.forEach(function(d){
-
+        
+        r+='<div class="col-md-6">';
+        r+='<div class="thumbnail">\n';
+        r+='<div class="caption">\n';
+        r+='<div class="row">';
+        r+='<img style="max-width:270px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        r+='<img style="max-width:270px;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'">';
+        r+='<img style="max-width:270px;" src="img/'+d['immagine3']+'" alt="Immagine'+d['immagine3']+'">';
+        r+='<img style="max-width:270px;" src="img/'+d['immagine4']+'" alt="Immagine'+d['immagine4']+'">';
+        r+='</div>';
+        r+='</div>';
+        r+='</div>';
+        r+='</div>';
+        r+='<div class="col-md-6">';
+        r+='<h1 style="color:red; font-weight:bold; text-align:center;">'+d['nome']+'<br><br></h1>\n';
+        r+= '<ul class="nav nav-tabs">';
+        r+= '<li role="presentation" class="active"><a href="#">Presentazione</a></li>';
+        r+= '<li role="presentation"><a href="#">Caratteristiche</a></li>';
+        r+= '</ul>';
+        r+= '<div class="col-md-1"></div>';
+        r+= '<div class="col-md-11">';
+        r+= '<br>'+d['presentazione']+'<br>';
+        r+='<div><h4 style="color:red;">Capacità:';
+        r+='<a style="margin:5px" href="#" class="btn btn-primary active" role="button">16GB</a>';
+        r+='<a href="#" class="btn btn-primary" role="button">64GB</a>';
+        r+='<a style="margin:5px" href="#" class="btn btn-primary" role="button">128GB</a>';
+        r+='</h4></div>\n';
+        r+='<div><h4 style="color:red;">Colore:';
+        r+='<a style="margin:8px" href="#" class="btn btn-warning btn-circle-sm" role="button"></a>';
+        r+='<a href="#" class="btn btn-primary btn-circle-sm" role="button"></a>';
+        r+='<a style="margin:8px" href="#" class="btn btn-primary btn-circle-sm" role="button"></a>';
+        r+='<a href="#" class="btn btn-primary btn-circle-sm" role="button"></a>';
+        r+='</h4></div>\n';
+        r+= '</div>';
+        r+= '</div>';
     });
     r+="</div></div>";
     return r;

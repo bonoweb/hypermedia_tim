@@ -54,6 +54,16 @@ body{
     float: none;
 }
 
+.btn-circle-sm {
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  padding: 2px 0;
+  font-size: 20px;
+  line-height: 1.65;
+  border-radius: 30px;
+}
+
 @media screen and (max-device-width: 480px) {
     .logo_header img{
         max-height:100%;
