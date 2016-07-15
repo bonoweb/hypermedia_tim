@@ -111,7 +111,8 @@ function get_ass_serv_by_subcategory_id($idsubcategory)
     global $DBH;
     $query = "SELECT * FROM assistenza_servizi_esempio WHERE id_sottocategoria = :ids";
     $STH = $DBH->prepare($query);
-    $STH->bindParam(":ids", $idsubcategory);
+    $idsubcat= $idsubcategory+1;
+    $STH->bindParam(":ids", $idsubcat);
     $STH->execute();
     $res = $STH->fetchAll();
     return $res;

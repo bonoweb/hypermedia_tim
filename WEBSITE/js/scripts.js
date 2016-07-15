@@ -135,7 +135,9 @@ function ass_servizi(data)
         r +='<div class="col-md-3">';
         r += '<h2 style = "color:red;  text-align:center;">' + d['title'] + '</h2>\n';
         d['cols'].forEach(function(dd){
-            r += "elements";
+            r += "<div>";
+            r += dd['title'];
+            r += "</div>";
         });
         //todo completare
 
