@@ -232,7 +232,7 @@
                 url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/promozioni.php",
                 crossDomain: true,
             }).success(function(result){
-                var prod = vprod(result);
+                var prod = vprod(result, "Promozioni");
                 $("#main").html(prod);
             });
             window.location.hash = "promozioni";
@@ -331,7 +331,7 @@
                 url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/prodotti.php?idcategoria="+idcategoria,
                 crossDomain: true,
             }).success(function(result){
-                var prod = vprod(result);
+                var prod = vprod(result, "Prodotti");
                 $("#main").html(prod);
             });
             window.location.hash = +nomecategoria;
@@ -383,7 +383,7 @@
             window.location.hash = "attivazione linea di casa";
             p.preventDefault();
         });
-        
+
         $("body").on( "click", ".guid", function(p){
             $.ajax({
                 type:'GET',

@@ -304,10 +304,18 @@ function attivazione(data)
 
 
 /*products*/
-function vprod(data)
+function vprod(data, from)
 {
     var r="";
-    r+="<div class='container'>\n<div class=\"row\">";
+    r+="<div class='container'>";
+    r+='<ol class="breadcrumb">';
+    r+='<li><a href="#">'+from+'</a></li>\n';
+    r+='<li><a href="#">Library</a></li>\n';
+    r+='<li class="active">Data</li>\n';
+    r+='</ol>';
+
+
+    r+="\n<div class=\"row\">";
     data.forEach(function(d){
         r+='<div class="col-sm-6 col-md-4">\n';
         r+='<div class="thumbnail text-center" style="min-height:400px;">\n';
