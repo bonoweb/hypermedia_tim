@@ -130,9 +130,11 @@ function ass_servizi(data)
 {
     var r="";
     r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + data['maintitle'] + '</h1><br>\n';
-    r+='<div class="row">\n';
+    r +='<div class="row">\n';
     data['serv'].forEach(function(d) {
-        r +='<div class="col-md-3">';
+        r +='<div class="col-md-3">\n';
+        r +='<div class="thumbnail">\n';
+        r +='<div class="caption">\n';
         r += '<h2 style = "color:red;  text-align:center;">' + d['title'] + '</h2>\n';
         d['cols'].forEach(function(dd){
             r += "<div>";
@@ -141,7 +143,9 @@ function ass_servizi(data)
         });
         //todo completare
 
-        r +='</div>';
+        r +='</div>\n';
+        r +='</div>\n';
+        r +='</div>\n';
     });
 
 
@@ -560,7 +564,7 @@ function smartlife(data)
     var r="";
     var count=0;
     data['slimg'].forEach(function(d){
-        r+='<img style="min-width:1250px; padding:20px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        r+='<div class="text-center"><img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'"></div>';
     });
     r+="<div class='container'>\n<div class=\"row\">";
     data['slserv'].forEach(function(d){
@@ -569,24 +573,24 @@ function smartlife(data)
         r+='<div class="row">';
         r+='<div class="col-md-6">';
         if(count%2==0){
-            r+='<img style="max-height:300px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+            r+='<img class="img-responsive" style="max-height:300px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
         }
         else{
             r+='<h1 style="color:red; text-align:center;">'+d['titolo']+'</h1>\n';
             r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
             
-            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'">Scopri di piu</a></div>';
+            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'">Scopri di piu</a><br></div>';
         }
         r+='</div>';
         r+='<div class="col-md-6">';
         if(count%2!=0){
-            r+='<img class="pull-right" style="max-height:300px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+            r+='<br><div class="pull-right"><img class="img-responsive" style="max-height:300px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'"></div>';
         }
         else{
             r+='<h1 style="color:red; text-align:center;">'+d['titolo']+'</h1>\n';
             r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
             
-            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'">Scopri di piu</a></div>';
+            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'">Scopri di piu</a><br></div><br>';
         }
         r+='</div>';
         r+='</div>';

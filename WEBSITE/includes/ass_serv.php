@@ -24,7 +24,7 @@ if(isset($_GET['idcategoria'])) {
         //ottengo le sue colonne
         $thearr['serv'][$sub]['title']=$val['titolo'];
 
-        $as = get_ass_serv_by_subcategory_id($sub);
+        $as = get_ass_serv_by_subcategory_id($val['id']);
 
         //singoli elementi
         foreach($as as $key => $ass)

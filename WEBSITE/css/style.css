@@ -12,7 +12,7 @@ body{
 .footer {
     background-color: #004184;
     bottom: 0;
-    height: 35px;
+    /*height: 35px;*/
     position: absolute;
     width: 100%;
 }
@@ -64,9 +64,47 @@ body{
   border-radius: 30px;
 }
 
+
+/** loading modal -- thx to http://stackoverflow.com/questions/1964839/how-can-i-create-a-please-wait-loading-animation-using-jquery */
+
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 )
+    url('http://i.stack.imgur.com/FhHRx.gif')
+    50% 50%
+    no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+
+/**end loading modal*/
+
+
 @media screen and (max-device-width: 480px) {
     .logo_header img{
         max-height:100%;
         max-width: 100%;
     }
 }
+

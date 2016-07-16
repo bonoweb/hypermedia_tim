@@ -77,7 +77,7 @@
     </div>
 </div>
 <footer id="footer" class="footer"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></footer>
-
+<div class="modal"><!--this is the loading modal --></div>
 <!--JQuery-->
 <script src="jquery/jquery-2.2.4.min.js"></script>
 <!-- Jquery Mobile CDN -->
@@ -101,6 +101,16 @@
     });
 
 */
+
+    /**loading modal -- spinner*/
+    $body = $("body");
+
+    $(document).on({
+        ajaxStart: function() {
+            $body.addClass("loading");    },
+        ajaxStop: function() { $body.removeClass("loading"); }
+    });
+
 
     $( document ).ready(function() {
         //LOADING DATA FOR THE HOME PAGE
@@ -131,6 +141,13 @@
              }).success(function(result){
                 $("#footer").html(result);
              });
+
+        //closes the navbar menu on click (for mobile)
+        $("#navbar").on("click","a", null,function(){
+            $("#navbar").collapse('hide');
+        });
+
+
 
         $("#btnProdotti").click(function(e){
             $.ajax({
@@ -396,6 +413,9 @@
             });
         });
     });
+
+
+
 
     /*
        http://hypermedia.francescobuonocore.it/includes
