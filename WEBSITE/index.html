@@ -467,6 +467,20 @@
             window.location.hash = "investitori";
             e.preventDefault();
         });
+        
+        $( "body" ).on( "click", "#btn_prod_pres",function(p){
+            $("#prod_car").hide();
+            $("#btn_prod_car").removeClass("active");
+            $("#prod_pres").show();
+            $("#btn_prod_pres").addClass("active");
+        });
+        
+         $( "body" ).on( "click", "#btn_prod_car",function(p){
+            $("#prod_pres").hide();
+            $("#btn_prod_pres").removeClass("active");
+            $("#prod_car").show();
+            $("#btn_prod_car").addClass("active");
+        });
     });
 
 

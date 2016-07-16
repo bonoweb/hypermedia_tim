@@ -570,13 +570,15 @@ function prodotto(data)
         r+='</div>';
         r+='</div>';
         r+='<div class="col-md-6">';
-        r+='<h1 style="color:red; font-weight:bold; text-align:center;">'+d['nome']+'<br><br></h1>\n';
+        r+='<h1 style="color:red; font-weight:bold; text-align:center;">'+d['nome']+'</h1>\n';
+        r+='<h6><br></h6>';
         r+= '<ul class="nav nav-tabs">';
-        r+= '<li role="presentation" class="active"><a href="#">Presentazione</a></li>';
-        r+= '<li role="presentation"><a href="#">Caratteristiche</a></li>';
+        r+= '<li id="btn_prod_pres" role="presentation" class="active"><a href="#">Presentazione</a></li>';
+        r+= '<li id="btn_prod_car" role="presentation"><a href="#">Caratteristiche</a></li>';
         r+= '</ul>';
         r+= '<div class="col-md-1"></div>';
-        r+= '<div class="col-md-11">';
+        
+        r+= '<div id="prod_pres" class="col-md-11">';
         r+= '<br>'+d['presentazione'];
         r+='<div><h4 style="color:red;">Colore:';
         if(d['colore1']=='#FFFFFF'){
@@ -607,6 +609,13 @@ function prodotto(data)
         else {
             r += '<br>';
         }
+        r+='<div class="text-center"><a href="#" class="btn-lg btn-danger" role="button">Acquista</a><br><br><br></div>';
+        r+='<div class="text-center"><a style="margin-right:30px;" href="#" class="btn-lg btn-primary" role="button">Servizio di Assistenza</a>';
+        r+='<a href="#" class="btn-lg btn-success" role="button">Servizio SmartLife</a></div>';
+        r+= '</div>';
+        
+        r+= '<div id="prod_car" style="display:none;" class="col-md-11">';
+        r+= '<br>'+d['caratteristiche_tecniche']+'<br>';
         r+='<div class="text-center"><a href="#" class="btn-lg btn-danger" role="button">Acquista</a><br><br><br></div>';
         r+='<div class="text-center"><a style="margin-right:30px;" href="#" class="btn-lg btn-primary" role="button">Servizio di Assistenza</a>';
         r+='<a href="#" class="btn-lg btn-success" role="button">Servizio SmartLife</a></div>';
