@@ -575,7 +575,7 @@ function smartlife(data)
             r+='<h1 style="color:red; text-align:center;">'+d['titolo']+'</h1>\n';
             r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
             
-            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl'+d['id']+'">Scopri di piu</a></div>';
+            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'">Scopri di piu</a></div>';
         }
         r+='</div>';
         r+='<div class="col-md-6">';
@@ -586,7 +586,7 @@ function smartlife(data)
             r+='<h1 style="color:red; text-align:center;">'+d['titolo']+'</h1>\n';
             r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
             
-            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl'+d['id']+'">Scopri di piu</a></div>';
+            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'">Scopri di piu</a></div>';
         }
         r+='</div>';
         r+='</div>';
@@ -595,5 +595,39 @@ function smartlife(data)
         count++;
     });
     r+="</div></div>";
+    return r;
+}
+
+function sl_esempio(data){
+    var r="";
+    data.forEach(function(d){
+        if(d['id']==3){
+            r+= '<div class="col-md-6">';
+            r+= '<ul class="nav nav-tabs">';
+            r+= '<li id="btn_sl_desc" role="presentation" class="active"><a href="#">Descrizione</a></li>';
+            r+= '<li id="btn_sl_att" role="presentation"><a href="#">Attivazione e Regole</a></li>';
+            r+= '<li id="btn_sl_faq" role="presentation"><a href="#">FAQ</a></li>';
+            r+= '</ul>';
+            r+='<div id="sl_desc"><h4>'+d['descrizione']+'</h4></div>\n';
+            r+='<div id="sl_att" style="display:none;"><h4>'+d['attivazione']+'</h4></div>\n';
+            r+='</div>';
+            r+= '<div class="col-md-6">';
+            r+='<img style="min-width:700px; padding:20px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+            r+='</div>';
+        }
+        else{
+            r+='<img style="min-width:1250px; padding:20px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+            r+= '<ul class="nav nav-tabs">';
+            r+= '<li id="btn_sl_desc" role="presentation" class="active"><a href="#">Descrizione</a></li>';
+            r+= '<li id="btn_sl_att" role="presentation"><a href="#">Attivazione e Regole</a></li>';
+            r+= '<li id="btn_sl_faq" role="presentation"><a href="#">FAQ</a></li>';
+            r+= '</ul>';
+            r+= '<div class="col-md-1"></div>';
+            r+= '<div class="col-md-10">';
+            r+='<div id="sl_desc"><h4>'+d['descrizione']+'</h4></div>\n';
+            r+='<div id="sl_att" style="display:none;"><h4>'+d['attivazione']+'</h4></div>\n';
+            r+='</div>';
+        }
+    });
     return r;
 }

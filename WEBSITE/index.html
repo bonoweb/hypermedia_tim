@@ -162,6 +162,7 @@
         
         $( "body" ).on( "click", ".sl",function(p){
             idcategoria = $(this).attr("id").replace('sl','');
+            
             //alert(idcategoria);
             $.ajax({
                 type:'GET',
@@ -172,6 +173,35 @@
                 var prod = smartlife(result);
                 $("#main").html(prod);
             });
+        });
+        
+        $( "body" ).on( "click", ".sl_det",function(p){
+            id = $(this).attr("id").replace('sl_det','');
+            if(id==2 || id==6 || id==8){
+                $.ajax({
+                    type:'GET',
+                    dataType:'json',
+                    url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/sl_esempio.php?idservizio="+id,
+                    crossDomain: true,
+                }).success(function(result){
+                    var ret = sl_esempio(result);
+                    $("#main").html(ret);
+                });
+            }
+        });
+        
+         $( "body" ).on( "click", "#btn_sl_desc",function(p){
+            $("#sl_att").hide();
+            $("#btn_sl_att").removeClass("active");
+            $("#sl_desc").show();
+            $("#btn_sl_desc").addClass("active");
+        });
+        
+         $( "body" ).on( "click", "#btn_sl_att",function(p){
+            $("#sl_desc").hide();
+            $("#btn_sl_desc").removeClass("active");
+            $("#sl_att").show();
+            $("#btn_sl_att").addClass("active");
         });
         
         $("#btnPromozioni").click(function(e){
