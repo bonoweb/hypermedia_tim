@@ -126,9 +126,22 @@ function ass_services_category(data)
     return r;
 }
 
-function ass_servizi(data)
+function ass_servizi(data, from, cat, theid)
 {
     var r="";
+    /*breadcrumbs*/
+    r+='<ol class="breadcrumb">';
+    r+='<li';
+    if(cat=="")
+        r+= ' class="active" ';
+    else
+        r+= ' id="'+ theid+'" ';
+    r+= '><a href="#' + from + '">' +from+' </a></li>\n';
+    if(cat!="")
+        r+='<li class="active">'+cat+'</li>\n';
+    r+='</ol>';
+
+
     r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + data['maintitle'] + '</h1><br>\n';
     r +='<div class="row">\n';
     data['serv'].forEach(function(d) {
@@ -310,7 +323,10 @@ function vprod(data, from, cat, theid)
         theid='';
 
     var r="";
+
     r+="<div class='container'>";
+
+    /*breadcrumbs*/
     r+='<ol class="breadcrumb">';
     r+='<li';
     if(cat=="")

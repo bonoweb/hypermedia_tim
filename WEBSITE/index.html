@@ -239,7 +239,7 @@
             e.preventDefault();
         });
 
-        $("#btnAssServ").click(function(e){
+        $( "body" ).on( "click", "#btnAssServ",(function(e){
             $.ajax({
                 type:'GET',
                 dataType: 'json',
@@ -251,7 +251,7 @@
             });
             window.location.hash = "ass_serv";
             e.preventDefault();
-        });
+        }));
 
         $("#btnHighlights").click(function(e){
             $.ajax({
@@ -362,7 +362,7 @@
                 url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/ass_serv.php?idcategoria="+idcategoria,
                 crossDomain: true,
             }).success(function(result){
-                var ass = ass_servizi(result);
+                var ass = ass_servizi(result,"Servizi di Assistenza", nomecategoria,"btnAssServ");
                 $("#main").html(ass);
             });
             window.location.hash = nomecategoria;
