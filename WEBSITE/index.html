@@ -179,8 +179,6 @@
         
         $( "body" ).on( "click", ".sl",function(p){
             idcategoria = $(this).attr("id").replace('sl','');
-            
-            //alert(idcategoria);
             $.ajax({
                 type:'GET',
                 dataType:'json',
@@ -231,7 +229,7 @@
                 var prod = vprod(result);
                 $("#main").html(prod);
             });
-            window.location.hash = "prodotti";
+            window.location.hash = "promozioni";
             e.preventDefault();
         });
 
@@ -263,7 +261,7 @@
             e.preventDefault();
         });
         
-        $("#btnLogo").click(function(){
+        $("#btnLogo").click(function(e){
             $.ajax({
                 type:'GET',
                 dataType: 'json',
@@ -275,7 +273,7 @@
             });
         });
         
-        $("#testimonials").click(function(){
+        $("#testimonials").click(function(e){
             $.ajax({
                 type:'GET',
                 dataType: 'json',
@@ -285,9 +283,11 @@
                 var ret = testimonials(result);
                 $("#main").html(ret);
             });
+            window.location.hash = "testimonials";
+            e.preventDefault();
         });
         
-        $("#innovazione").click(function(){
+        $("#innovazione").click(function(e){
             $.ajax({
                 type:'GET',
                 dataType: 'json',
@@ -297,9 +297,11 @@
                 var ret = innovazione(result);
                 $("#main").html(ret);
             });
+            window.location.hash = "innovazione";
+            e.preventDefault();
         });
         
-        $("#progetti").click(function(){
+        $("#progetti").click(function(e){
             $.ajax({
                 type:'GET',
                 dataType: 'json',
@@ -309,6 +311,8 @@
                 var ret = progetti(result);
                 $("#main").html(ret);
             });
+            window.location.hash = "progetti";
+            e.preventDefault();
         });
         
         $( "body" ).on( "click", ".prod",function(p){
@@ -367,7 +371,7 @@
             });
         });
 
-        $("#descr_gruppo").click(function(){
+        $("#descr_gruppo").click(function(e){
             $.ajax({
                 type:'GET',
                 dataType: 'json',
@@ -377,9 +381,11 @@
                 var ret = descr_gruppo(result);
                 $("#main").html(ret);
             });
+            window.location.hash = "descr_gruppo";
+            e.preventDefault();
         });
         
-        $("#novita").click(function(){
+        $("#novita").click(function(e){
             $.ajax({
                 type:'GET',
                 dataType: 'json',
@@ -389,9 +395,11 @@
                 var ret = novita(result);
                 $("#main").html(ret);
             });
+            window.location.hash = "novità";
+            e.preventDefault();
         });
         
-        $("#amministrazione").click(function(){
+        $("#amministrazione").click(function(e){
             $.ajax({
                 type:'GET',
                 dataType: 'json',
@@ -401,9 +409,11 @@
                 var ret = amministrazione(result);
                 $("#main").html(ret);
             });
+            window.location.hash = "amministrazione";
+            e.preventDefault();
         });
         
-        $("#business_market").click(function(){
+        $("#business_market").click(function(e){
             $.ajax({
                 type:'GET',
                 dataType: 'json',
@@ -413,9 +423,11 @@
                 var ret = business_market(result);
                 $("#main").html(ret);
             });
+            window.location.hash = "business_market";
+            e.preventDefault();
         });
         
-        $("#investitori").click(function(){
+        $("#investitori").click(function(e){
             $.ajax({
                 type:'GET',
                 dataType: 'json',
@@ -425,6 +437,8 @@
                 var ret = investitori(result);
                 $("#main").html(ret);
             });
+            window.location.hash = "investitori";
+            e.preventDefault();
         });
     });
 
