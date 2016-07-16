@@ -179,6 +179,7 @@
         
         $( "body" ).on( "click", ".sl",function(p){
             idcategoria = $(this).attr("id").replace('sl','');
+            nomecategoria = $(this).attr("data-sl-title");
             $.ajax({
                 type:'GET',
                 dataType:'json',
@@ -188,11 +189,14 @@
                 var prod = smartlife(result);
                 $("#main").html(prod);
             });
+            window.location.hash = nomecategoria;
+            p.preventDefault();
         });
         
         $( "body" ).on( "click", ".sl_det",function(p){
             id = $(this).attr("id").replace('sl_det','');
             if(id==2 || id==6 || id==8){
+                nomecategoria = $(this).attr("data-smart-title");
                 $.ajax({
                     type:'GET',
                     dataType:'json',
@@ -202,6 +206,8 @@
                     var ret = sl_esempio(result);
                     $("#main").html(ret);
                 });
+                window.location.hash = nomecategoria;
+                p.preventDefault();
             }
         });
         
@@ -317,6 +323,7 @@
         
         $( "body" ).on( "click", ".prod",function(p){
             idcategoria = $(this).attr("id").replace('prod','');
+            nomecategoria = $(this).attr("data-prod-title");
             //alert(idcategoria);
             $.ajax({
                 type:'GET',
@@ -327,6 +334,8 @@
                 var prod = vprod(result);
                 $("#main").html(prod);
             });
+            window.location.hash = +nomecategoria;
+            p.preventDefault();
         });
         
         $( "body" ).on( "click", ".prod_det",function(p){
@@ -346,7 +355,7 @@
         
          $( "body" ).on( "click", ".ass",function(p){
             idcategoria = $(this).attr("id").replace('ass','');
-             //alert(idcategoria);
+             nomecategoria = $(this).attr("data-ass-title");
             $.ajax({
                 type:'GET',
                 dataType:'json',
@@ -356,6 +365,8 @@
                 var ass = ass_servizi(result);
                 $("#main").html(ass);
             });
+            window.location.hash = nomecategoria;
+            p.preventDefault();
         });
 
         
@@ -369,6 +380,8 @@
                 var ret = attivazione(result);
                 $("#main").html(ret);
             });
+            window.location.hash = "attivazione linea di casa";
+            p.preventDefault();
         });
 
         $("#descr_gruppo").click(function(e){
