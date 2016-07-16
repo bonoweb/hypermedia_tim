@@ -518,15 +518,24 @@ function prodotto(data)
     r+="<div class='container'>\n<div class=\"row\">";
     //r+="<pre>"+data[0]+"</pre>";
     data.forEach(function(d){
-        
         r+='<div class="col-md-6">';
         r+='<div class="thumbnail">\n';
         r+='<div class="caption">\n';
         r+='<div class="row">';
-        r+='<img style="max-width:270px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
-        r+='<img style="max-width:270px;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'">';
-        r+='<img style="max-width:270px;" src="img/'+d['immagine3']+'" alt="Immagine'+d['immagine3']+'">';
-        r+='<img style="max-width:270px;" src="img/'+d['immagine4']+'" alt="Immagine'+d['immagine4']+'">';
+        if(d['immagine4']==null && d['immagine2']==null && d['immagine3']==null){
+            r+='<img style="max-width:540px; min-width:540px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        }
+        else
+            r+='<img style="max-width:270px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        if(d['immagine2']!=null){
+            r+='<img style="max-width:270px;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'">';
+        }
+        if(d['immagine3']!=null){
+            r+='<img style="max-width:270px;" src="img/'+d['immagine3']+'" alt="Immagine'+d['immagine3']+'">';
+        }
+        if(d['immagine4']!=null){
+            r+='<img style="max-width:270px;" src="img/'+d['immagine4']+'" alt="Immagine'+d['immagine4']+'">';
+        }
         r+='</div>';
         r+='</div>';
         r+='</div>';
@@ -539,18 +548,39 @@ function prodotto(data)
         r+= '</ul>';
         r+= '<div class="col-md-1"></div>';
         r+= '<div class="col-md-11">';
-        r+= '<br>'+d['presentazione']+'<br>';
-        r+='<div><h4 style="color:red;">Capacità:';
-        r+='<a style="margin:5px" href="#" class="btn btn-primary active" role="button">16GB</a>';
-        r+='<a href="#" class="btn btn-primary" role="button">64GB</a>';
-        r+='<a style="margin:5px" href="#" class="btn btn-primary" role="button">128GB</a>';
-        r+='</h4></div>\n';
+        r+= '<br>'+d['presentazione'];
         r+='<div><h4 style="color:red;">Colore:';
-        r+='<a style="margin:8px" href="#" class="btn btn-warning btn-circle-sm" role="button"></a>';
-        r+='<a href="#" class="btn btn-primary btn-circle-sm" role="button"></a>';
-        r+='<a style="margin:8px" href="#" class="btn btn-primary btn-circle-sm" role="button"></a>';
-        r+='<a href="#" class="btn btn-primary btn-circle-sm" role="button"></a>';
+        if(d['colore1']=='#FFFFFF'){
+            r+='<a style="margin:8px; background-color:'+d['colore1']+';" href="#" class="btn btn-primary btn-circle-sm active" role="button"></a>';
+        }
+        else
+            r+='<a style="margin:8px; background-color:'+d['colore1']+';" href="#" class="btn btn-circle-sm active" role="button"></a>';
+        if(d['colore2']!=0){
+            if(d['colore2']=='#FFFFFF'){
+                r+='<a style="background-color:'+d['colore2']+';" href="#" class="btn btn-primary btn-circle-sm" role="button"></a>';
+            }
+            else
+                r+='<a style="background-color:'+d['colore2']+';" href="#" class="btn btn-circle-sm" role="button"></a>';
+        }
+        if(d['colore3']!=0){
+            r+='<a style="margin:8px; background-color:'+d['colore3']+';" href="#" class="btn btn-circle-sm" role="button"></a>';
+        }
+        if(d['colore4']!=0){
+            r+='<a style="background-color:'+d['colore4']+';" href="#" class="btn btn-circle-sm" role="button"></a>';
+        }
         r+='</h4></div>\n';
+        r+='<h2 style="color:red; text-align:center; font-weight:bold;">'+ d['prezzo'] +'</h2>\n';
+        if(d['prezzo_mese']!=0){
+            r+='<div style="text-align:center;">oppure</div>';
+            r+='<h2 style="color:red; text-align:center; font-weight:bold;">' + d['prezzo_mese'] + '</h2>\n';
+            r+='<div style="text-align:center;">in 36 rate senza interessi se hai una linea di casa TIM<br><br></div>\n';
+        }
+        else {
+            r += '<br>';
+        }
+        r+='<div class="text-center"><a href="#" class="btn-lg btn-danger" role="button">Acquista</a><br><br><br></div>';
+        r+='<div class="text-center"><a style="margin-right:30px;" href="#" class="btn-lg btn-primary" role="button">Servizio di Assistenza</a>';
+        r+='<a href="#" class="btn-lg btn-success" role="button">Servizio SmartLife</a></div>';
         r+= '</div>';
         r+= '</div>';
     });
