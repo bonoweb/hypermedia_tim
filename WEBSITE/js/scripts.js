@@ -132,7 +132,10 @@ function ass_servizi(data)
     r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + data['maintitle'] + '</h1><br>\n';
     r +='<div class="row">\n';
     data['serv'].forEach(function(d) {
-        r +='<div class="col-md-3">\n';
+        if(data.serv.length<=3)
+            r+= '<div class="col-md-4">\n';
+        else
+            r +='<div class="col-md-3">\n';
         r +='<div class="thumbnail">\n';
         r +='<div class="caption">\n';
         r += '<h2 style = "color:red;  text-align:center;">' + d['title'] + '</h2>\n';
