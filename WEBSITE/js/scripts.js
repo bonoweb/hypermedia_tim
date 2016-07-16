@@ -141,7 +141,12 @@ function ass_servizi(data)
         r += '<h2 style = "color:red;  text-align:center;">' + d['title'] + '</h2>\n';
         d['cols'].forEach(function(dd){
             r += "<div>";
-            r += dd['title'];
+            if(dd['id']==51){
+                 r += '<h4 style = "color:blue;  text-align:center;"><a href="#" class="guid">' + dd['title'] + ' &raquo;' + '</a>'+ '</h4>\n';
+            }
+            else{
+                r += '<h4 style = "color:blue;  text-align:center;">' + dd['title'] + ' &raquo;' + '</h4>\n';
+            }
             r += "</div>";
         });
         //todo completare
@@ -156,7 +161,24 @@ function ass_servizi(data)
     return r;
 }
 
-function ass_servizi_1(data)
+function guida(data)
+{
+    var r="";
+    r += "<div class='container'>\n<div class=\"col\">";
+    r += '<div class="thumbnail">\n';
+    r += '<div class="caption">\n';
+    data.forEach(function(d){
+        r += '<h3 style = "color:red; text-align:left; font-size:2.5em;">' + 'GUIDA ALL\'ACQUISTO ONLINE' + '</h3>\n';
+        r+='<h4>'+d['descrizione']+'</h4>\n';
+    });
+    r+='</div>';
+    r+='</div>';
+    r+="</div></div>";
+    
+    return r;
+}
+
+/*function ass_servizi_1(data)
 {
     var r="";
     var count=1;
@@ -237,6 +259,7 @@ function ass_servizi_1(data)
     r+='</div>';
     return r;
 }
+*/
 
 function highlights(data)
 {
@@ -265,7 +288,6 @@ function highlights(data)
 function attivazione(data)
 {
     var r="";
-    var primo=1;
     r += "<div class='container'>\n<div class=\"col\">";
     r += '<div class="thumbnail">\n';
     r += '<div class="caption">\n';

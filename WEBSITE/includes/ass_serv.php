@@ -30,7 +30,7 @@ if(isset($_GET['idcategoria'])) {
         foreach($as as $key => $ass)
         {
             $thearr['serv'][$sub]['cols'][$key]['title'] = $ass['titolo'];
-            //$thearr[$sub]['cols'][$key]['descrizione'] = $ass['descrizione'];
+            $thearr['serv'][$sub]['cols'][$key]['id'] = $ass['id'];
         }
     }
 

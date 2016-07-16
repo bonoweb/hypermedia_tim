@@ -127,6 +127,15 @@ function get_attivazione(){
     return $res;
 }
 
+function get_guida(){
+    global $DBH;
+    $query="SELECT descrizione FROM assistenza_servizi_esempio WHERE id=51";
+    $STH=$DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
+
 
 function get_products_by_category($idcategory){
     global $DBH;

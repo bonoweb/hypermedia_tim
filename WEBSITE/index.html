@@ -383,6 +383,20 @@
             window.location.hash = "attivazione linea di casa";
             p.preventDefault();
         });
+        
+        $("body").on( "click", ".guid", function(p){
+            $.ajax({
+                type:'GET',
+                dataType:'json',
+                url:"http://localhost:8888/hypermedia_tim/WEBSITE/includes/guida.php",
+                crossDomain: true,
+            }).success(function(result){
+                var ret = guida(result);
+                $("#main").html(ret);
+            });
+            window.location.hash = "guida all'acquisto online";
+            p.preventDefault();
+        });
 
         $("#descr_gruppo").click(function(e){
             $.ajax({
