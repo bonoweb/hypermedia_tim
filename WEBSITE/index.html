@@ -149,19 +149,19 @@
 
 
 
-        $("#btnProdotti").click(function(e){
-            $.ajax({
-                type:'GET',
-                dataType: 'json',
-                url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/prodotti.php",
-                crossDomain: true,
-            }).success(function(result){
-                var prod = products_category(result);
-                $("#main").html(prod);
+        $( "body" ).on( "click", "#btnProdotti",function(e){
+                $.ajax({
+                    type:'GET',
+                    dataType: 'json',
+                    url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/prodotti.php",
+                    crossDomain: true,
+                }).success(function(result){
+                    var prod = products_category(result);
+                    $("#main").html(prod);
+                });
+                window.location.hash = "prodotti";
+                e.preventDefault();
             });
-            window.location.hash = "prodotti";
-            e.preventDefault();
-        });
 
         $("#btnSmartLife").click(function(e){
             $.ajax({
@@ -232,7 +232,7 @@
                 url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/promozioni.php",
                 crossDomain: true,
             }).success(function(result){
-                var prod = vprod(result, "Promozioni");
+                var prod = vprod(result, "Promozioni","");
                 $("#main").html(prod);
             });
             window.location.hash = "promozioni";
@@ -331,10 +331,10 @@
                 url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/prodotti.php?idcategoria="+idcategoria,
                 crossDomain: true,
             }).success(function(result){
-                var prod = vprod(result, "Prodotti");
+                var prod = vprod(result, "Prodotti", nomecategoria,"btnProdotti");
                 $("#main").html(prod);
             });
-            window.location.hash = +nomecategoria;
+            window.location.hash = nomecategoria;
             p.preventDefault();
         });
         

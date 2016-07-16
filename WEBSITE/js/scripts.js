@@ -304,14 +304,22 @@ function attivazione(data)
 
 
 /*products*/
-function vprod(data, from)
+function vprod(data, from, cat, theid)
 {
+    if(theid=='undefined')
+        theid='';
+
     var r="";
     r+="<div class='container'>";
     r+='<ol class="breadcrumb">';
-    r+='<li><a href="#">'+from+'</a></li>\n';
-    r+='<li><a href="#">Library</a></li>\n';
-    r+='<li class="active">Data</li>\n';
+    r+='<li';
+    if(cat=="")
+        r+= ' class="active" ';
+    else
+        r+= ' id="'+ theid+'" ';
+    r+= '><a href="#' + from + '">' +from+' </a></li>\n';
+    if(cat!="")
+        r+='<li class="active">'+cat+'</li>\n';
     r+='</ol>';
 
 
