@@ -24,7 +24,7 @@ catch(PDOException $e) {
 
 function get_nuovi_prod() {
     global $DBH;
-    $query="SELECT nome, immagine FROM prodotti WHERE promozione =1";
+    $query="SELECT id, nome, immagine FROM prodotti WHERE promozione =1";
     $STH=$DBH->prepare($query);
     $STH->execute();
     $res = $STH->fetchAll();
