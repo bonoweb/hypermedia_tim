@@ -335,7 +335,7 @@
                 url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/prodotti.php?idcategoria="+idcategoria,
                 crossDomain: true,
             }).success(function(result){
-                var prod = vprod(result, "Prodotti", nomecategoria,"btnProdotti");
+                var prod = vprod(result, "Prodotti", nomecategoria,"btnProdotti",idcategoria);
                 $("#main").html(prod);
             });
             window.location.hash = nomecategoria;
@@ -344,6 +344,10 @@
         
         $( "body" ).on( "click", ".prod_det",function(p){
             id = $(this).attr("id").replace('prod','');
+            nomeprodotto = $(this).data("prod-nome");
+            midname = $(this).data("mid-name");
+            midid = "prod"+$(this).data("mid-id");
+            $coso = $(this);
             //alert(idcategoria);
             $.ajax({
                 type:'GET',
@@ -351,9 +355,14 @@
                 url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/prodotto.php?id="+id,
                 crossDomain: true,
             }).success(function(result){
-                var prod = prodotto(result);
+                fromid = $coso.attr("data-from-id");
+                from = $coso.attr("data-from-name");
+
+                var prod = prodotto(result,from, nomeprodotto, fromid,id, midid,midname);
                 $("#main").html(prod);
             });
+            window.location.hash = nomeprodotto;
+            p.preventDefault();
         });
         
         

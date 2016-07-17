@@ -246,7 +246,7 @@ function attivazione(data)
 
 
 /*products*/
-function vprod(data, from, cat, theid)
+function vprod(data, from, cat, theid,catid)
 {
     if(theid=='undefined')
         theid='';
@@ -276,7 +276,9 @@ function vprod(data, from, cat, theid)
         r+='<h3>'+d['nome']+'</h3>\n';
         r+='<img style="max-height:200px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
         r+='<h4 style="color:red;">'+d['prezzo']+'</h4>';
-        r+='<div><a href="#" class="btn btn-primary prod_det" role="button" id="prod'+d['id']+'">Dettagli</a>' +
+        r+='<div><a href="#" class="btn btn-primary prod_det" ' +
+            'data-mid-name="'+cat+'" data-mid-id="'+catid+'" '+
+            'data-from-id="'+theid+'" data-prod-nome="'+d['nome']+'" data-from-name="'+from+'" role="button" id="prod'+d['id']+'">Dettagli</a>' +
             ' <a href="#" class="btn btn-danger" role="button">Acquista</a></div>';
         r+='</div>';
         r+='</div>';
@@ -500,29 +502,56 @@ function investitori(data)
     return r;
 }
 
-function prodotto(data)
+function prodotto(data, from, nomeprodotto, fromid, prodid, midid, midname)
 {
     var r="";
-    r+="<div class='container'>\n<div class=\"row\">";
+    r+="<div class='container'>\n";
+
+    /*breadcrumbs*/
+    r+='<ol class="breadcrumb">';
+    r+='<li';
+    r+= ' id="'+ fromid+'" ';
+    r+= '><a href="#' + from + '">' +from+' </a></li>\n';
+    r+='<li';
+    r+= ' id="'+ midid+'" ';
+    r+= '><a class="prod" data-prod-title="'+midname+'" id="'+midid+'" href="#' + midname + '">' +midname+' </a></li>\n';
+    if(prodid!="")
+        r+='<li class="active">'+nomeprodotto+'</li>\n';
+    r+='</ol>';
+
+
+    r+="<div class=\"row\">";
     //r+="<pre>"+data[0]+"</pre>";
     data.forEach(function(d){
         r+='<div class="col-md-6">';
         r+='<div class="thumbnail">\n';
         r+='<div class="caption">\n';
-        r+='<div class="row">';
+        r+='<div class="row" style="padding:1%;">';
+
         if(d['immagine4']==null && d['immagine2']==null && d['immagine3']==null){
+            r+='<div class="col-md-12">';
             r+='<img style="max-width:540px; min-width:540px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+            r+='</div>';
         }
-        else
-            r+='<img style="max-width:270px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        else {
+            r+='<div class="col-md-6">';
+            r += '<img class="img-responsive" src="img/' + d['immagine'] + '" alt="Immagine' + d['immagine'] + '">';
+            r+='</div>';
+        }
         if(d['immagine2']!=null){
-            r+='<img style="max-width:270px;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'">';
+            r+='<div class="col-md-6">';
+            r+='<img class="img-responsive"  src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'">';
+            r+='</div>';
         }
         if(d['immagine3']!=null){
-            r+='<img style="max-width:270px;" src="img/'+d['immagine3']+'" alt="Immagine'+d['immagine3']+'">';
+            r+='<div class="col-md-6">';
+            r+='<img class="img-responsive" src="img/'+d['immagine3']+'" alt="Immagine'+d['immagine3']+'">';
+            r+='</div>';
         }
         if(d['immagine4']!=null){
-            r+='<img style="max-width:270px;" src="img/'+d['immagine4']+'" alt="Immagine'+d['immagine4']+'">';
+            r+='<div class="col-md-6">';
+            r+='<img class="img-responsive"  src="img/'+d['immagine4']+'" alt="Immagine'+d['immagine4']+'">';
+            r+='</div>';
         }
         r+='</div>';
         r+='</div>';
@@ -532,8 +561,8 @@ function prodotto(data)
         r+='<h1 style="color:red; font-weight:bold; text-align:center;">'+d['nome']+'</h1>\n';
         r+='<h6><br></h6>';
         r+= '<ul class="nav nav-tabs">';
-        r+= '<li id="btn_prod_pres" role="presentation" class="active"><a href="#">Presentazione</a></li>';
-        r+= '<li id="btn_prod_car" role="presentation"><a href="#">Caratteristiche</a></li>';
+        r+= '<li id="btn_prod_pres" role="presentation" class="active"><a href="#btn_prod_pres">Presentazione</a></li>';
+        r+= '<li id="btn_prod_car" role="presentation"><a href="#btn_prod_car">Caratteristiche</a></li>';
         r+= '</ul>';
         r+= '<div class="col-md-1"></div>';
         
@@ -559,27 +588,42 @@ function prodotto(data)
             r+='<a style="background-color:'+d['colore4']+';" href="#" class="btn btn-circle-sm" role="button"></a>';
         }
         r+='</h4></div>\n';
-        r+='<h2 style="color:red; text-align:center; font-weight:bold;">'+ d['prezzo'] +'</h2>\n';
+
+        r+='<div class="text-center">';
+
+        r+='<h2 style="color:red; font-weight:bold;">'+ d['prezzo'] +'</h2>\n';
         if(d['prezzo_mese']!=0){
-            r+='<div style="text-align:center;">oppure</div>';
-            r+='<h2 style="color:red; text-align:center; font-weight:bold;">' + d['prezzo_mese'] + '</h2>\n';
-            r+='<div style="text-align:center;">in 36 rate senza interessi se hai una linea di casa TIM<br><br></div>\n';
+            r+='<p>oppure</p>';
+            r+='<h2 style="color:red; font-weight:bold;">' + d['prezzo_mese'] + '</h2>\n';
+            r+='<p>in 36 rate senza interessi se hai una linea di casa TIM</p><br>\n';
         }
         else {
             r += '<br>';
         }
-        r+='<div class="text-center"><a href="#" class="btn-lg btn-danger" role="button">Acquista</a><br><br><br></div>';
-        r+='<div class="text-center"><a style="margin-right:30px;" href="#" class="btn-lg btn-primary" role="button">Servizio di Assistenza</a>';
-        r+='<a href="#" class="btn-lg btn-success" role="button">Servizio SmartLife</a></div>';
+
+        r+= '</div>'; //closes the text-center
         r+= '</div>';
         
         r+= '<div id="prod_car" style="display:none;" class="col-md-11">';
         r+= '<br>'+d['caratteristiche_tecniche']+'<br>';
-        r+='<div class="text-center"><a href="#" class="btn-lg btn-danger" role="button">Acquista</a><br><br><br></div>';
-        r+='<div class="text-center"><a style="margin-right:30px;" href="#" class="btn-lg btn-primary" role="button">Servizio di Assistenza</a>';
-        r+='<a href="#" class="btn-lg btn-success" role="button">Servizio SmartLife</a></div>';
+        //r+='<div class="text-center"><a href="#" class="btn-lg btn-danger" role="button">Acquista</a><br></div>';
+        //r+='<div class="text-center"><a style="margin-right:30px;" href="#" class="btn-lg btn-primary" role="button">Servizio di Assistenza</a>';
+        //r+='<a href="#" class="btn-lg btn-success" role="button">Servizio SmartLife</a></div>';
+        r+= '</div>';
+
+        r+='<div class="text-center">';
+        r+= '<div class="row">';
+        r+= '<div class="col-md-12" style="min-height:50px;"><a href="#" class="btn-lg btn-danger" role="button">Acquista</a><br></div>';
+        r+= '</div>';
+
+        r+= '<div class="row">';
+        r+= '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-primary" role="button">Servizio di Assistenza</a></div>' +
+            '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-success" role="button">Servizio SmartLife</a></div>';
         r+= '</div>';
         r+= '</div>';
+
+
+
     });
     r+="</div></div><br><br>";
     return r;
