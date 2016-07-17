@@ -686,13 +686,13 @@ function sl_esempio(data){
             r+='<div id="sl_desc"><h4>'+d['descrizione']+'</h4></div><br>\n';
             r+='<div id="sl_att" style="display:none;"><h4>'+d['attivazione']+'</h4><br><br><br></div><br>\n';
             r+='<div id="acquista" class="text-center" style="display:none;"><a href="#" class="btn-lg btn-danger" role="button">Acquista</a><br><br><br></div>';
-            r+='<div id="prodotto" class="text-center" style="display:none;"><a href="#" class="btn-lg btn-success" role="button">Prodotto associato</a><br><br><br></div>';
+            r+='<div id="prodotto" class="text-center" style="display:none;"><a href="#" class="btn-lg btn-success prod_det" role="button" id="prod'+d['prod_ass']+'">Prodotto associato</a><br><br><br></div>';
             r+='</div>';
             r+= '<div class="col-md-6">';
             r+='<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:10%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
             r+='</div>';
         }
-        else{
+        else {
             r+='<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
             r+= '<ul class="nav nav-tabs">';
             r+= '<li id="btn_sl_desc" role="presentation" class="active"><a href="#sl_desc">Descrizione</a></li>';
@@ -703,8 +703,12 @@ function sl_esempio(data){
             r+= '<div class="col-md-10">';
             r+='<div id="sl_desc"><h4>'+d['descrizione']+'</h4></div><br>\n';
             r+='<div id="sl_att" style="display:none;"><h4>'+d['attivazione']+'</h4><br><br><br></div><br>\n';
-            r+='<div id="acquista" class="text-center" style="display:none;"><a href="#"  class="btn-lg btn-danger" role="button">Acquista</a>';
-            r+='<a id="prodotto" style="display:none; margin-left:30px;"" href="#" class="btn-lg btn-success" role="button">Prodotto associato</a><br><br><br></div>';
+            r+="<div class=\"row\">";
+            r+='<div class="col-md-3 col-md-offset-3">';
+            r+='<div id="acquista" class="text-center" style="display:none;"><a href="#"  class="btn-lg btn-danger" role="button">Acquista</a></div>';
+            r+='</div>';
+            r+= '<div class="col-md-3">';
+            r+='<div id="prodotto" style="display:none; margin-left:30px;"><a href="#" class="btn-lg btn-success prod_det" role="button" id="prod'+d['prod_ass']+'" >Prodotto associato</a><br><br><br></div>';
             r+='</div>';
         }
     });
