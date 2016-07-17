@@ -61,21 +61,6 @@ function get_ass_serv_categories()
     return $res;
 }
 
-/*
-SELECT assistenza_categorie.titolo as titolo_categoria,
-assistenza_sottocategorie.titolo as titolo_sottocategoria,
-assistenza_sottocategorie.id as id_sottocategoria,
-assistenza_servizi_esempio.titolo as tit,
-assistenza_servizi_esempio.id as tid
-FROM assistenza_categorie
-join assistenza_sottocategorie on assistenza_categorie.id=assistenza_sottocategorie.id_categoria
-join assistenza_servizi_esempio on assistenza_sottocategorie.id = assistenza_servizi_esempio.id_sottocategoria
-where assistenza_categorie.id = 2
-
-*/
-
-
-
 /**
  * @param $idcategory
  * @return title of the category chosen

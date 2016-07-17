@@ -8,9 +8,9 @@ function home(data) {
     r+='<div class="caption">\n';
     r+='<div class="row">';
     data.forEach(function (d) {
-        r+= '<div class="col-md-3">';
+        r+= '<div style="cursor:pointer;" class="col-md-3 prod_det" id="prod'+d['id']+'">';
         r += '<img style="max-height:200px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">'
-        r += '<h5>' + d['nome'] + '</h5>\n';
+        r += '<h5><a>' + d['nome'] + '</a></h5>\n';
         r+= '</div>';
      });
     r+= '</div>';
@@ -38,7 +38,7 @@ function home(data) {
     r+='<div class="caption">\n';
     r += '<h1 style = "color:red; font-weight:bold; font-size:2em; text-align:center;">TIMtag</h1>\n';
     r += '<h4 class="text-center">Traccia e rintraccia tutto quello che ami!<br>Rilevatore GPS con un anno di servizio incluso.</h4><br>\n';
-    r+='<div class="text-center"><a href="#" class="btn-lg btn-primary timtag_home" role="button">Scopri di più</a></div><br>';
+    r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det8">Scopri di più</a></div><br>';
     r+= '</div>';
     r+= '</div>';
     r+= '</div>';
@@ -362,19 +362,20 @@ function innovazione(data)
 {
     var r="";
     var count=1;
+    r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + 'VIVERE L\'INNOVAZIONE' + '</h1><br>\n';
     r+="<div class='container'>\n<div class=\"col\">";
     data.forEach(function(d){
         r+='<div class="thumbnail">\n';
         r+='<div class="caption">\n';
         r+='<div>';
         if(count%2!=0){
-            r+='<div style="margin:6px; padding:5px; background-image: url(\'img/'+ d.immagine  +'\'); background-repeat:no-repeat; background-size:cover;">';
+            r+='<div style="margin:6px; padding:5px; min-height:380px; background-image: url(\'img/'+ d.immagine  +'\'); background-repeat:no-repeat; background-size:cover;">';
             r+='<div class="row"><div class="col-md-7"><h2 style="color:white;">'+ d['titolo'] + '</h2></div></div>\n';
             r+='<div class="row"><div class="col-md-6"><h4 style="color:white;">'+d['testo']+'</h4></div></div>\n';
             r+='</div>';
         }
         else{
-            r+='<div style="margin:6px; padding:5px; background-image: url(\'img/'+ d.immagine  +'\'); background-repeat:no-repeat; background-size:cover;">';
+            r+='<div style="margin:6px; padding:5px; min-height:380px; background-image: url(\'img/'+ d.immagine  +'\'); background-repeat:no-repeat; background-size:cover;">';
             r+='<div class="row"><div class="col-md-6 col-md-offset-6"><h2 style="color:white;">'+d['titolo']+ '</h2></div></div>\n';
             r+='<div class="row"><div class="col-md-6 col-md-offset-6"><h4 style="color:white;">'+d['testo']+'</h4></div></div>\n';
             r+='</div>';
