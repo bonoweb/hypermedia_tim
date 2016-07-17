@@ -154,8 +154,11 @@ function ass_servizi(data, from, cat, theid)
         r += '<h2 style = "color:red;  text-align:center;">' + d['title'] + '</h2>\n';
         d['cols'].forEach(function(dd){
             r += "<div>";
-            if(dd['id']==51){
-                 r += '<h4 style = "color:blue;  text-align:center;"><a href="#" class="guid cliccabile">' + dd['title'] + ' &raquo;' + '</a>'+ '</h4>\n';
+            if(dd['id']==1){
+                 r += '<h4 style = "color:blue; text-align:center;"><a href="#" class="att cliccabile">' + dd['title'] + ' &raquo;' + '</a>'+ '</h4>\n';
+            }
+            else if(dd['id']==51){
+                 r += '<h4 style = "color:blue; text-align:center;"><a href="#" class="guid cliccabile">' + dd['title'] + ' &raquo;' + '</a>'+ '</h4>\n';
             }
             else{
                 r += '<h4 style = "color:blue;  text-align:center;">' + dd['title'] + ' &raquo;' + '</h4>\n';
