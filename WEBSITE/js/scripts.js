@@ -180,12 +180,24 @@ function guida(data)
     r += "<div class='container'>\n<div class=\"col\">";
     r += '<div class="thumbnail">\n';
     r += '<div class="caption">\n';
-    data.forEach(function(d){
+    data['desc'].forEach(function(d){
         r += '<h3 style = "color:red; text-align:left; font-size:2.5em;">' + 'GUIDA ALL\'ACQUISTO ONLINE' + '</h3>\n';
         r+='<h4>'+d['descrizione']+'</h4>\n';
     });
     r+='</div>';
     r+='</div>';
+    r += '<h3 style = "color:red; text-align:left; font-size:2.5em;">' + 'PRODOTTI ASSOCIATI' + '</h3><br>\n';
+    data['prod'].forEach(function(d){
+        r+='<div class="col-sm-6 col-md-4">\n';
+        r+='<div class="thumbnail text-center" style="min-height:400px;">\n';
+        r+='<div class="caption">\n';
+        r+='<img src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">';
+        r+='<h3>'+d['nome']+'</h3>\n';
+        r+='</div>';
+        r+='</div>';
+        r+='</div>';
+    });
+ 
     r+="</div></div>";
     
     return r;
@@ -419,7 +431,7 @@ function testimonials(data)
         r+='</div>';
         r+='</div>';
     });
-    r+="</div></div>";
+    r+="</div></div><br>";
     
     return r;
 }
@@ -435,7 +447,7 @@ function progetti(data)
         r+='<div class="row">';
         r+='<div class="col-md-6">';
         if(count%2!=0){
-            r+='<img style="max-height:320px ; "src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">' ;
+            r+='<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;"src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">' ;
             r+='</div>';
             r+='<div class="col-md-6">';
             r+='<h2 style="color:red;">'+d['titolo']+ '<br>' + '</h2>\n';
@@ -450,7 +462,7 @@ function progetti(data)
             r+='<h4>'+d['testo']+'</h4>\n';
             r+='</div>';
             r+='<div class="col-md-6">';
-            r+='<img style="max-height:320px; "src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">' ;
+            r+='<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">' ;
             r+='</div>';
             r+='</div>';
             r+='</div>';
@@ -474,9 +486,9 @@ function descr_gruppo(data)
         r += '</div>';
         r += '<div class="col-md-1"></div>';
         r += '<div class="col-md-5">';
-        r += '<img style="max-height:250px;" ; src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        r += '<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" ; src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
         r += '<div class="row-md-1"><br></div>';
-        r += '<img style="max-height:250px;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'">';
+        r += '<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'">';
         r += '<div class="row-md-1"><br></div>';
         r += '</div>';       
     });
@@ -532,13 +544,13 @@ function business_market(data)
         r += '</div>';
         r += '<div class="col-md-1"></div>';
         r += '<div class="col-md-5">';
-        r += '<img style="max-height:280px;" ; src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        r += '<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" ; src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
         r += '<div class="row-md-1"><br><br></div>';
-        r += '<img style="max-height:330px;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'">';
+        r += '<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'">';
         r += '<div class="row-md-1"><br></div>';
         r += '</div>';       
     });
-    r+="</div></div>";
+    r+="</div></div><br>";
     return r;
 }
 function investitori(data)
@@ -710,15 +722,17 @@ function sl_esempio(data){
             r+= '<li id="btn_sl_att" role="presentation"><a href="#sl_att">Attivazione e Regole</a></li>';
             r+= '<li id="btn_sl_faq" role="presentation"><a href="#">FAQ</a></li>';
             r+= '</ul>';
-            r+='<div id="sl_desc"><h4>'+d['descrizione']+'</h4></div>\n';
-            r+='<div id="sl_att" style="display:none;"><h4>'+d['attivazione']+'</h4></div>\n';
+            r+='<div id="sl_desc"><h4>'+d['descrizione']+'</h4></div><br>\n';
+            r+='<div id="sl_att" style="display:none;"><h4>'+d['attivazione']+'</h4><br><br><br></div><br>\n';
+            r+='<div id="acquista" class="text-center" style="display:none;"><a href="#" class="btn-lg btn-danger" role="button">Acquista</a><br><br><br></div>';
+            r+='<div id="prodotto" class="text-center" style="display:none;"><a href="#" class="btn-lg btn-success" role="button">Prodotto associato</a><br><br><br></div>';
             r+='</div>';
             r+= '<div class="col-md-6">';
-            r+='<img style="min-width:700px; padding:20px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+            r+='<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:10%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
             r+='</div>';
         }
         else{
-            r+='<img style="min-width:1250px; padding:20px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+            r+='<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
             r+= '<ul class="nav nav-tabs">';
             r+= '<li id="btn_sl_desc" role="presentation" class="active"><a href="#sl_desc">Descrizione</a></li>';
             r+= '<li id="btn_sl_att" role="presentation"><a href="#sl_att"">Attivazione e Regole</a></li>';
@@ -726,8 +740,10 @@ function sl_esempio(data){
             r+= '</ul>';
             r+= '<div class="col-md-1"></div>';
             r+= '<div class="col-md-10">';
-            r+='<div id="sl_desc"><h4>'+d['descrizione']+'</h4></div>\n';
-            r+='<div id="sl_att" style="display:none;"><h4>'+d['attivazione']+'</h4></div>\n';
+            r+='<div id="sl_desc"><h4>'+d['descrizione']+'</h4></div><br>\n';
+            r+='<div id="sl_att" style="display:none;"><h4>'+d['attivazione']+'</h4><br><br><br></div><br>\n';
+            r+='<div id="acquista" class="text-center" style="display:none;"><a href="#"  class="btn-lg btn-danger" role="button">Acquista</a>';
+            r+='<a id="prodotto" style="display:none; margin-left:30px;"" href="#" class="btn-lg btn-success" role="button">Prodotto associato</a><br><br><br></div>';
             r+='</div>';
         }
     });

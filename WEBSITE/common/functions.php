@@ -121,6 +121,14 @@ function get_guida(){
     return $res;
 }
 
+function get_guida_prod(){
+    global $DBH;
+    $query = "SELECT id, nome, immagine FROM prodotti WHERE assistenza=1";
+    $STH = $DBH->prepare($query);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res;
+}
 
 function get_products_by_category($idcategory){
     global $DBH;

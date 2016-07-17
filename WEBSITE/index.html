@@ -213,6 +213,8 @@
         
          $( "body" ).on( "click", "#btn_sl_desc",function(p){
             $("#sl_att").hide();
+            $("#acquista").hide();
+            $("#prodotto").hide();
             $("#btn_sl_att").removeClass("active");
             $("#sl_desc").show();
             $("#btn_sl_desc").addClass("active");
@@ -222,6 +224,8 @@
             $("#sl_desc").hide();
             $("#btn_sl_desc").removeClass("active");
             $("#sl_att").show();
+            $("#acquista").show();
+            $("#prodotto").show();
             $("#btn_sl_att").addClass("active");
         });
         
