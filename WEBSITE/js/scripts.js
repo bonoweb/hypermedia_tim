@@ -354,7 +354,20 @@ function vprod(data, from, cat, theid)
         r+='</div>';
     });
     r+="</div></div>";
-
+    r+='<hr class="rigabella"></hr>';
+    
+    r+='<nav class="pull-right">';
+    r+='<ul class="pagination pull-right">';
+    r+='<li><a href="#">1</a></li>';
+    r+='<li><a href="#">2</a></li>';
+    r+='<li><a href="#">3</a></li>';
+    r+='<li>';
+    r+='<a href="#" aria-label="Next">';
+    r+='<span aria-hidden="true">&raquo;</span>';
+    r+='</a>';
+    r+='</li>';
+    r+='</ul>';
+    r+='</nav>';
     return r;
 }
 
@@ -400,7 +413,7 @@ function testimonials(data)
         r+='<div class="thumbnail">\n';
         r+='<img style="max-height:280px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
         r+='<div class="caption">\n';
-        r+='<h2>'+d['testo']+'</h2>\n';
+        r+='<h2>&ldquo;'+d['testo']+'&rdquo;</h2>\n';
         r+='<h5>'+d['titolo']+'</h5>\n';
         r+='</div>';
         r+='</div>';
@@ -425,7 +438,7 @@ function progetti(data)
             r+='<img style="max-height:320px ; "src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">' ;
             r+='</div>';
             r+='<div class="col-md-6">';
-            r+='<h2 style="color:red;">'+d['titolo']+ '<br><br>' + '</h2>\n';
+            r+='<h2 style="color:red;">'+d['titolo']+ '<br>' + '</h2>\n';
             r+='<h4>'+d['testo']+'</h4>\n';
             r+='</div>';
             r+='</div>';
@@ -433,7 +446,7 @@ function progetti(data)
             r+='</div>';
         }
         else{
-            r+='<h2 style="color:red;">'+d['titolo']+ '<br><br>' + '</h2>\n';
+            r+='<h2 style="color:red;">'+d['titolo']+ '<br>' + '</h2>\n';
             r+='<h4>'+d['testo']+'</h4>\n';
             r+='</div>';
             r+='<div class="col-md-6">';
