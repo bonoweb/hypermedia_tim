@@ -257,38 +257,49 @@ function vprod(data, from, cat, theid,catid)
     var r="";
 
     r+="<div class='container'>";
+    if(cat!='') {
+        /*breadcrumbs*/
+        /*
+        r += '<ol class="breadcrumb">';
+        r += '<li';
+        if (cat == "")
+            r += ' class="active" ';
+        else
+            r += ' id="' + theid + '" ';
+        r += '><a href="#' + from + '">' + from + ' </a></li>\n';
+        if (cat != "")
+            r += '<li class="active">' + cat + '</li>\n';
+        r += '</ol>';
+        */
+        r += '<ol class="breadcrumb">';
+        r += '<li';
+        if (cat == "")
+            r += ' class="active" ';
+        else
+            r += ' id="btnProdotti" ';
+        r += '><a href="#Prodotti">Prodotti</a></li>\n';
+        if (cat != "")
+            r += '<li class="active">' + data['nome_categoria'] + '</li>\n';
+        r += '</ol>';
+    }
 
-    /*breadcrumbs*/
-    r+='<ol class="breadcrumb">';
-    r+='<li';
-    if(cat=="")
-        r+= ' class="active" ';
-    else
-        r+= ' id="'+ theid+'" ';
-    r+= '><a href="#' + from + '">' +from+' </a></li>\n';
-    if(cat!="")
-        r+='<li class="active">'+cat+'</li>\n';
-    r+='</ol>';
-
-
+    //'data-mid-name="'+cat+'" data-mid-id="'+catid+'" + 'data-from-id="'+theid+'" " data-from-name="'+from+'"
     r+="\n<div class=\"row\">";
-    data.forEach(function(d){
+    data[0].forEach(function(d){
         r+='<div class="col-sm-6 col-md-4">\n';
         r+='<div class="thumbnail text-center" style="min-height:400px;">\n';
         r+='<div class="caption">\n';
         r+='<h3>'+d['nome']+'</h3>\n';
         r+='<img style="max-height:200px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
         r+='<h4 style="color:red;">'+d['prezzo']+'</h4>';
-        r+='<div><a href="#" class="btn btn-primary prod_det" ' +
-            'data-mid-name="'+cat+'" data-mid-id="'+catid+'" '+
-            'data-from-id="'+theid+'" data-prod-nome="'+d['nome']+'" data-from-name="'+from+'" role="button" id="prod'+d['id']+'">Dettagli</a>' +
+        r+='<div><a href="#" class="btn btn-primary prod_det" data-prod-nome="'+d['nome']+'" role="button" id="prod'+d['id']+'">Dettagli</a>' +
             ' <a href="#" class="btn btn-danger" role="button">Acquista</a></div>';
         r+='</div>';
         r+='</div>';
         r+='</div>';
     });
     r+="</div></div>";
-    r+='<hr class="rigabella"></hr>';
+    r+='<hr class="rigabella" />';
     
     r+='<nav class="pull-right">';
     r+='<ul class="pagination pull-right">';
@@ -513,8 +524,8 @@ function prodotto(data, from, nomeprodotto, fromid, prodid, midid, midname)
     /*breadcrumbs*/
     r+='<ol class="breadcrumb">';
     r+='<li';
-    r+= ' id="'+ fromid+'" ';
-    r+= '><a href="#' + from + '">' +from+' </a></li>\n';
+    r+= ' id="btnProdotti" ';
+    r+= '><a href="#Prodotti">Prodotti</a></li>\n';
     r+='<li';
     r+= ' id="'+ midid+'" ';
     r+= '><a class="prod" data-prod-title="'+midname+'" id="'+midid+'" href="#' + midname + '">' +midname+' </a></li>\n';

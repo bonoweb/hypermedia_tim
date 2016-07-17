@@ -136,12 +136,24 @@ function get_products_by_category($idcategory){
     if($idcategory==5)
     {
         //prodotti in outlet
-        $query = "SELECT * FROM prodotti WHERE outlet = 1";
+        //$query = "SELECT * FROM prodotti LEFT JOIN prodotti_categorie ON prodotti_categorie.id = prodotti.id_categoria WHERE outlet = 1";
+        $query = "SELECT * FROM 
+      (SELECT * FROM prodotti) t1 
+      INNER JOIN 
+      (SELECT id as id_della_categoria , titolo FROM prodotti_categorie) t2 
+      ON t1.id_categoria = t2.id_della_categoria
+      WHERE outlet = 1";
+
         $STH = $DBH->prepare($query);
     }
     else
     {
-        $query = "SELECT * FROM prodotti WHERE id_categoria= :idcategory";
+        $query = "SELECT * FROM 
+      (SELECT * FROM prodotti) t1 
+      INNER JOIN 
+      (SELECT id as id_della_categoria , titolo FROM prodotti_categorie) t2 
+      ON t1.id_categoria = t2.id_della_categoria
+       WHERE id_categoria= :idcategory";
         $STH = $DBH->prepare($query);
         $STH->bindParam(":idcategory", $idcategory);
     }
@@ -190,9 +202,9 @@ function get_promotions(){
     //prodotti in promozione + sl services in promozione
     //nome, immagine, e prezzo
 
-    $query = "SELECT nome, immagine, prezzo FROM prodotti WHERE promozione = 1
+    $query = "SELECT id, nome, immagine, prezzo FROM prodotti WHERE promozione = 1
               UNION 
-              SELECT titolo as nome, immagine, prezzo FROM sl_servizi WHERE promozione =1";
+              SELECT id, titolo as nome, immagine, prezzo FROM sl_servizi WHERE promozione =1";
     $STH = $DBH->prepare($query);
     $STH->execute();
     $res = $STH->fetchAll();
@@ -261,4 +273,15 @@ function get_product($id){
     $STH->execute();
     $res = $STH->fetchAll();
     return $res;
+}
+
+function get_prod_category_name($idcat)
+{
+    global $DBH;
+    $query="SELECT titolo FROM prodotti_categorie WHERE id= :id";
+    $STH=$DBH->prepare($query);
+    $STH->bindParam(':id',$idcat);
+    $STH->execute();
+    $res = $STH->fetchAll();
+    return $res[0]['titolo'];
 }

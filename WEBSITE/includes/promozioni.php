@@ -4,4 +4,4 @@ ini_set('display_errors', 1);
 
 include_once('../common/functions.php');
 header('Access-Control-Allow-Origin: *');
-echo json_encode(get_promotions());
+echo json_encode(['nome_categoria'=> "Promozioni" ,get_promotions()]);

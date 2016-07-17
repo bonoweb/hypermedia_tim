@@ -6,6 +6,8 @@ include_once('../common/functions.php');
 header('Access-Control-Allow-Origin: *');
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
-    echo json_encode(get_product($id));
+    $prodotto = get_product($id);
+    $prodotto[0]['nome_categoria']= get_prod_category_name($prodotto[0]['id_categoria']);
+    echo json_encode($prodotto);
 }
 

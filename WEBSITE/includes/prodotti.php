@@ -9,5 +9,7 @@ if(!isset($_GET['idcategoria'])) {
 }
 else{
     $idcategory=$_GET['idcategoria'];
-    echo json_encode(get_products_by_category($idcategory));
+    $prods = get_products_by_category($idcategory);
+    $nomecategoria =get_prod_category_name($idcategory);
+    echo json_encode(['nome_categoria'=> $nomecategoria ,$prods]);
 }

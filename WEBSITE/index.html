@@ -236,7 +236,7 @@
                 url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/promozioni.php",
                 crossDomain: true,
             }).success(function(result){
-                var prod = vprod(result, "Promozioni","");
+                var prod = vprod(result, "Promozioni","","");
                 $("#main").html(prod);
             });
             window.location.hash = "promozioni";
@@ -347,7 +347,7 @@
             nomeprodotto = $(this).data("prod-nome");
             midname = $(this).data("mid-name");
             midid = "prod"+$(this).data("mid-id");
-            $coso = $(this);
+            //$coso = $(this);
             //alert(idcategoria);
             $.ajax({
                 type:'GET',
@@ -355,8 +355,10 @@
                 url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/prodotto.php?id="+id,
                 crossDomain: true,
             }).success(function(result){
-                fromid = $coso.attr("data-from-id");
-                from = $coso.attr("data-from-name");
+                fromid = result[0].idcategoria;//$coso.attr("data-from-id");
+                from = result[0].titolo; //$coso.attr("data-from-name");
+                midid=result[0].id_categoria;
+                midname=result[0].nome_categoria;
 
                 var prod = prodotto(result,from, nomeprodotto, fromid,id, midid,midname);
                 $("#main").html(prod);
