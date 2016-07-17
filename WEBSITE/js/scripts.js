@@ -9,7 +9,7 @@ function home(data) {
     r+='<div class="row">';
     data.forEach(function (d) {
         r+= '<div style="cursor:pointer;" class="col-md-3 prod_det" id="prod'+d['id']+'">';
-        r += '<img style="max-height:200px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">'
+        r += '<img style="max-height:200px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
         r += '<h5><a class="cliccabile">' + d['nome'] + '</a></h5>\n';
         r+= '</div>';
      });
@@ -193,9 +193,9 @@ function guida(data)
     data['prod'].forEach(function(d){
         r+='<div class="col-sm-6 col-md-4">\n';
         r+='<div class="thumbnail text-center" style="min-height:400px;">\n';
-        r+='<div class="caption">\n';
-        r+='<img src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">';
-        r+='<h3>'+d['nome']+'</h3>\n';
+        r+='<div style="cursor:pointer;" class="caption prod_det" id="prod'+d['id']+'">';
+        r += '<img src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'"class="img-responsive">';
+        r += '<h5><a class="cliccabile">' + d['nome'] + '</a></h5>\n';
         r+='</div>';
         r+='</div>';
         r+='</div>';
@@ -629,10 +629,16 @@ function prodotto(data, from, nomeprodotto, fromid, prodid, midid, midname)
         r+= '<div class="row">';
         r+= '<div class="col-md-12" style="min-height:50px;"><a href="#" class="btn-lg btn-danger" role="button">Acquista</a><br></div>';
         r+= '</div>';
-
-        r+= '<div class="row">';
-        r+= '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-primary guid cliccabile" role="button">Servizio di Assistenza</a></div>' +
-            '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-success" role="button">Servizio SmartLife</a></div>';
+        if(d['smartlife']!=0){
+            r+= '<div class="row">';
+            r+= '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-primary guid cliccabile" role="button">Servizio di Assistenza</a></div>' +
+            '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-success cliccabile sl_det" role="button" id="sl_det'+ d['smartlife']+'">Servizio SmartLife</a></div>';
+        }
+        else{
+            r+= '<div class="row">';
+            r+= '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-primary" role="button">Servizio di Assistenza</a></div>' +
+            '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-success sl_det" role="button>Servizio SmartLife</a></div>';
+        }
         r+= '</div>';
         r+= '</div>';
 
@@ -695,10 +701,16 @@ function sl_esempio(data){
             r+= '<ul class="nav nav-tabs">';
             r+= '<li id="btn_sl_desc" role="presentation" class="active"><a href="#sl_desc">Descrizione</a></li>';
             r+= '<li id="btn_sl_att" role="presentation"><a href="#sl_att">Attivazione e Regole</a></li>';
-            r+= '<li id="btn_sl_faq" role="presentation"><a href="#">FAQ</a></li>';
+            r+= '<li id="btn_sl_faq" role="presentation"><a href="#sl_faq">FAQ</a></li>';
             r+= '</ul>';
             r+='<div id="sl_desc"><h4>'+d['descrizione']+'</h4></div><br>\n';
-            r+='<div id="sl_att" style="display:none;"><h4>'+d['attivazione']+'</h4><br><br><br></div><br>\n';
+            r+='<div id="sl_att" style="display:none;"><h4>'+d['attivazione']+'</h4><br><br></div><br>\n';
+            r+='<div id="sl_faq" style="display:none;">\n';
+            r+='<a href="#" style="color:white" class="dropdown-toggle cliccabile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'+ d['faq1']+'<span class="caret"></span></a>';
+            r+='<a href="#" style="color:white" class="dropdown-toggle cliccabile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'+ d['faq2']+'<span class="caret"></span></a>';
+            r+='<a href="#" style="color:white" class="dropdown-toggle cliccabile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'+ d['faq3']+'<span class="caret"></span></a>';
+            r+='<a href="#" style="color:white" class="dropdown-toggle cliccabile" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'+ d['faq4']+'<span class="caret"></span></a>';
+            r+='</div>';
             r+='<div id="acquista" class="text-center" style="display:none;"><a href="#" class="btn-lg btn-danger" role="button">Acquista</a><br><br><br></div>';
             r+='<div id="prodotto" class="text-center" style="display:none;"><a href="#" class="btn-lg btn-success prod_det" role="button" id="prod'+d['prod_ass']+'">Prodotto associato</a><br><br><br></div>';
             r+='</div>';
@@ -716,7 +728,7 @@ function sl_esempio(data){
             r+= '<div class="col-md-1"></div>';
             r+= '<div class="col-md-10">';
             r+='<div id="sl_desc"><h4>'+d['descrizione']+'</h4></div><br>\n';
-            r+='<div id="sl_att" style="display:none;"><h4>'+d['attivazione']+'</h4><br><br><br></div><br>\n';
+            r+='<div id="sl_att" style="display:none;"><h4>'+d['attivazione']+'</h4><br><br></div><br>\n';
             r+="<div class=\"row\">";
             r+='<div class="col-md-3 col-md-offset-3">';
             r+='<div id="acquista" class="text-center" style="display:none;"><a href="#"  class="btn-lg btn-danger" role="button">Acquista</a></div>';
