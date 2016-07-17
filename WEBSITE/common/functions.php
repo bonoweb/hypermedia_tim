@@ -192,7 +192,7 @@ function get_promotions(){
 
     $query = "SELECT nome, immagine, prezzo FROM prodotti WHERE promozione = 1
               UNION 
-              SELECT titolo as nome, immagine, '' as prezzo FROM sl_servizi WHERE promozione =1";
+              SELECT titolo as nome, immagine, prezzo FROM sl_servizi WHERE promozione =1";
     $STH = $DBH->prepare($query);
     $STH->execute();
     $res = $STH->fetchAll();

@@ -10,7 +10,7 @@ function home(data) {
     data.forEach(function (d) {
         r+= '<div style="cursor:pointer;" class="col-md-3 prod_det" id="prod'+d['id']+'">';
         r += '<img style="max-height:200px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">'
-        r += '<h5><a>' + d['nome'] + '</a></h5>\n';
+        r += '<h5><a class="cliccabile">' + d['nome'] + '</a></h5>\n';
         r+= '</div>';
      });
     r+= '</div>';
@@ -38,7 +38,7 @@ function home(data) {
     r+='<div class="caption">\n';
     r += '<h1 style = "color:red; font-weight:bold; font-size:2em; text-align:center;">TIMtag</h1>\n';
     r += '<h4 class="text-center">Traccia e rintraccia tutto quello che ami!<br>Rilevatore GPS con un anno di servizio incluso.</h4><br>\n';
-    r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det8">Scopri di più</a></div><br>';
+    r+='<div class="text-center cliccabile"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det8">Scopri di più</a></div><br>';
     r+= '</div>';
     r+= '</div>';
     r+= '</div>';
@@ -64,7 +64,7 @@ function products_category(data) {
         var icon = d['icona'];
         r+= '<span class="fa fa-5x ' + icon + '"></span>';
         r+= '<br>';
-        r+= '<strong>' + d['titolo'] + '</strong>\n';
+        r+= '<strong class="cliccabile">' + d['titolo'] + '</strong>\n';
         r+= '</div>';
         r+= '</div>';
         r+= '</a>';
@@ -89,7 +89,7 @@ function sl_services_category(data)
         var icon = d['icona'];
         r+= '<span class="fa fa-5x ' + icon + '"></span>';
         r+= '<br>';
-        r+= '<strong>' + d['titolo'] + '</strong>\n';
+        r+= '<strong class="cliccabile">' + d['titolo'] + '</strong>\n';
         r+= '</div>';
         r+= '</div>';
         r+= '</a>';
@@ -115,7 +115,7 @@ function ass_services_category(data)
         var icon = d['icona'];
         r+= '<span class="fa fa-5x ' + icon + '"></span>';
         r+= '<br>';
-        r+= '<strong>' + d['titolo'] + '</strong>\n';
+        r+= '<strong class="cliccabile">' + d['titolo'] + '</strong>\n';
         r+= '</div>';
         r+= '</div>';
         r+= '</a>';
@@ -203,89 +203,6 @@ function guida(data)
     return r;
 }
 
-/*function ass_servizi_1(data)
-{
-    var r="";
-    var count=1;
-    var primo=1;
-    r+='<div class="col-md-3">\n';
-    r+='<div class="thumbnail">\n';
-    r+='<div class="caption">\n';
-    data.forEach(function(d){
-       if(d['id']==count){
-           if(primo==1){
-               r+='<h2 style = "color:red;  text-align:center;">'+d['titolo']+ '<br><br>'+ '</h2>\n';
-               primo++;
-           }
-           else{
-               r+='<h4 style = "color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
-           }
-       }
-    });
-    r+='</div>';
-    r+='</div>';
-    r+='</div>';
-    count++;
-    primo=1;
-    r+='<div class="col-md-3">\n';
-    r+='<div class="thumbnail">\n';
-    r+='<div class="caption">\n'
-    data.forEach(function(d){
-       if(d['id']==count){
-           if(primo==1){
-               r+='<h2 style = "color:red;  text-align:center;">'+d['titolo']+ '<br><br>' + '</h2>\n';
-               primo++;
-           }
-           else{
-               r+='<h4 style = "color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
-           }
-       }
-    });
-    r+='</div>';
-    r+='</div>';
-    r+='</div>';
-    count++;
-    primo=1;
-    r+='<div class="col-md-3">\n';
-    r+='<div class="thumbnail">\n';
-    r+='<div class="caption">\n'
-    data.forEach(function(d){
-       if(d['id']==count){
-           if(primo==1){
-               r+='<h2 style = "color:red;  text-align:center;">'+d['titolo']+ '</h2>\n';
-               primo++;
-           }
-           else{
-               r+='<h4 style = "color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
-           }
-       }
-    });
-    r+='</div>';
-    r+='</div>';
-    r+='</div>';
-    count++;
-    primo=1;
-    r+='<div class="col-md-3">\n';
-    r+='<div class="thumbnail">\n';
-    r+='<div class="caption">\n'
-    data.forEach(function(d){
-       if(d['id']==count){
-           if(primo==1){
-               r+='<h2 style = "color:red;  text-align:center;">'+d['titolo'] +'</h2>\n';
-               primo++;
-           }
-           else{
-               r+='<h4 style = "color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
-           }
-       }
-    });
-    r+='</div>';
-    r+='</div>';
-    r+='</div>';
-    return r;
-}
-*/
-
 function highlights(data)
 {
     var r="";
@@ -296,7 +213,7 @@ function highlights(data)
     r += '<div class="caption">\n';
     data.forEach(function(d){
         if(primo==1){
-        r+='<h4 style="color:blue;"><a href="#" class="att">'+d['titolo']+ ' &raquo;' + '</a>'+'</h4>\n';
+        r+='<h4 style="color:blue;" class="cliccabile"><a href="#" class="att">'+d['titolo']+ ' &raquo;' + '</a>'+'</h4>\n';
         primo++;
         }
         else{
