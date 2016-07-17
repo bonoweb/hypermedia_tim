@@ -631,7 +631,7 @@ function prodotto(data, from, nomeprodotto, fromid, prodid, midid, midname)
         r+= '</div>';
 
         r+= '<div class="row">';
-        r+= '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-primary" role="button">Servizio di Assistenza</a></div>' +
+        r+= '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-primary guid cliccabile" role="button">Servizio di Assistenza</a></div>' +
             '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-success" role="button">Servizio SmartLife</a></div>';
         r+= '</div>';
         r+= '</div>';
