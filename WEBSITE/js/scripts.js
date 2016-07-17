@@ -155,7 +155,7 @@ function ass_servizi(data, from, cat, theid)
         d['cols'].forEach(function(dd){
             r += "<div>";
             if(dd['id']==51){
-                 r += '<h4 style = "color:blue;  text-align:center;"><a href="#" class="guid">' + dd['title'] + ' &raquo;' + '</a>'+ '</h4>\n';
+                 r += '<h4 style = "color:blue;  text-align:center;"><a href="#" class="guid cliccabile">' + dd['title'] + ' &raquo;' + '</a>'+ '</h4>\n';
             }
             else{
                 r += '<h4 style = "color:blue;  text-align:center;">' + dd['title'] + ' &raquo;' + '</h4>\n';
@@ -617,7 +617,7 @@ function prodotto(data, from, nomeprodotto, fromid, prodid, midid, midname)
         r+= '</div>';
 
         r+= '<div class="row">';
-        r+= '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-primary" role="button">Servizio di Assistenza</a></div>' +
+        r+= '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-primary guid cliccabile" role="button">Servizio di Assistenza</a></div>' +
             '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-success" role="button">Servizio SmartLife</a></div>';
         r+= '</div>';
         r+= '</div>';
