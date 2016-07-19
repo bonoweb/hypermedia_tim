@@ -213,20 +213,35 @@
         
          $( "body" ).on( "click", "#btn_sl_desc",function(p){
             $("#sl_att").hide();
+            $("#sl_faq").hide();
             $("#acquista").hide();
             $("#prodotto").hide();
             $("#btn_sl_att").removeClass("active");
+            $("#btn_sl_faq").removeClass("active");
             $("#sl_desc").show();
             $("#btn_sl_desc").addClass("active");
         });
         
          $( "body" ).on( "click", "#btn_sl_att",function(p){
             $("#sl_desc").hide();
+            $("#sl_faq").hide();
             $("#btn_sl_desc").removeClass("active");
+            $("#btn_sl_faq").removeClass("active");
             $("#sl_att").show();
             $("#acquista").show();
             $("#prodotto").show();
             $("#btn_sl_att").addClass("active");
+        });
+        
+         $( "body" ).on( "click", "#btn_sl_faq",function(p){
+            $("#sl_desc").hide();
+            $("#sl_att").hide();
+            $("#acquista").hide();
+            $("#prodotto").hide();
+            $("#btn_sl_att").removeClass("active");
+            $("#btn_sl_desc").removeClass("active");
+            $("#sl_faq").show();
+            $("#btn_sl_faq").addClass("active");
         });
         
         $("#btnPromozioni").click(function(e){

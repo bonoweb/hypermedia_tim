@@ -105,7 +105,7 @@ function get_ass_serv_by_subcategory_id($idsubcategory)
 
 function get_attivazione(){
     global $DBH;
-    $query="SELECT descrizione FROM assistenza_servizi_esempio WHERE id=1";
+    $query="SELECT * FROM assistenza_servizi_esempio WHERE id=1";
     $STH=$DBH->prepare($query);
     $STH->execute();
     $res = $STH->fetchAll();
@@ -114,7 +114,7 @@ function get_attivazione(){
 
 function get_guida(){
     global $DBH;
-    $query="SELECT descrizione FROM assistenza_servizi_esempio WHERE id=51";
+    $query="SELECT * FROM assistenza_servizi_esempio WHERE id=51";
     $STH=$DBH->prepare($query);
     $STH->execute();
     $res = $STH->fetchAll();
