@@ -758,7 +758,7 @@ function sl_esempio(data){
         if(d['id']==3){
             r+= '<div class="col-md-6">';
             r+= '<ul class="nav nav-tabs">';
-            r+= '<li id="btn_sl_desc" role="presentation" class="active cliccabile"><a href="#sl_desc">Descrizione</a></li>';
+            r+= '<li id="btn_sl_desc" role="presentation" class="active"><a href="#sl_desc">Descrizione</a></li>';
             r+= '<li id="btn_sl_att" role="presentation" class="cliccabile"><a href="#sl_att">Attivazione e Regole</a></li>';
             r+= '<li id="btn_sl_faq" role="presentation" class="cliccabile"><a href="#sl_faq">FAQ</a></li>';
             r+= '</ul>';
@@ -784,7 +784,7 @@ function sl_esempio(data){
         else {
             r+='<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
             r+= '<ul class="nav nav-tabs">';
-            r+= '<li id="btn_sl_desc" role="presentation" class="active cliccabile"><a href="#sl_desc">Descrizione</a></li>';
+            r+= '<li id="btn_sl_desc" role="presentation" class="active"><a href="#sl_desc">Descrizione</a></li>';
             r+= '<li id="btn_sl_att" role="presentation" class="cliccabile"><a href="#sl_att"">Attivazione e Regole</a></li>';
             r+= '<li id="btn_sl_faq" role="presentation" class="cliccabile"><a href="#">FAQ</a></li>';
             r+= '</ul>';
