@@ -186,7 +186,7 @@ function guida(data)
         r += '<div class="thumbnail">\n';
         r += '<div class="caption">\n';
         r += '<h3 style = "color:red; text-align:left; font-size:2.5em;">' + 'GUIDA ALL\'ACQUISTO ONLINE' + '</h3>\n';
-        r+='<h4>'+d['descrizione']+'</h4>\n';
+        r+='<h3>'+d['descrizione']+'</h3>\n';
         r+='</div>';
         r+='</div>';
         r += '<div class="thumbnail">\n';
@@ -446,7 +446,7 @@ function progetti(data)
             r+='<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;"src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">' ;
             r+='</div>';
             r+='<div class="col-md-6">';
-            r+='<h2 style="color:red;">'+d['titolo']+ '<br>' + '</h2>\n';
+            r+='<h2 style="color:red; text-align:center;">'+d['titolo']+ '<br>' + '</h2>\n';
             r+='<h4>'+d['testo']+'</h4>\n';
             r+='</div>';
             r+='</div>';
@@ -454,8 +454,8 @@ function progetti(data)
             r+='</div>';
         }
         else{
-            r+='<h2 style="color:red;">'+d['titolo']+ '<br>' + '</h2>\n';
-            r+='<h4>'+d['testo']+'</h4>\n';
+            r+='<h2 style="color:red; text-align:center;">'+d['titolo']+ '<br>' + '</h2>\n';
+            r+='<h4 >'+d['testo']+'</h4>\n';
             r+='</div>';
             r+='<div class="col-md-6">';
             r+='<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'" class="img-responsive">' ;
@@ -503,12 +503,12 @@ function novita(data)
         r += '<div class="row-md-1"><br></div>';
         r += '</div>';
         r += '<div class="col-md-6">';
-        r += '<img class="pull-right" style="max-height:260px; padding:5px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'"><br><br>';
-        r += '<img class="pull-right" style="min-height:270px; padding:5px;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'"><br><br>';
-        r += '<img class="pull-right" style="max-height:270px; padding:5px;" src="img/'+d['immagine3']+'" alt="Immagine'+d['immagine3']+'"><br><br>';
+        r += '<img class="pull-right" style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'"><br><br>';
+        r += '<img class="pull-right" style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" src="img/'+d['immagine2']+'" alt="Immagine'+d['immagine2']+'"><br><br>';
+        r += '<img class="pull-right" style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" src="img/'+d['immagine3']+'" alt="Immagine'+d['immagine3']+'"><br><br>';
         r += '</div>';       
     });
-    r+="</div></div>";
+    r+="</div></div><br>";
     return r;
 }
 
@@ -521,7 +521,7 @@ function amministrazione(data)
         r += '<h4 style = "font-size:1.4em;">' + d['text'] + '</h4>';
         r += '<div class="col-md-1"></div>';
         r += '<div class="col-md-10">';
-        r += '<img  src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        r += '<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
         r += '</div>';
         r += '<div class="col-md-1"></div>';
     });
