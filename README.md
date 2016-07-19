@@ -20,3 +20,6 @@
  always open in the Home (which would be a mistake). We decided to leave it like this 
  because otherwise we would have had to create too many pages. Still, in the website the 
  dropdown menu will correctly open in the same page that you are in. 
+ 
+ - The site is built on a single page: navigation between pages is controlled only by 
+ JavaScript and AJAX requests.
