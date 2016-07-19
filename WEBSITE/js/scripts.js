@@ -292,10 +292,10 @@ function vprod(data, from, cat, theid,catid)
         r+='<div class="caption">\n';
         r+='<div><h3>'+d['nome']+'</h3>';
         if(d['promozione']!=0){
-            r += '<a href="#" class="btn-sm btn-success" role="button">Promo</a><br><br>';
+            r += '<a class="btn-sm btn-success">Promo</a><br><br>';
         }
         if(d['outlet']!=0){
-            r += '<a href="#" class="btn-sm" style="background-color:#FFFF00" role="button">Outlet</a><br><br>';
+            r += '<a class="btn-sm" style="background-color:#FFFF00">Outlet</a><br><br>';
         }
         r+='</div>';
         r+='<img style="max-height:200px; max-width:100%" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
