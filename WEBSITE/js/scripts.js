@@ -333,7 +333,9 @@ function vprod(data, from, cat, theid,catid)
 
     //'data-mid-name="'+cat+'" data-mid-id="'+catid+'" + 'data-from-id="'+theid+'" " data-from-name="'+from+'"
     r+="\n<div class=\"row\">";
+    var count = 0;
     data[0].forEach(function(d){
+        count++;
         r+='<div class="col-sm-6 col-md-4">\n';
         r+='<div class="thumbnail text-center" style="min-height:440px;">\n';
         r+='<div class="caption">\n';
@@ -347,8 +349,14 @@ function vprod(data, from, cat, theid,catid)
         r+='</div>';
         r+='<img style="max-height:200px; max-width:100%" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
         r+='<h2 style="color:red;">'+d['prezzo']+'</h2>';
-        r+='<div><a href="#" class="btn btn-primary prod_det cliccabile" data-prod-nome="'+d['nome']+'" role="button" id="prod'+d['id']+'">Dettagli</a>' +
+        if(count<=4){
+            r+='<div><a href="#" class="btn btn-primary prod_det cliccabile" data-prod-nome="'+d['nome']+'" role="button" id="prod'+d['id']+'">Dettagli</a>' +
             ' <a href="#" class="btn btn-danger" role="button">Acquista</a></div>';
+        }
+        else{
+            r+='<div><a href="#" class="btn btn-primary sl_det cliccabile" data-prod-nome="'+d['nome']+'" role="button" id="sl_det'+d['id']+'">Dettagli</a>' +
+            ' <a href="#" class="btn btn-danger" role="button">Acquista</a></div>';
+        }
         r+='</div>';
         r+='</div>';
         r+='</div>';
@@ -844,7 +852,7 @@ function sl_esempio(data, from, nomeprodotto, fromid, prodid, midid, midname){
             r+='<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
             r+= '<ul class="nav nav-tabs">';
             r+= '<li id="btn_sl_desc" role="presentation" class="active"><a href="#sl_desc">Descrizione</a></li>';
-            r+= '<li id="btn_sl_att" role="presentation" class="cliccabile"><a href="#sl_att"">Attivazione e Regole</a></li>';
+            r+= '<li id="btn_sl_att" role="presentation" class="cliccabile"><a href="#sl_att">Attivazione e Regole</a></li>';
             r+= '<li id="btn_sl_faq" role="presentation" class="cliccabile"><a href="#">FAQ</a></li>';
             r+= '</ul>';
             r+= '<div class="col-md-1"></div>';
