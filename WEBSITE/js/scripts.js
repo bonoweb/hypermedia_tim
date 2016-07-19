@@ -194,9 +194,11 @@ function guida(data)
         r +='<h3 style = "color:red; text-align:left; font-size:2.5em;">' + 'FAQ' + '</h3>\n';
         
         r+= '<div class="btn-group-vertical btn-block" role="group">';
-        r+='<div class="btn-group" role="group"><button style=" background-color:#f0f0f0; border-color:#000000;" type="button" class="btn btn-lg dropdown-toggle cliccabile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+d['faq1']+' <span class="caret"></span></button>';
+        r+='<div class="btn-group" role="group">' +
+            '<button style=" background-color:#f0f0f0; border-color:#000000;" type="button" class="btn btn-lg dropdown-toggle cliccabile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'
+            +d['faq1']+' <span class="caret"></span></button>';
         r+='<ul class="dropdown-menu">';
-        r+='<li><a href="#" style=" background-color:#cce5ff; border-color:#000000;">'+d['desc1']+'</a></li>';
+        r+='<li><div style=" background-color:#cce5ff; border-color:#000000;">'+d['desc1']+'</div></li>';
         r+='</ul>';
         r+='</div>';
         r+='<button href="#" style=" background-color:#f0f0f0; border-color:#000000;" class="btn btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">'+d['faq2']+' <span class="caret"></span></button>';
@@ -266,7 +268,7 @@ function attivazione(data)
         r+= '<div class="btn-group-vertical btn-block" role="group">';
         r+='<div class="btn-group" role="group"><button style=" background-color:#f0f0f0; border-color:#000000;" type="button" class="btn btn-lg dropdown-toggle cliccabile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+d['faq1']+' <span class="caret"></span></button>';
         r+='<ul class="dropdown-menu">';
-        r+='<li><a href="#" style=" background-color:#cce5ff; border-color:#000000;">'+d['desc1']+'</a></li>';
+        r+='<li><div href="#" style=" background-color:#cce5ff; border-color:#000000;">'+d['desc1']+'</div></li>';
         r+='</ul>';
         r+='</div>';
         r+='<button href="#" style=" background-color:#f0f0f0; border-color:#000000;" class="btn btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">'+d['faq2']+' <span class="caret"></span></button>';
@@ -325,10 +327,10 @@ function vprod(data, from, cat, theid,catid)
         r+='<div class="caption">\n';
         r+='<div><h3>'+d['nome']+'</h3>';
         if(d['promozione']!=0){
-            r += '<a class="btn-sm btn-success">Promo</a><br><br>';
+            r += '<div class="btn-sm btn-success">Promo</div><br><br>';
         }
         if(d['outlet']!=0){
-            r += '<a class="btn-sm" style="background-color:#FFFF00">Outlet</a><br><br>';
+            r += '<div class="btn-sm" style="background-color:#FFFF00">Outlet</div><br><br>';
         }
         r+='</div>';
         r+='<img style="max-height:200px; max-width:100%" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
@@ -710,7 +712,7 @@ function smartlife(data)
             r+='<div class="col-md-6">';
             r+='<h1 style="color:red; text-align:center;">'+d['titolo'];
             if(d['promozione']!=0){
-                r += '<a class="btn-sm btn-success pull-right">Promo</a></h1>';
+                r += '<div class="btn-sm btn-success pull-right">Promo</div></h1>';
             }
             else{
                  r+='</h1>';
@@ -726,7 +728,7 @@ function smartlife(data)
         else{
             r+='<h1 style="color:red; text-align:center;">'+d['titolo'];
             if(d['promozione']!=0){
-                r += '<a class="btn-sm btn-success pull-left">Promo</a></h1>';
+                r += '<div class="btn-sm btn-success pull-left">Promo</div></h1>';
             }
             else{
                  r+='</h1>';
@@ -768,12 +770,12 @@ function sl_esempio(data){
             r+='<div id="prodotto" class="text-center" style="display:none;"><a href="#" class="btn-lg btn-success prod_det" role="button" id="prod'+d['prod_ass']+'">Prodotto associato</a><br><br><br></div>';
             r+= '<div id="sl_faq" class="btn-group-vertical btn-block" role="group" style="display:none;">';
             r+='<div class="btn-group" role="group"><button style=" background-color:#f0f0f0; border-color:#000000;" type="button" class="btn btn-lg dropdown-toggle cliccabile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+d['faq1']+' <span class="caret"></span></button>';
-            r+='<ul class="dropdown-menu">';
-            r+='<li><a href="#" style=" background-color:#cce5ff; border-color:#000000;">'+d['desc1']+'</a></li>';
-            r+='</ul>';
+            r+='';
+            r+='<div href="#" class="faq_data" style=" background-color:#cce5ff; border-color:#000000;">'+d['desc1']+'</div>';
+            r+='';
             r+='</div>';
             r+='<button href="#" style=" background-color:#f0f0f0; border-color:#000000;" class="btn btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">'+d['faq2']+' <span class="caret"></span></button>';
-            r+='<button href="#" style=" background-color:#f0f0f0; border-color:#000000;" class="btn  btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">'+d['faq3']+' <span class="caret"></span></button>';
+            r+='<button href="#" style=" background-color:#f0f0f0; border-color:#000000;" class="btn btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">'+d['faq3']+' <span class="caret"></span></button>';
             r+='<button href="#" style=" background-color:#f0f0f0; border-color:#000000;" class="btn btn-lg dropdown-toggle"aria-haspopup="true" aria-expanded="false">'+d['faq4']+' <span class="caret"></span></button>';
             r+='</div>';
             r+='</div>';
