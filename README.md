@@ -9,13 +9,13 @@
  
  **http://hypermedia.francescobuonocore.it/**
  
- Frameworks used:
+Frameworks used:
  
  * Twitter Bootstrap 
  * jQuery
  * Icons from Font Awesome (http://fontawesome.io).
 
- Mockup and website details:
+Mockup and website details:
  
  * The active links are underlined both in the mockup and in the website. 
  * If you click on "CHI SIAMO" or "IL GRUPPO" in the mockup, the dropdown menu will 
