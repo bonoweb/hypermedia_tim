@@ -673,9 +673,31 @@ function smartlife(data)
         r+='<div class="col-md-6">';
         if(count%2==0){
             r+='<img class="img-responsive" style="max-height:300px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+            r+='</div>';
+            r+='<div class="col-md-6">';
+            r+='<h1 style="color:red; text-align:center;">'+d['titolo'];
+            if(d['promozione']!=0){
+                r += '<a class="btn-sm btn-success pull-right">Promo</a></h1>';
+            }
+            else{
+                 r+='</h1>';
+            }
+            r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
+            if(d['id']==2 || d['id']==6 || d['id']==8){
+                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det cliccabile" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
+            }
+            else {
+                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
+            }
         }
         else{
-            r+='<h1 style="color:red; text-align:center;">'+d['titolo']+'</h1>\n';
+            r+='<h1 style="color:red; text-align:center;">'+d['titolo'];
+            if(d['promozione']!=0){
+                r += '<a class="btn-sm btn-success pull-left">Promo</a></h1>';
+            }
+            else{
+                 r+='</h1>';
+            }
             r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
             if(d['id']==2 || d['id']==6 || d['id']==8){
                 r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det cliccabile" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
@@ -683,22 +705,9 @@ function smartlife(data)
             else {
             r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div>';
             }
-        }
-        r+='</div>';
-        r+='<div class="col-md-6">';
-        if(count%2!=0){
+            r+='</div>';
+            r+='<div class="col-md-6">';
             r+='<br><div class="pull-right"><img class="img-responsive" style="max-height:300px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'"></div>';
-        }
-        else{
-            r+='<h1 style="color:red; text-align:center;">'+d['titolo']+'</h1>\n';
-            r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
-            
-            if(d['id']==2 || d['id']==6 || d['id']==8){
-                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det cliccabile" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
-            }
-            else {
-                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
-            }
         }
         r+='</div>';
         r+='</div>';

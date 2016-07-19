@@ -179,7 +179,7 @@ function get_smartlife_img($idcategory){
 
 function get_smartlife_by_category($idcategory){
     global $DBH;
-    $query = "SELECT id, titolo, immagine, descrizione FROM sl_servizi WHERE id_categoria= :idcategory";
+    $query = "SELECT id, titolo, immagine, descrizione, promozione FROM sl_servizi WHERE id_categoria= :idcategory";
     $STH = $DBH->prepare($query);
     $STH->bindParam(":idcategory", $idcategory);
     $STH->execute();
