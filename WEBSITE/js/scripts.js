@@ -339,10 +339,10 @@ function vprod(data, from, cat, theid,catid)
         r+='<div class="caption">\n';
         r+='<div><h3>'+d['nome']+'</h3>';
         if(d['promozione']!=0){
-            r += '<a class="btn-sm btn-success">Promo</a><br><br>';
+            r += '<div class="btn-sm btn-success">Promo</div><br><br>';
         }
         if(d['outlet']!=0){
-            r += '<a class="btn-sm" style="background-color:#FFFF00">Outlet</a><br><br>';
+            r += '<div class="btn-sm" style="background-color:#FFFF00">Outlet</div><br><br>';
         }
         r+='</div>';
         r+='<img style="max-height:200px; max-width:100%" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
@@ -724,7 +724,7 @@ function smartlife(data)
             r+='<div class="col-md-6">';
             r+='<h1 style="color:red; text-align:center;">'+d['titolo'];
             if(d['promozione']!=0){
-                r += '<a class="btn-sm btn-success pull-right">Promo</a></h1>';
+                r += '<div class="btn-sm btn-success pull-right">Promo</div></h1>';
             }
             else{
                  r+='</h1>';
@@ -740,7 +740,7 @@ function smartlife(data)
         else{
             r+='<h1 style="color:red; text-align:center;">'+d['titolo'];
             if(d['promozione']!=0){
-                r += '<a class="btn-sm btn-success pull-left">Promo</a></h1>';
+                r += '<div class="btn-sm btn-success pull-left">Promo</div></h1>';
             }
             else{
                  r+='</h1>';
@@ -779,17 +779,32 @@ function sl_esempio(data){
             r+='<div id="sl_desc"><h4>'+d['descrizione']+'</h4></div><br>\n';
             r+='<div id="sl_att" style="display:none;"><h4>'+d['attivazione']+'</h4><br><br></div><br>\n';
             r+='<div id="acquista" class="text-center" style="display:none;"><a href="#" class="btn-lg btn-danger" role="button">Acquista</a><br><br><br></div>';
-            r+='<div id="prodotto" class="text-center" style="display:none;"><a href="#" class="btn-lg btn-success prod_det" role="button" id="prod'+d['prod_ass']+'">Prodotto associato</a><br><br><br></div>';
-            r+= '<div id="sl_faq" class="btn-group-vertical btn-block" role="group" style="display:none;">';
-            r+='<div class="btn-group" role="group"><button style=" background-color:#f0f0f0; border-color:#000000;" type="button" class="btn btn-lg dropdown-toggle cliccabile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+d['faq1']+' <span class="caret"></span></button>';
-            r+='<ul class="dropdown-menu">';
-            r+='<li><a href="#" style=" background-color:#cce5ff; border-color:#000000;">'+d['desc1']+'</a></li>';
-            r+='</ul>';
+            r+='<div id="prodotto" class="text-center" style="display:none;"><a href="#" class="btn-lg btn-success prod_det cliccabile" role="button" id="prod'+d['prod_ass']+'">Prodotto associato</a><br><br><br></div>';
+            
+            r+='<div class="panel-group" style="display:none" id="sl_faq" role="tablist" aria-multiselectable="true">';
+            r+='<div class="panel panel-default">';
+            r+='<div class="panel-heading" role="tab" id="headingOne">';
+            r+='<h4 class="panel-title">';
+            r+='<a class="cliccabile" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">'+d['faq1']+'</a><span class="caret pull-right"></span></h4></div>';
+            r+='<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">';
+            r+='<div class="panel-body">' + d['desc1']+'</div>';
+            r+='</div></div>';
+            r+='<div class="panel panel-default">';
+            r+='<div class="panel-heading" role="tab" id="headingTwo">';
+            r+='<h4 class="panel-title">';
+            r+='<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">'+d['faq2']+'</a><span class="caret pull-right"></span></h4></div>';
             r+='</div>';
-            r+='<button href="#" style=" background-color:#f0f0f0; border-color:#000000;" class="btn btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">'+d['faq2']+' <span class="caret"></span></button>';
-            r+='<button href="#" style=" background-color:#f0f0f0; border-color:#000000;" class="btn  btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">'+d['faq3']+' <span class="caret"></span></button>';
-            r+='<button href="#" style=" background-color:#f0f0f0; border-color:#000000;" class="btn btn-lg dropdown-toggle"aria-haspopup="true" aria-expanded="false">'+d['faq4']+' <span class="caret"></span></button>';
+            r+='<div class="panel panel-default">';
+            r+='<div class="panel-heading" role="tab" id="headingTwo">';
+            r+='<h4 class="panel-title">';
+            r+='<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">'+d['faq3']+'</a><span class="caret pull-right"></span></h4></div>';
             r+='</div>';
+            r+='<div class="panel panel-default">';
+            r+='<div class="panel-heading" role="tab" id="headingTwo">';
+            r+='<h4 class="panel-title">';
+            r+='<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">'+d['faq4']+'</a><span class="caret pull-right"></span></h4></div>';
+            r+='</div></div>';
+            
             r+='</div>';
             r+= '<div class="col-md-6">';
             r+='<img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:10%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
@@ -811,18 +826,33 @@ function sl_esempio(data){
             r+='<div id="acquista" class="text-center" style="display:none;"><a href="#"  class="btn-lg btn-danger" role="button">Acquista</a></div>';
             r+='</div>';
             r+= '<div class="col-md-3">';
-            r+='<div id="prodotto" style="display:none; margin-left:30px;"><a href="#" class="btn-lg btn-success prod_det" role="button" id="prod'+d['prod_ass']+'" >Prodotto associato</a><br><br><br></div>';
+            r+='<div id="prodotto" style="display:none; margin-left:30px;"><a href="#" class="btn-lg btn-success prod_det cliccabile" role="button" id="prod'+d['prod_ass']+'" >Prodotto associato</a><br><br><br></div>';
             r+='</div>';
-            r+= '<div id="sl_faq" class="btn-group-vertical btn-block" role="group" style="display:none;">';
-            r+='<div class="btn-group" role="group"><button style=" background-color:#f0f0f0; border-color:#000000;" type="button" class="btn btn-lg dropdown-toggle cliccabile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+d['faq1']+' <span class="caret"></span></button>';
-            r+='<ul class="dropdown-menu">';
-            r+='<li><a href="#" style=" background-color:#cce5ff; border-color:#000000;">'+d['desc1']+'</a></li>';
-            r+='</ul>';
+            
+            r+='<div class="panel-group" style="display:none" id="sl_faq" role="tablist" aria-multiselectable="true">';
+            r+='<div class="panel panel-default">';
+            r+='<div class="panel-heading" role="tab" id="headingOne">';
+            r+='<h4 class="panel-title">';
+            r+='<a class="cliccabile" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">'+d['faq1']+'</a><span class="caret pull-right"></span></h4></div>';
+            r+='<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">';
+            r+='<div class="panel-body">' + d['desc1']+'</div>';
+            r+='</div></div>';
+            r+='<div class="panel panel-default">';
+            r+='<div class="panel-heading" role="tab" id="headingTwo">';
+            r+='<h4 class="panel-title">';
+            r+='<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">'+d['faq2']+'</a><span class="caret pull-right"></span></h4></div>';
             r+='</div>';
-            r+='<button href="#" style=" background-color:#f0f0f0; border-color:#000000;" class="btn btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">'+d['faq2']+' <span class="caret"></span></button>';
-            r+='<button href="#" style=" background-color:#f0f0f0; border-color:#000000;" class="btn  btn-lg dropdown-toggle" aria-haspopup="true" aria-expanded="false">'+d['faq3']+' <span class="caret"></span></button>';
-            r+='<button href="#" style=" background-color:#f0f0f0; border-color:#000000;" class="btn btn-lg dropdown-toggle"aria-haspopup="true" aria-expanded="false">'+d['faq4']+' <span class="caret"></span></button>';
+            r+='<div class="panel panel-default">';
+            r+='<div class="panel-heading" role="tab" id="headingTwo">';
+            r+='<h4 class="panel-title">';
+            r+='<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">'+d['faq3']+'</a><span class="caret pull-right"></span></h4></div>';
             r+='</div>';
+            r+='<div class="panel panel-default">';
+            r+='<div class="panel-heading" role="tab" id="headingTwo">';
+            r+='<h4 class="panel-title">';
+            r+='<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">'+d['faq4']+'</a><span class="caret pull-right"></span></h4></div>';
+            r+='</div></div>';
+            
             r+='</div>';
         }
     });
