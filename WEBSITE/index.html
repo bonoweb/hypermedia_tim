@@ -501,15 +501,19 @@
         $( "body" ).on( "click", "#btn_prod_pres",function(p){
             $("#prod_car").hide();
             $("#btn_prod_car").removeClass("active");
+            $("#btn_prod_pres").removeClass("cliccabile");
             $("#prod_pres").show();
             $("#btn_prod_pres").addClass("active");
+            $("#btn_prod_car").addClass("cliccabile");
         });
         
          $( "body" ).on( "click", "#btn_prod_car",function(p){
             $("#prod_pres").hide();
             $("#btn_prod_pres").removeClass("active");
+            $("#btn_prod_car").removeClass("cliccabile");
             $("#prod_car").show();
             $("#btn_prod_car").addClass("active");
+            $("#btn_prod_pres").addClass("cliccabile");
         });
     });
 

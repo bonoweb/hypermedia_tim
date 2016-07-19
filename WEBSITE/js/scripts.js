@@ -136,7 +136,7 @@ function ass_servizi(data, from, cat, theid)
         r+= ' class="active" ';
     else
         r+= ' id="'+ theid+'" ';
-    r+= '><a href="#' + from + '">' +from+' </a></li>\n';
+    r+= '><a href="#' + from + '" class="cliccabile">' +from+' </a></li>\n';
     if(cat!="")
         r+='<li class="active">'+cat+'</li>\n';
     r+='</ol>';
@@ -311,7 +311,7 @@ function vprod(data, from, cat, theid,catid)
             r += ' class="active" ';
         else
             r += ' id="btnProdotti" ';
-        r += '><a href="#Prodotti">Prodotti</a></li>\n';
+        r += '><a href="#Prodotti" class="cliccabile">Prodotti</a></li>\n';
         if (cat != "")
             r += '<li class="active">' + data['nome_categoria'] + '</li>\n';
         r += '</ol>';
@@ -566,10 +566,10 @@ function prodotto(data, from, nomeprodotto, fromid, prodid, midid, midname)
     r+='<ol class="breadcrumb">';
     r+='<li';
     r+= ' id="btnProdotti" ';
-    r+= '><a href="#Prodotti">Prodotti</a></li>\n';
+    r+= '><a href="#Prodotti" class="cliccabile">Prodotti</a></li>\n';
     r+='<li';
     r+= ' id="'+ midid+'" ';
-    r+= '><a class="prod" data-prod-title="'+midname+'" id="'+midid+'" href="#' + midname + '">' +midname+' </a></li>\n';
+    r+= '><a class="prod cliccabile" data-prod-title="'+midname+'" id="'+midid+'" href="#' + midname + '">' +midname+' </a></li>\n';
     if(prodid!="")
         r+='<li class="active">'+nomeprodotto+'</li>\n';
     r+='</ol>';
@@ -617,7 +617,7 @@ function prodotto(data, from, nomeprodotto, fromid, prodid, midid, midname)
         r+='<h6><br></h6>';
         r+= '<ul class="nav nav-tabs">';
         r+= '<li id="btn_prod_pres" role="presentation" class="active"><a href="#btn_prod_pres">Presentazione</a></li>';
-        r+= '<li id="btn_prod_car" role="presentation"><a href="#btn_prod_car">Caratteristiche</a></li>';
+        r+= '<li id="btn_prod_car" role="presentation" class="cliccabile"><a href="#btn_prod_car">Caratteristiche</a></li>';
         r+= '</ul>';
         r+= '<div class="col-md-1"></div>';
         
