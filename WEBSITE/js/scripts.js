@@ -217,11 +217,11 @@ function highlights(data)
     r += '<div class="caption">\n';
     data.forEach(function(d){
         if(primo==1){
-        r+='<h4 style="color:blue;" class="cliccabile"><a href="#" class="att">'+d['titolo']+ ' &raquo;' + '</a>'+'</h4>\n';
+        r+='<h4 style="color:#2b78e4;" class="cliccabile"><a href="#" class="att">'+d['titolo']+ ' &raquo;' + '</a>'+'</h4>\n';
         primo++;
         }
         else{
-            r+='<h4 style="color:blue;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
+            r+='<h4 style="color:#2b78e4;">'+d['titolo']+ ' &raquo;' + '</h4>\n';
         }
     });
     r+='</div>';
