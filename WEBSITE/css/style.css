@@ -81,6 +81,9 @@ hr.rigabella {
     text-decoration: none;
 }
 
+ a:hover{
+    text-decoration:none !important;
+}
 
 /** loading modal -- thx to http://stackoverflow.com/questions/1964839/how-can-i-create-a-please-wait-loading-animation-using-jquery */
 
