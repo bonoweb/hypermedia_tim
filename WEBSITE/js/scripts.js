@@ -38,7 +38,7 @@ function home(data) {
     r+='<div class="caption">\n';
     r += '<h1 style = "color:red; font-weight:bold; font-size:2em; text-align:center;">TIMtag</h1>\n';
     r += '<h4 class="text-center">Traccia e rintraccia tutto quello che ami!<br>Rilevatore GPS con un anno di servizio incluso.</h4><br>\n';
-    r+='<div class="text-center cliccabile"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det8">Scopri di più</a></div><br>';
+    r+='<div class="text-center cliccabile"><a href="#TimTag" data-smart-title="TIM Tag" data-mid-name="Casa e Famiglia" data-mid-id="3" class="btn-lg btn-primary sl_det" role="button" id="sl_det8">Scopri di più</a></div><br>';
     r+= '</div>';
     r+= '</div>';
     r+= '</div>';
@@ -716,8 +716,6 @@ function prodotto(data, from, nomeprodotto, fromid, prodid, midid, midname)
 function smartlife(data, from, cat, theid,catid)
 {
     var r="";
-
-
     /*Breadcrumbs*/
     r += '<ol class="breadcrumb">';
     r += '<li';
@@ -755,7 +753,7 @@ function smartlife(data, from, cat, theid,catid)
             }
             r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
             if(d['id']==2 || d['id']==6 || d['id']==8){
-                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det cliccabile" role="button" id="sl_det'+d['id']+'" data-mid-id="'+catid+'" data-mid-name="'+from+'" data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
+                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det cliccabile" role="button" id="sl_det'+d['id']+'" data-mid-id="'+cat+'" data-mid-name="'+from+'" data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
             }
             else {
                 r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'" data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
@@ -771,10 +769,10 @@ function smartlife(data, from, cat, theid,catid)
             }
             r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
             if(d['id']==2 || d['id']==6 || d['id']==8){
-                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det cliccabile" role="button" id="sl_det'+d['id']+'" data-mid-id="'+catid+'" data-mid-name="'+from+'" data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
+                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det cliccabile" role="button" id="sl_det'+d['id']+'" data-mid-id="'+cat+'" data-mid-name="'+from+'" data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
             }
             else {
-            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'" data-mid-id="'+catid+'" data-mid-name="'+from+'" data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div>';
+            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'" data-mid-id="'+cat+'" data-mid-name="'+from+'" data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div>';
             }
             r+='</div>';
             r+='<div class="col-md-6">';
@@ -792,6 +790,7 @@ function smartlife(data, from, cat, theid,catid)
 
 function sl_esempio(data, from, nomeprodotto, fromid, prodid, midid, midname){
     var r="";
+
     /*breadcrumbs*/
     r+='<ol class="breadcrumb">';
     r+='<li';
@@ -799,7 +798,7 @@ function sl_esempio(data, from, nomeprodotto, fromid, prodid, midid, midname){
     r+= '><a href="#SmartLife" class="cliccabile">Servizi Smart Life</a></li>\n';
     r+='<li';
     r+= ' id="'+ midid+'" ';
-    r+= '><a class="sl_det cliccabile" data-prod-title="'+midname+'" data-mid-id="'+midid+'" id="'+midid+'" href="#' + midname + '">' +midname+' </a></li>\n';
+    r+= '><a class=" sl cliccabile" data-sl-title="'+midname+'" data-mid-id="'+midid+'" id="'+midid+'" href="#' + midname + '">' +midname+' </a></li>\n';
     if(prodid!="")
         r+='<li class="active">'+nomeprodotto+'</li>\n';
     r+='</ol>';

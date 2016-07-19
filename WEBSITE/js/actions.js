@@ -103,7 +103,7 @@ $( document ).ready(function() {
             url: "http://hypermedia.francescobuonocore.it/api/smartlife.php?idcategoria="+idcategoria,
             crossDomain: true,
         }).success(function(result){
-            var prod = smartlife(result, nomecategoria, idcompl, "");
+            var prod = smartlife(result, nomecategoria, idcategoria, "");
             $("#main").html(prod);
         });
         window.location.hash = nomecategoria;
@@ -129,7 +129,7 @@ $( document ).ready(function() {
                 var ret = sl_esempio(result, from, nomeprodotto, fromid, prodid, midid, midname);
                 $("#main").html(ret);
             });
-            window.location.hash = nomecategoria;
+            window.location.hash = nomeprodotto;
             p.preventDefault();
         }
     });
