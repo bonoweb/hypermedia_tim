@@ -142,7 +142,7 @@ function ass_servizi(data, from, cat, theid)
     r+='</ol>';
 
 
-    r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + data['maintitle'] + '</h1><br>\n';
+    
     r +='<div class="row">\n';
     var count = 0;
     data['serv'].forEach(function(d) {
