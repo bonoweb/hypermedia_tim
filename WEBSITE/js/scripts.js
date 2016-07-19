@@ -83,7 +83,7 @@ function sl_services_category(data)
     r+= '<div class="row">';
     r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + 'SERVIZI SMART LIFE' + '</h1><br>\n';
     data.forEach(function(d){
-        r+= '<a href="#" class="sl" id="sl'+d['id']+'"data-sl-title="'+d['titolo']+'">' ;
+        r+= '<a href="#" class="sl" id="sl'+d['id']+'" data-sl-title="'+d['titolo']+'">' ;
         r+= '<div class="col-md-6">';
         r+= '<div class="col-md-10 col-md-offset-1 well text-center">';
         var icon = d['icona'];
@@ -339,10 +339,10 @@ function vprod(data, from, cat, theid,catid)
         r+='<div class="caption">\n';
         r+='<div><h3>'+d['nome']+'</h3>';
         if(d['promozione']!=0){
-            r += '<div class="btn-sm btn-success">Promo</div><br><br>';
+            r += '<span class="btn-sm btn-success">Promo</span><br><br>';
         }
         if(d['outlet']!=0){
-            r += '<div class="btn-sm" style="background-color:#FFFF00">Outlet</div><br><br>';
+            r += '<span class="btn-sm" style="background-color:#FFFF00">Outlet</span><br><br>';
         }
         r+='</div>';
         r+='<img style="max-height:200px; max-width:100%" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
@@ -687,12 +687,12 @@ function prodotto(data, from, nomeprodotto, fromid, prodid, midid, midname)
         if(d['smartlife']!=0){
             r+= '<div class="row">';
             r+= '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-primary guid cliccabile" role="button">Servizio di Assistenza</a></div>' +
-            '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-success cliccabile sl_det" data-prod-nome="'+d.smartlife+'" role="button" id="sl_det'+ d['smartlife']+'">Servizio SmartLife</a></div>';
+            '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-success cliccabile sl_det"  data-mid-id="'+"983232"+'" data-prod-nome="'+d.smartlife+'" role="button" id="sl_det'+ d['smartlife']+'">Servizio SmartLife</a></div>';
         }
         else{
             r+= '<div class="row">';
             r+= '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-primary guid cliccabile" role="button">Servizio di Assistenza</a></div>' +
-            '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-success sl_det" role="button">Servizio SmartLife</a></div>';
+            '<div class="col-md-6" style="min-height:50px;"><a href="#" class="btn-lg btn-success sl_det" data-mid-id="'+"983232"+'" role="button">Servizio SmartLife</a></div>';
         }
         r+= '</div>';
         r+= '</div>';
@@ -705,9 +705,25 @@ function prodotto(data, from, nomeprodotto, fromid, prodid, midid, midname)
 }
 
 /*smartlife products*/
-function smartlife(data)
+function smartlife(data, from, cat, theid,catid)
 {
     var r="";
+
+
+    /*Breadcrumbs*/
+    r += '<ol class="breadcrumb">';
+    r += '<li';
+    if (cat == "")
+        r += ' class="active" ';
+    else
+        r += ' id="btnSmartLife" ';
+    r += '><a href="#" class="cliccabile">Servizi Smart Life</a></li>\n';
+    if (cat != "")
+        r += '<li class="active">' + from + '</li>\n';
+    r += '</ol>';
+
+
+
     var count=0;
     data['slimg'].forEach(function(d){
         r+='<div class="text-center"><img style="width:100%; padding-left:1%; padding-right:1%; padding-bottom:2%;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'"></div>';
@@ -724,33 +740,33 @@ function smartlife(data)
             r+='<div class="col-md-6">';
             r+='<h1 style="color:red; text-align:center;">'+d['titolo'];
             if(d['promozione']!=0){
-                r += '<div class="btn-sm btn-success pull-right">Promo</div></h1>';
+                r += '<span class="btn-sm btn-success pull-right">Promo</span></h1>';
             }
             else{
                  r+='</h1>';
             }
             r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
             if(d['id']==2 || d['id']==6 || d['id']==8){
-                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det cliccabile" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
+                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det cliccabile" role="button" id="sl_det'+d['id']+'" data-mid-id="'+catid+'" data-mid-name="'+from+'" data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
             }
             else {
-                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
+                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'" data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
             }
         }
         else{
             r+='<h1 style="color:red; text-align:center;">'+d['titolo'];
             if(d['promozione']!=0){
-                r += '<div class="btn-sm btn-success pull-left">Promo</div></h1>';
+                r += '<span class="btn-sm btn-success pull-left">Promo</span></h1>';
             }
             else{
                  r+='</h1>';
             }
             r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
             if(d['id']==2 || d['id']==6 || d['id']==8){
-                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det cliccabile" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
+                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det cliccabile" role="button" id="sl_det'+d['id']+'" data-mid-id="'+catid+'" data-mid-name="'+from+'" data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
             }
             else {
-            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div>';
+            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'" data-mid-id="'+catid+'" data-mid-name="'+from+'" data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div>';
             }
             r+='</div>';
             r+='<div class="col-md-6">';
@@ -766,8 +782,22 @@ function smartlife(data)
     return r;
 }
 
-function sl_esempio(data){
+function sl_esempio(data, from, nomeprodotto, fromid, prodid, midid, midname){
     var r="";
+    /*breadcrumbs*/
+    r+='<ol class="breadcrumb">';
+    r+='<li';
+    r+= ' id="btnSmartLife" ';
+    r+= '><a href="#SmartLife" class="cliccabile">Servizi Smart Life</a></li>\n';
+    r+='<li';
+    r+= ' id="'+ midid+'" ';
+    r+= '><a class="sl_det cliccabile" data-prod-title="'+midname+'" data-mid-id="'+midid+'" id="'+midid+'" href="#' + midname + '">' +midname+' </a></li>\n';
+    if(prodid!="")
+        r+='<li class="active">'+nomeprodotto+'</li>\n';
+    r+='</ol>';
+
+
+
     data.forEach(function(d){
         if(d['id']==3){
             r+= '<div class="col-md-6">';

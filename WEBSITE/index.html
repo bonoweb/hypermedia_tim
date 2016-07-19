@@ -163,7 +163,7 @@
                 e.preventDefault();
             });
 
-        $("#btnSmartLife").click(function(e){
+        $( "body" ).on( "click", "#btnSmartLife",function(e){
             $.ajax({
                 type:'GET',
                 dataType: 'json',
@@ -178,6 +178,7 @@
         });
         
         $( "body" ).on( "click", ".sl",function(p){
+            idcompl= $(this).attr("id");
             idcategoria = $(this).attr("id").replace('sl','');
             nomecategoria = $(this).attr("data-sl-title");
             $.ajax({
@@ -186,7 +187,7 @@
                 url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/smartlife.php?idcategoria="+idcategoria,
                 crossDomain: true,
             }).success(function(result){
-                var prod = smartlife(result);
+                var prod = smartlife(result, nomecategoria, idcompl, "");
                 $("#main").html(prod);
             });
             window.location.hash = nomecategoria;
@@ -196,14 +197,20 @@
         $( "body" ).on( "click", ".sl_det",function(p){
             id = $(this).attr("id").replace('sl_det','');
             if(id==2 || id==6 || id==8){
-                nomecategoria = $(this).attr("data-smart-title");
+                nomeprodotto = $(this).attr("data-smart-title");
+                nomecategoria = $(this).data("prod-nome");
+                midname = $(this).data("mid-name");
+                midid = "sl"+$(this).data("mid-id");
+                from =  $(this).data("mid-name");
+                fromid =midid;
+                prodid = id;
                 $.ajax({
                     type:'GET',
                     dataType:'json',
                     url: "http://localhost:8888/hypermedia_tim/WEBSITE/includes/sl_esempio.php?idservizio="+id,
                     crossDomain: true,
                 }).success(function(result){
-                    var ret = sl_esempio(result);
+                    var ret = sl_esempio(result, from, nomeprodotto, fromid, prodid, midid, midname);
                     $("#main").html(ret);
                 });
                 window.location.hash = nomecategoria;
