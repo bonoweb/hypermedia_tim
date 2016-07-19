@@ -144,29 +144,30 @@ function ass_servizi(data, from, cat, theid)
 
     r += '<h1 style = "color:red; font-weight:bold; text-align:center; font-size:3.5em;">' + data['maintitle'] + '</h1><br>\n';
     r +='<div class="row">\n';
+    var count = 0;
     data['serv'].forEach(function(d) {
-        if(data.serv.length<=3)
+        if(data.serv.length==3 || (data.serv.length>4 && count<3))
             r+= '<div class="col-md-4">\n';
         else
             r +='<div class="col-md-3">\n';
-        r +='<div class="thumbnail">\n';
+        r +='<div class="thumbnail" style="min-height:260px">\n';
         r +='<div class="caption">\n';
-        r += '<h2 style = "color:red;  text-align:center;">' + d['title'] + '</h2>\n';
+        r += '<h2 style = "color:red;  text-align:center; font-size:2em;">' + d['title'] + '</h2>\n';
+        count++;
         d['cols'].forEach(function(dd){
             r += "<div>";
             if(dd['id']==1){
-                 r += '<h4 style = "color:blue; text-align:center;"><a href="#" class="att cliccabile">' + dd['title'] + ' &raquo;' + '</a>'+ '</h4>\n';
+                 r += '<h4 style = "color:#2b78e4; text-align:center; font-size:1.1em;"><a href="#" class="att cliccabile">' + dd['title'] + ' &raquo;' + '</a>'+ '</h4>\n';
             }
             else if(dd['id']==51){
-                 r += '<h4 style = "color:blue; text-align:center;"><a href="#" class="guid cliccabile">' + dd['title'] + ' &raquo;' + '</a>'+ '</h4>\n';
+                 r += '<h4 style = "color:#2b78e4; text-align:center; font-size:1.1em;"><a href="#" class="guid cliccabile">' + dd['title'] + ' &raquo;' + '</a>'+ '</h4>\n';
             }
             else{
-                r += '<h4 style = "color:blue;  text-align:center;">' + dd['title'] + ' &raquo;' + '</h4>\n';
+                r += '<h4 style = "color:#2b78e4;  text-align:center; font-size:1.1em;">' + dd['title'] + ' &raquo;' + '</h4>\n';
             }
             r += "</div>";
         });
         //todo completare
-
         r +='</div>\n';
         r +='</div>\n';
         r +='</div>\n';
@@ -287,12 +288,19 @@ function vprod(data, from, cat, theid,catid)
     r+="\n<div class=\"row\">";
     data[0].forEach(function(d){
         r+='<div class="col-sm-6 col-md-4">\n';
-        r+='<div class="thumbnail text-center" style="min-height:400px;">\n';
+        r+='<div class="thumbnail text-center" style="min-height:440px;">\n';
         r+='<div class="caption">\n';
-        r+='<h3>'+d['nome']+'</h3>\n';
-        r+='<img style="max-height:200px;" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
-        r+='<h4 style="color:red;">'+d['prezzo']+'</h4>';
-        r+='<div><a href="#" class="btn btn-primary prod_det" data-prod-nome="'+d['nome']+'" role="button" id="prod'+d['id']+'">Dettagli</a>' +
+        r+='<div><h3>'+d['nome']+'</h3>';
+        if(d['promozione']!=0){
+            r += '<a href="#" class="btn-sm btn-success" role="button">Promo</a><br><br>';
+        }
+        if(d['outlet']!=0){
+            r += '<a href="#" class="btn-sm" style="background-color:#FFFF00" role="button">Outlet</a><br><br>';
+        }
+        r+='</div>';
+        r+='<img style="max-height:200px; max-width:100%" src="img/'+d['immagine']+'" alt="Immagine'+d['immagine']+'">';
+        r+='<h2 style="color:red;">'+d['prezzo']+'</h2>';
+        r+='<div><a href="#" class="btn btn-primary prod_det cliccabile" data-prod-nome="'+d['nome']+'" role="button" id="prod'+d['id']+'">Dettagli</a>' +
             ' <a href="#" class="btn btn-danger" role="button">Acquista</a></div>';
         r+='</div>';
         r+='</div>';
@@ -669,8 +677,12 @@ function smartlife(data)
         else{
             r+='<h1 style="color:red; text-align:center;">'+d['titolo']+'</h1>\n';
             r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
-            
+            if(d['id']==2 || d['id']==6 || d['id']==8){
+                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det cliccabile" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
+            }
+            else {
             r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div>';
+            }
         }
         r+='</div>';
         r+='<div class="col-md-6">';
@@ -681,7 +693,12 @@ function smartlife(data)
             r+='<h1 style="color:red; text-align:center;">'+d['titolo']+'</h1>\n';
             r+='<h4>'+d['descrizione']+'<br><br>'+'</h4>\n';
             
-            r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
+            if(d['id']==2 || d['id']==6 || d['id']==8){
+                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det cliccabile" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
+            }
+            else {
+                r+='<div class="text-center"><a href="#" class="btn-lg btn-primary sl_det" role="button" id="sl_det'+d['id']+'"data-smart-title="'+d['titolo']+'">Scopri di piu</a><br></div><br>';
+            }
         }
         r+='</div>';
         r+='</div>';

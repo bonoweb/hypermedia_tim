@@ -202,9 +202,9 @@ function get_promotions(){
     //prodotti in promozione + sl services in promozione
     //nome, immagine, e prezzo
 
-    $query = "SELECT id, nome, immagine, prezzo FROM prodotti WHERE promozione = 1
+    $query = "SELECT id, nome, immagine, prezzo, promozione, outlet FROM prodotti WHERE promozione = 1
               UNION 
-              SELECT id, titolo as nome, immagine, prezzo FROM sl_servizi WHERE promozione =1";
+              SELECT id, titolo as nome, immagine, prezzo, promozione, '0' as outlet FROM sl_servizi WHERE promozione =1";
     $STH = $DBH->prepare($query);
     $STH->execute();
     $res = $STH->fetchAll();
